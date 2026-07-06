@@ -209,7 +209,28 @@
   .footer-grid h4{ color:var(--sand); font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px; font-family:'IBM Plex Mono',monospace; font-weight:500; }
   .footer-grid a{ display:block; font-size:0.88rem; margin-bottom:10px; color:#AEB9B3; transition:color 0.15s; }
   .footer-grid a:hover{ color:var(--sand); }
-  .footer-bottom{ border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:0.82rem; color:#8B9691; }
+  /* ---------- PRAYER WIDGET ---------- */
+  .prayer-widget{ display:grid; grid-template-columns:220px 1fr; background:var(--ink); border-radius:20px; overflow:hidden; }
+  @media (max-width:700px){ .prayer-widget{ grid-template-columns:1fr; } }
+  .prayer-next{ background:var(--teal); color:#fff; padding:32px 28px; display:flex; flex-direction:column; justify-content:center; }
+  .prayer-next .eyebrow{ color:var(--brass-light); }
+  .prayer-next h3{ font-size:2rem; margin:8px 0 4px; color:#fff; }
+  .prayer-next p{ font-family:'IBM Plex Mono',monospace; font-size:1rem; color:#DCEAE5; }
+  .prayer-list{ list-style:none; padding:14px 0; }
+  .prayer-list li{ display:flex; justify-content:space-between; padding:13px 28px; color:#C7D1CB; font-size:0.95rem; border-bottom:1px solid rgba(255,255,255,0.06); transition:background 0.2s; }
+  .prayer-list li:last-child{ border-bottom:none; }
+  .prayer-list li span:last-child{ font-family:'IBM Plex Mono',monospace; color:#95A39C; }
+  .prayer-list li.active{ background:rgba(201,147,46,0.14); color:var(--sand); font-weight:600; }
+  .prayer-list li.active span{ color:var(--brass-light); }
+  .prayer-note{ font-size:0.82rem; color:var(--text-soft); margin-top:14px; }
+
+  /* ---------- PARTNER LOGOS ---------- */
+  .partner-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  @media (max-width:760px){ .partner-grid{ grid-template-columns:repeat(2,1fr); } }
+  .partner-slot{ border:1.5px dashed var(--line); border-radius:14px; padding:28px 16px; text-align:center; color:var(--text-soft); background:var(--sand-card); }
+  .partner-slot span{ font-size:1.6rem; display:block; margin-bottom:10px; }
+  .partner-slot p{ font-size:0.85rem; font-weight:500; }
+  .partner-slot.open{ border-color:var(--brass); color:var(--brass); }
 </style>
 </head>
 <body>
@@ -301,6 +322,31 @@
   </div>
 </section>
 
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">See it in action</span>
+      <h2>Prayer times, built into every profile</h2>
+      <p>No separate app to check. Sample times shown below — the real app calculates times based on each person's location.</p>
+    </div>
+    <div class="prayer-widget">
+      <div class="prayer-next">
+        <span class="eyebrow">Next prayer</span>
+        <h3 id="nextPrayerName">—</h3>
+        <p id="prayerCountdown">calculating…</p>
+      </div>
+      <ul class="prayer-list" id="prayerList">
+        <li data-name="Fajr" data-time="05:12"><span class="p-name">Fajr</span><span>5:12 AM</span></li>
+        <li data-name="Dhuhr" data-time="13:02"><span class="p-name">Dhuhr</span><span>1:02 PM</span></li>
+        <li data-name="Asr" data-time="16:45"><span class="p-name">Asr</span><span>4:45 PM</span></li>
+        <li data-name="Maghrib" data-time="20:31"><span class="p-name">Maghrib</span><span>8:31 PM</span></li>
+        <li data-name="Isha" data-time="21:58"><span class="p-name">Isha</span><span>9:58 PM</span></li>
+      </ul>
+    </div>
+    <p class="prayer-note">Sample times shown for preview purposes only.</p>
+  </div>
+</section>
+
 <section class="section comparison">
   <div class="wrap">
     <div class="section-head">
@@ -354,6 +400,22 @@
         </ul>
         <a href="#" class="journey-cta">Get your organization listed</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Founding partners</span>
+      <h2>Onboarding organizations now</h2>
+      <p>Minar360 is opening city by city. Here's who's building the founding network — with more joining every week.</p>
+    </div>
+    <div class="partner-grid">
+      <div class="partner-slot"><span>🕌</span><p>Mosque partner</p></div>
+      <div class="partner-slot"><span>🤝</span><p>Nonprofit partner</p></div>
+      <div class="partner-slot"><span>🛍️</span><p>Business partner</p></div>
+      <div class="partner-slot open"><span>+</span><p>Your organization here</p></div>
     </div>
   </div>
 </section>
@@ -472,6 +534,34 @@
 </footer>
 
 <script>
+  function updatePrayer(){
+    const items = Array.from(document.querySelectorAll('#prayerList li'));
+    const now = new Date();
+    let next = null;
+    for(const li of items){
+      const [h,m] = li.dataset.time.split(':').map(Number);
+      const t = new Date(now); t.setHours(h,m,0,0);
+      if(t > now){ next = {li, time:t}; break; }
+    }
+    if(!next){
+      const li = items[0];
+      const [h,m] = li.dataset.time.split(':').map(Number);
+      const t = new Date(now); t.setDate(t.getDate()+1); t.setHours(h,m,0,0);
+      next = {li, time:t};
+    }
+    items.forEach(li=>li.classList.remove('active'));
+    next.li.classList.add('active');
+    const nameEl = document.getElementById('nextPrayerName');
+    const countEl = document.getElementById('prayerCountdown');
+    if(nameEl) nameEl.textContent = next.li.dataset.name;
+    const diff = next.time - now;
+    const hh = Math.floor(diff/3600000);
+    const mm = Math.floor((diff%3600000)/60000);
+    if(countEl) countEl.textContent = hh + 'h ' + mm + 'm';
+  }
+  updatePrayer();
+  setInterval(updatePrayer, 30000);
+
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const v = document.getElementById('heroVideo');
     if (v) v.pause();
