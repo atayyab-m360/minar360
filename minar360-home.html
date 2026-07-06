@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minar360 — The Muslim Community, Connected</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12201E;
+    --ink-soft:#1C2E2B;
+    --teal:#0E5C56;
+    --teal-deep:#0A413D;
+    --brass:#C9932E;
+    --brass-light:#E3B860;
+    --sand:#F2ECDC;
+    --sand-card:#FFFDF7;
+    --rose:#B4483F;
+    --sage:#6E8C7C;
+    --line:#DED4B8;
+    --text-dark:#12201E;
+    --text-soft:#4B5A54;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  body{
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    color:var(--text-dark);
+    background:var(--sand);
+    line-height:1.55;
+  }
+  h1,h2,h3,.wordmark{ font-family:'Space Grotesk', system-ui, sans-serif; letter-spacing:-0.02em; }
+  .eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--brass); }
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; max-width:100%; }
+  button, .btn{ font-family:'IBM Plex Sans', sans-serif; cursor:pointer; border:none; }
+  :focus-visible{ outline:3px solid var(--brass); outline-offset:3px; }
+
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  @media (max-width:640px){ .wrap{ padding:0 20px; } }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(18,32,30,0.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:18px 32px; max-width:1180px; margin:0 auto; }
+  .wordmark{ color:var(--sand); font-size:1.25rem; font-weight:700; display:flex; align-items:center; gap:8px; }
+  .wordmark .dot{ width:8px; height:8px; border-radius:50%; background:var(--brass); }
+  .nav-links{ display:flex; gap:32px; }
+  .nav-links a{ color:#CFD8D3; font-size:0.92rem; font-weight:500; transition:color 0.15s; }
+  .nav-links a:hover{ color:var(--sand); }
+  .nav-cta{ background:var(--brass); color:var(--ink); padding:10px 20px; border-radius:100px; font-size:0.88rem; font-weight:600; transition:background 0.15s; }
+  .nav-cta:hover{ background:var(--brass-light); }
+  .nav-toggle{ display:none; background:none; color:var(--sand); font-size:1.5rem; }
+  @media (max-width:860px){
+    .nav-links{ display:none; }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:radial-gradient(120% 100% at 15% 0%, var(--teal-deep) 0%, var(--ink) 55%);
+    color:var(--sand);
+    padding:88px 0 96px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; }
+  @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
+  .hero h1{ font-size:clamp(2.3rem, 4.6vw, 3.6rem); line-height:1.08; margin:18px 0 22px; }
+  .hero h1 em{ font-style:normal; color:var(--brass-light); }
+  .hero p.lede{ font-size:1.12rem; color:#C7D1CB; max-width:520px; margin-bottom:32px; }
+
+  .search-bar{
+    display:flex; align-items:stretch; background:var(--sand-card); border-radius:14px; padding:6px;
+    box-shadow:0 20px 45px -20px rgba(0,0,0,0.5); max-width:540px; gap:6px;
+  }
+  .search-bar input{
+    flex:1; border:none; background:transparent; padding:12px 14px; font-size:0.95rem; color:var(--ink); font-family:'IBM Plex Sans',sans-serif;
+  }
+  .search-bar input:focus{ outline:none; }
+  .search-bar button{ background:var(--teal); color:#fff; border-radius:10px; padding:12px 22px; font-weight:600; font-size:0.92rem; transition:background 0.15s; }
+  .search-bar button:hover{ background:#0a413d; }
+  .hero-hint{ font-size:0.8rem; color:#95A39C; margin-top:12px; }
+
+  /* constellation */
+  .constellation{ position:relative; width:100%; aspect-ratio:1/1; max-width:440px; margin:0 auto; }
+  .node{ position:absolute; display:flex; flex-direction:column; align-items:center; gap:6px; width:96px; text-align:center; }
+  .node .badge{
+    width:52px; height:52px; border-radius:50%; background:var(--sand-card); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 24px -10px rgba(0,0,0,0.6); border:1.5px solid rgba(201,147,46,0.5);
+    animation:pulse 3.6s ease-in-out infinite;
+  }
+  .node span.label{ font-size:0.72rem; color:#C7D1CB; font-weight:500; }
+  @keyframes pulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.07); } }
+  .constellation svg.lines{ position:absolute; inset:0; width:100%; height:100%; }
+  .constellation svg.lines path{ stroke:var(--brass); stroke-width:1.4; fill:none; opacity:0.55; stroke-dasharray:6 5; animation:dash 22s linear infinite; }
+  @keyframes dash{ to{ stroke-dashoffset:-400; } }
+  .n-center{ top:50%; left:50%; transform:translate(-50%,-50%); }
+  .n-1{ top:0%; left:50%; transform:translate(-50%,0); }
+  .n-2{ top:26%; left:100%; transform:translate(-100%,0); }
+  .n-3{ top:82%; left:88%; transform:translate(-100%,0); }
+  .n-4{ top:82%; left:12%; transform:translate(0,0); }
+  .n-5{ top:26%; left:0%; transform:translate(0,0); }
+
+  /* ---------- PILLARS ---------- */
+  .section{ padding:88px 0; }
+  .section-head{ max-width:640px; margin-bottom:48px; }
+  .section-head h2{ font-size:clamp(1.7rem,3vw,2.3rem); margin-top:10px; color:var(--ink); }
+  .section-head p{ color:var(--text-soft); margin-top:12px; font-size:1.02rem; }
+
+  .pillars{ display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+  @media (max-width:960px){ .pillars{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .pillars{ grid-template-columns:1fr; } }
+  .pillar-card{
+    background:var(--sand-card); border:1px solid var(--line); border-radius:16px; padding:24px 18px;
+    transition:transform 0.18s, box-shadow 0.18s;
+  }
+  .pillar-card:hover{ transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(18,32,30,0.35); }
+  .pillar-card .icon{ width:40px; height:40px; margin-bottom:14px; color:var(--teal); }
+  .pillar-card h3{ font-size:1.02rem; margin-bottom:6px; color:var(--ink); }
+  .pillar-card p{ font-size:0.88rem; color:var(--text-soft); }
+
+  /* ---------- COMPARISON ---------- */
+  .comparison{ background:var(--ink); color:var(--sand); }
+  .comparison .section-head p{ color:#B9C3BE; }
+  .comparison .eyebrow{ color:var(--brass-light); }
+  .comp-table{ width:100%; border-collapse:collapse; margin-top:8px; }
+  .comp-table th, .comp-table td{ padding:16px 18px; text-align:left; border-bottom:1px solid rgba(255,255,255,0.1); font-size:0.92rem; }
+  .comp-table th{ font-family:'Space Grotesk',sans-serif; font-weight:600; color:var(--sand); font-size:0.98rem; }
+  .comp-table td:first-child{ color:#C7D1CB; }
+  .check{ color:#7FC9A6; font-weight:600; }
+  .cross{ color:#B9866A; }
+  .comp-table tr:last-child td{ border-bottom:none; }
+  .comp-scroll{ overflow-x:auto; }
+  @media (max-width:700px){ .comp-table{ min-width:640px; } }
+
+  /* ---------- TWO JOURNEYS ---------- */
+  .journeys{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  @media (max-width:800px){ .journeys{ grid-template-columns:1fr; } }
+  .journey-card{ border-radius:20px; padding:36px 32px; }
+  .journey-card.member{ background:var(--sand-card); border:1px solid var(--line); }
+  .journey-card.org{ background:var(--teal); color:var(--sand); }
+  .journey-card h3{ font-size:1.4rem; margin-bottom:10px; }
+  .journey-card.org h3{ color:#fff; }
+  .journey-card ul{ list-style:none; margin:18px 0 26px; }
+  .journey-card li{ padding:6px 0 6px 22px; position:relative; font-size:0.92rem; }
+  .journey-card.member li{ color:var(--text-soft); }
+  .journey-card.org li{ color:#DCEAE5; }
+  .journey-card li::before{ content:"—"; position:absolute; left:0; color:var(--brass); }
+  .journey-card.org li::before{ color:var(--brass-light); }
+  .journey-cta{ display:inline-block; padding:12px 24px; border-radius:100px; font-weight:600; font-size:0.9rem; }
+  .journey-card.member .journey-cta{ background:var(--ink); color:var(--sand); }
+  .journey-card.org .journey-cta{ background:var(--brass); color:var(--ink); }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; counter-reset:step; }
+  @media (max-width:760px){ .steps{ grid-template-columns:1fr; } }
+  .step{ position:relative; padding-top:8px; }
+  .step .num{ font-family:'IBM Plex Mono',monospace; color:var(--brass); font-size:0.85rem; margin-bottom:10px; display:block; }
+  .step h3{ font-size:1.08rem; margin-bottom:8px; }
+  .step p{ font-size:0.9rem; color:var(--text-soft); }
+
+  /* ---------- FOUNDING PARTNERS ---------- */
+  .founding{ background:var(--sand-card); border:1px dashed var(--line); border-radius:20px; padding:44px 36px; text-align:center; }
+  .founding h3{ font-size:1.25rem; margin-bottom:10px; }
+  .founding p{ color:var(--text-soft); max-width:480px; margin:0 auto 22px; font-size:0.95rem; }
+  .notify-form{ display:flex; justify-content:center; gap:8px; flex-wrap:wrap; }
+  .notify-form input{ padding:12px 16px; border-radius:10px; border:1px solid var(--line); font-family:'IBM Plex Sans',sans-serif; font-size:0.92rem; min-width:240px; }
+  .notify-form button{ background:var(--teal); color:#fff; padding:12px 22px; border-radius:10px; font-weight:600; font-size:0.9rem; }
+
+  /* ---------- FAQ ---------- */
+  .faq-item{ border-bottom:1px solid var(--line); padding:20px 0; }
+  .faq-item summary{ cursor:pointer; font-weight:600; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center; }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary::after{ content:"+"; font-size:1.3rem; color:var(--brass); font-weight:400; }
+  .faq-item[open] summary::after{ content:"–"; }
+  .faq-item p{ margin-top:10px; color:var(--text-soft); font-size:0.92rem; max-width:640px; }
+  .faq-more{ margin-top:24px; font-size:0.9rem; font-weight:600; color:var(--teal); }
+
+  /* ---------- DOWNLOAD CTA ---------- */
+  .cta-band{ background:var(--brass); color:var(--ink); text-align:center; padding:64px 0; }
+  .cta-band h2{ font-size:clamp(1.6rem,3vw,2.1rem); margin-bottom:14px; }
+  .cta-band p{ margin-bottom:26px; opacity:0.85; }
+  .cta-buttons{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .cta-buttons a{ background:var(--ink); color:var(--sand); padding:13px 26px; border-radius:100px; font-weight:600; font-size:0.92rem; }
+  .cta-buttons a.outline{ background:transparent; border:1.5px solid var(--ink); color:var(--ink); }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:var(--ink); color:#B9C3BE; padding:56px 0 28px; }
+  .footer-grid{ display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:32px; margin-bottom:40px; }
+  @media (max-width:760px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+  .footer-grid h4{ color:var(--sand); font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px; font-family:'IBM Plex Mono',monospace; font-weight:500; }
+  .footer-grid a{ display:block; font-size:0.88rem; margin-bottom:10px; color:#AEB9B3; transition:color 0.15s; }
+  .footer-grid a:hover{ color:var(--sand); }
+  .footer-bottom{ border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:0.82rem; color:#8B9691; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="wordmark"><span class="dot"></span>minar360</a>
+    <div class="nav-links">
+      <a href="#pillars">Explore</a>
+      <a href="#organizations">For Organizations</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#organizations" class="nav-cta">List your organization</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">One ecosystem for the ummah</span>
+      <h1>The Muslim community,<br><em>finally connected.</em></h1>
+      <p class="lede">Mosques, nonprofits, businesses, halal restaurants, and neighbors — scattered across a dozen apps and group chats today. Minar360 brings them into one place, built around how the community actually gathers.</p>
+      <form class="search-bar" role="search" aria-label="Search Minar360">
+        <input type="text" placeholder="Search events, mosques, or halal spots near you" aria-label="Search">
+        <button type="submit">Search</button>
+      </form>
+      <p class="hero-hint">Try "Jumu'ah near me" or "Ramadan events in Northern Virginia"</p>
+    </div>
+
+    <div class="constellation" aria-hidden="true">
+      <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path d="M50,50 L50,6"></path>
+        <path d="M50,50 L92,28"></path>
+        <path d="M50,50 L80,84"></path>
+        <path d="M50,50 L20,84"></path>
+        <path d="M50,50 L8,28"></path>
+      </svg>
+      <div class="node n-center">
+        <div class="badge">🕌</div>
+      </div>
+      <div class="node n-1"><div class="badge">🕌</div><span class="label">Mosques</span></div>
+      <div class="node n-2"><div class="badge">🤝</div><span class="label">Nonprofits</span></div>
+      <div class="node n-3"><div class="badge">🛍️</div><span class="label">Businesses</span></div>
+      <div class="node n-4"><div class="badge">🍽️</div><span class="label">Halal food</span></div>
+      <div class="node n-5"><div class="badge">👥</div><span class="label">Community</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="pillars">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Five pillars, one platform</span>
+      <h2>Everything the community needs, in one place</h2>
+      <p>Not another prayer app. Not another event board. Minar360 connects the pieces that already make up your local Muslim community.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar-card">
+        <div class="icon">🕌</div>
+        <h3>Mosques</h3>
+        <p>Prayer times, khutbahs, announcements, and events — published once, discovered everywhere.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="icon">🤝</div>
+        <h3>Organizations & nonprofits</h3>
+        <p>Run programs, accept donations, and manage members without stitching together five tools.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="icon">🛍️</div>
+        <h3>Muslim-owned businesses</h3>
+        <p>Get discovered by neighbors actively looking to support Muslim-owned businesses.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="icon">🍽️</div>
+        <h3>Halal restaurants</h3>
+        <p>Show up where hungry, hyper-local searches actually happen.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="icon">👥</div>
+        <h3>Community members</h3>
+        <p>One feed for events, prayer times, groups, and the people around you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section comparison">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why not just use Luma, Eventbrite, or Zeffy?</span>
+      <h2>Built for the community, not retrofitted for it</h2>
+      <p>General event platforms work fine for a single ticket link. They weren't built for a community that also needs prayer times, mosque directories, and halal discovery in the same place.</p>
+    </div>
+    <div class="comp-scroll">
+      <table class="comp-table">
+        <thead>
+          <tr><th></th><th>Luma / Eventbrite / Zeffy</th><th>Minar360</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Discovery</td><td><span class="cross">Generic search, no faith context</span></td><td><span class="check">Built around mosques, halal, and community</span></td></tr>
+          <tr><td>Prayer times & khutbahs</td><td><span class="cross">Not supported</span></td><td><span class="check">Native to every mosque profile</span></td></tr>
+          <tr><td>One community feed</td><td><span class="cross">Events live in isolated links</span></td><td><span class="check">Events, orgs, and businesses in one feed</span></td></tr>
+          <tr><td>Donations & tickets</td><td><span class="cross">Fees eat into what nonprofits raise</span></td><td><span class="check">Built for mosque and nonprofit economics</span></td></tr>
+          <tr><td>Business & restaurant discovery</td><td><span class="cross">Not part of the platform</span></td><td><span class="check">Muslim-owned businesses, halal spots included</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="organizations">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Two ways in</span>
+      <h2>Built for both sides of the community</h2>
+    </div>
+    <div class="journeys">
+      <div class="journey-card member">
+        <span class="eyebrow" style="color:var(--teal)">For the community</span>
+        <h3>Find what's happening near you</h3>
+        <ul>
+          <li>Discover events, mosques, and halal spots nearby</li>
+          <li>Get prayer times without opening a separate app</li>
+          <li>Join groups and RSVP in a few taps</li>
+          <li>Support Muslim-owned businesses on purpose</li>
+        </ul>
+        <a href="#" class="journey-cta">Explore Minar360</a>
+      </div>
+      <div class="journey-card org">
+        <span class="eyebrow" style="color:var(--brass-light)">For your organization</span>
+        <h3>Get your organization on the platform</h3>
+        <ul>
+          <li>Publish events, prayer times, and announcements once</li>
+          <li>Accept donations and sell tickets without punishing fees</li>
+          <li>Manage members and groups in one dashboard</li>
+          <li>Get discovered by a community actively looking for you</li>
+        </ul>
+        <a href="#" class="journey-cta">Get your organization listed</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how-it-works">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How it works</span>
+      <h2>Live on Minar360 in three steps</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="num">01</span>
+        <h3>Create your profile</h3>
+        <p>Mosques, organizations, and businesses set up a free profile in minutes.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h3>Publish what matters</h3>
+        <p>Events, prayer times, announcements, or your menu — whatever your community needs to see.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h3>Get discovered</h3>
+        <p>Show up in the same feed your community is already checking every day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="founding">
+      <span class="eyebrow">Currently in development</span>
+      <h3>Founding partner network</h3>
+      <p>We're onboarding the first mosques, organizations, and businesses before opening Minar360 more broadly. Join the list and we'll reach out as spots open up.</p>
+      <form class="notify-form">
+        <input type="email" placeholder="you@organization.org" aria-label="Email address">
+        <button type="submit">Notify me</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Quick answers</span>
+      <h2>Frequently asked questions</h2>
+    </div>
+    <details class="faq-item" open>
+      <summary>Is Minar360 free for mosques and nonprofits?</summary>
+      <p>Yes — creating a profile and publishing events, prayer times, and announcements is free. Optional paid tools are available for organizations that want more.</p>
+    </details>
+    <details class="faq-item">
+      <summary>How is this different from just posting on Instagram or a group chat?</summary>
+      <p>Instagram posts and group chats disappear in the feed. Minar360 keeps your events, prayer times, and profile in a place your community can search and find later.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Can businesses and restaurants join without being a mosque or nonprofit?</summary>
+      <p>Yes. Muslim-owned businesses and halal restaurants have their own profile type built for discovery, not events.</p>
+    </details>
+    <details class="faq-item">
+      <summary>When can I download the app?</summary>
+      <p>The app is currently in development. Join the founding partner list above and we'll let you know as soon as it's available.</p>
+    </details>
+    <a href="#" class="faq-more">See the full FAQ →</a>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Be part of the founding community</h2>
+    <p>Minar360 is launching city by city, starting with the organizations that join first.</p>
+    <div class="cta-buttons">
+      <a href="#organizations">Get your organization listed</a>
+      <a href="#pillars" class="outline">Explore as a community member</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="wordmark" style="margin-bottom:12px; display:inline-flex;"><span class="dot"></span>minar360</a>
+        <p style="font-size:0.85rem; color:#8B9691; margin-top:10px; max-width:220px;">The operating system for the local Muslim community.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#pillars">Five pillars</a>
+        <a href="#">Events</a>
+        <a href="#">Mosque directory</a>
+        <a href="#">Halal businesses</a>
+      </div>
+      <div>
+        <h4>Organizations</h4>
+        <a href="#organizations">Get listed</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#">Tutorials</a>
+        <a href="#">Reviews</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#faq">FAQ</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Minar360. All rights reserved.</span>
+      <span>minar360.com</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
