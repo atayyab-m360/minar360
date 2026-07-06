@@ -78,13 +78,14 @@
   }
   .hero-overlay{
     position:absolute; inset:0; z-index:1;
-    background:linear-gradient(120deg, rgba(10,15,14,0.90) 0%, rgba(14,65,61,0.62) 55%, rgba(18,32,30,0.88) 100%);
+    background:linear-gradient(120deg, rgba(10,15,14,0.62) 0%, rgba(14,65,61,0.32) 55%, rgba(18,32,30,0.62) 100%);
   }
   .hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; }
   @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
-  .hero h1{ font-size:clamp(2.3rem, 4.6vw, 3.6rem); line-height:1.08; margin:18px 0 22px; }
+  .hero h1{ font-size:clamp(2.3rem, 4.6vw, 3.6rem); line-height:1.08; margin:18px 0 22px; text-shadow:0 2px 18px rgba(0,0,0,0.45); }
   .hero h1 em{ font-style:normal; color:var(--brass-light); }
-  .hero p.lede{ font-size:1.12rem; color:#C7D1CB; max-width:520px; margin-bottom:32px; }
+  .hero p.lede{ font-size:1.12rem; color:#EFEFEA; max-width:520px; margin-bottom:32px; text-shadow:0 1px 12px rgba(0,0,0,0.4); }
+  .hero .eyebrow{ text-shadow:0 1px 10px rgba(0,0,0,0.4); }
 
   .search-bar{
     display:flex; align-items:stretch; background:var(--sand-card); border-radius:14px; padding:6px;
