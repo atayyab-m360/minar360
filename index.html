@@ -58,6 +58,15 @@
   .nav-links{ display:flex; gap:32px; }
   .nav-links a{ color:#CFD8D3; font-size:0.92rem; font-weight:500; transition:color 0.15s; }
   .nav-links a:hover{ color:var(--sand); }
+  .nav-dropdown{ position:relative; }
+  .nav-dropdown-trigger{ background:none; color:#CFD8D3; font-size:0.92rem; font-weight:500; display:flex; align-items:center; gap:4px; font-family:"IBM Plex Sans", sans-serif; transition:color 0.15s; }
+  .nav-dropdown-trigger:hover, .nav-dropdown-trigger.current, .nav-dropdown.open .nav-dropdown-trigger{ color:var(--brass-light); }
+  .nav-dropdown-trigger .caret{ font-size:0.7rem; transition:transform 0.15s; }
+  .nav-dropdown.open .nav-dropdown-trigger .caret{ transform:rotate(180deg); }
+  .nav-dropdown-menu{ position:absolute; top:calc(100% + 14px); left:50%; transform:translateX(-50%); background:var(--ink-soft); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:8px; min-width:150px; box-shadow:0 20px 40px -16px rgba(0,0,0,0.55); opacity:0; visibility:hidden; transition:opacity 0.15s, visibility 0.15s; z-index:60; }
+  .nav-dropdown.open .nav-dropdown-menu{ opacity:1; visibility:visible; }
+  .nav-dropdown-menu a{ display:block; padding:9px 12px; border-radius:7px; font-size:0.88rem; color:#CFD8D3; }
+  .nav-dropdown-menu a:hover{ background:rgba(255,255,255,0.08); color:var(--sand); }
   .nav-cta{ background:var(--brass); color:var(--ink); padding:10px 20px; border-radius:100px; font-size:0.88rem; font-weight:600; transition:background 0.15s; }
   .nav-cta:hover{ background:var(--brass-light); }
   .nav-toggle{ display:none; background:none; color:var(--sand); font-size:1.5rem; }
@@ -252,7 +261,14 @@
       <a href="explore.html">Explore</a>
       <a href="organizations.html">For Organizations</a>
       <a href="#how-it-works">How It Works</a>
-      <a href="faq.html">FAQ</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-trigger">Resources <span class="caret">&#9662;</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="faq.html">FAQ</a>
+          <a href="articles.html">Articles</a>
+          <a href="tutorials.html">Tutorials</a>
+        </div>
+      </div>
     </div>
     <a href="organizations.html#signup" class="nav-cta">List your organization</a>
   </div>
@@ -620,6 +636,20 @@
     const v = document.getElementById('heroVideo');
     if (v) v.pause();
   }
+</script>
+<script>
+  document.querySelectorAll(".nav-dropdown").forEach(dd => {
+    const trigger = dd.querySelector(".nav-dropdown-trigger");
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = dd.classList.contains("open");
+      document.querySelectorAll(".nav-dropdown.open").forEach(o => o.classList.remove("open"));
+      if (!isOpen) dd.classList.add("open");
+    });
+  });
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".nav-dropdown.open").forEach(o => o.classList.remove("open"));
+  });
 </script>
 </body>
 </html>
