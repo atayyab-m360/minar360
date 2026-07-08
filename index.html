@@ -9,10 +9,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#12201E;
-    --ink-soft:#1C2E2B;
+    --ink:#1B3955;
+    --ink-soft:#24476A;
     --teal:#0E5C56;
-    --teal-deep:#0A413D;
+    --teal-deep:#15304A;
     --brass:#C9932E;
     --brass-light:#E3B860;
     --sand:#F2ECDC;
@@ -48,12 +48,13 @@
   /* ---------- NAV ---------- */
   nav{
     position:sticky; top:0; z-index:50;
-    background:rgba(18,32,30,0.92); backdrop-filter:blur(10px);
+    background:rgba(27,57,85,0.92); backdrop-filter:blur(10px);
     border-bottom:1px solid rgba(255,255,255,0.08);
   }
   .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:18px 32px; max-width:1180px; margin:0 auto; }
   .wordmark{ color:var(--sand); font-size:1.25rem; font-weight:700; display:flex; align-items:center; gap:8px; }
   .wordmark .dot{ width:8px; height:8px; border-radius:50%; background:var(--brass); }
+  .logo-mark{ height:30px; width:auto; display:block; }
   .nav-links{ display:flex; gap:32px; }
   .nav-links a{ color:#CFD8D3; font-size:0.92rem; font-weight:500; transition:color 0.15s; }
   .nav-links a:hover{ color:var(--sand); }
@@ -78,7 +79,7 @@
   }
   .hero-overlay{
     position:absolute; inset:0; z-index:1;
-    background:linear-gradient(120deg, rgba(10,15,14,0.62) 0%, rgba(14,65,61,0.32) 55%, rgba(18,32,30,0.62) 100%);
+    background:linear-gradient(120deg, rgba(27,57,85,0.62) 0%, rgba(36,71,106,0.34) 55%, rgba(21,48,74,0.62) 100%);
   }
   .hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; }
   @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
@@ -132,7 +133,7 @@
     background:var(--sand-card); border:1px solid var(--line); border-radius:16px; padding:24px 18px;
     transition:transform 0.18s, box-shadow 0.18s;
   }
-  .pillar-card:hover{ transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(18,32,30,0.35); }
+  .pillar-card:hover{ transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(27,57,85,0.35); }
   .pillar-card .icon{ width:40px; height:40px; margin-bottom:14px; color:var(--teal); }
   .pillar-card h3{ font-size:1.02rem; margin-bottom:6px; color:var(--ink); }
   .pillar-card p{ font-size:0.88rem; color:var(--text-soft); }
@@ -223,6 +224,15 @@
   .prayer-list li.active{ background:rgba(201,147,46,0.14); color:var(--sand); font-weight:600; }
   .prayer-list li.active span{ color:var(--brass-light); }
   .prayer-note{ font-size:0.82rem; color:var(--text-soft); margin-top:14px; }
+  .prayer-note code{ background:var(--sand-card); padding:1px 6px; border-radius:4px; font-family:'IBM Plex Mono',monospace; font-size:0.78rem; }
+
+  .athan-controls{ margin-top:16px; display:flex; flex-direction:column; gap:12px; align-items:flex-start; }
+  .athan-btn{ background:var(--brass); color:var(--ink); border-radius:100px; padding:9px 18px; font-size:0.82rem; font-weight:600; transition:transform 0.15s, background 0.2s, box-shadow 0.2s; }
+  .athan-btn:active{ transform:scale(0.96); }
+  .athan-btn.playing{ background:var(--rose); color:#fff; animation:athan-pulse 1.4s ease-in-out infinite; }
+  @keyframes athan-pulse{ 0%,100%{ box-shadow:0 0 0 0 rgba(180,72,63,0.5); } 50%{ box-shadow:0 0 0 9px rgba(180,72,63,0); } }
+  .athan-toggle{ display:flex; align-items:center; gap:8px; font-size:0.78rem; color:#C7D1CB; cursor:pointer; }
+  .athan-toggle input{ accent-color:var(--brass); width:16px; height:16px; }
 
   /* ---------- PARTNER LOGOS ---------- */
   .partner-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
@@ -237,12 +247,12 @@
 
 <nav>
   <div class="nav-inner">
-    <a href="#top" class="wordmark"><span class="dot"></span>minar360</a>
+    <a href="#top" class="wordmark"><img src="minar360-logo.png" alt="Minar360" class="logo-mark">minar360</a>
     <div class="nav-links">
       <a href="#pillars">Explore</a>
       <a href="#organizations">For Organizations</a>
       <a href="#how-it-works">How It Works</a>
-      <a href="#faq">FAQ</a>
+      <a href="faq.html">FAQ</a>
     </div>
     <a href="#organizations" class="nav-cta">List your organization</a>
   </div>
@@ -334,6 +344,13 @@
         <span class="eyebrow">Next prayer</span>
         <h3 id="nextPrayerName">—</h3>
         <p id="prayerCountdown">calculating…</p>
+        <div class="athan-controls">
+          <button type="button" id="athanPreviewBtn" class="athan-btn">🔊 Preview athan</button>
+          <label class="athan-toggle">
+            <input type="checkbox" id="athanAutoplay">
+            <span>Simulate athan at each sample prayer time</span>
+          </label>
+        </div>
       </div>
       <ul class="prayer-list" id="prayerList">
         <li data-name="Fajr" data-time="05:12"><span class="p-name">Fajr</span><span>5:12 AM</span></li>
@@ -343,7 +360,10 @@
         <li data-name="Isha" data-time="21:58"><span class="p-name">Isha</span><span>9:58 PM</span></li>
       </ul>
     </div>
-    <p class="prayer-note">Sample times shown for preview purposes only.</p>
+    <p class="prayer-note">Sample times shown for preview purposes only. Athan audio to be added — replace <code>athan.mp3</code> with a licensed recording.</p>
+    <audio id="athanAudio" preload="none">
+      <source src="athan.mp3" type="audio/mpeg">
+    </audio>
   </div>
 </section>
 
@@ -482,7 +502,7 @@
       <summary>When can I download the app?</summary>
       <p>The app is currently in development. Join the founding partner list above and we'll let you know as soon as it's available.</p>
     </details>
-    <a href="#" class="faq-more">See the full FAQ →</a>
+    <a href="faq.html" class="faq-more">See the full FAQ →</a>
   </div>
 </section>
 
@@ -501,7 +521,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <a href="#top" class="wordmark" style="margin-bottom:12px; display:inline-flex;"><span class="dot"></span>minar360</a>
+        <a href="#top" class="wordmark" style="margin-bottom:12px; display:inline-flex;"><img src="minar360-logo.png" alt="Minar360" class="logo-mark">minar360</a>
         <p style="font-size:0.85rem; color:#8B9691; margin-top:10px; max-width:220px;">The operating system for the local Muslim community.</p>
       </div>
       <div>
@@ -520,7 +540,7 @@
       </div>
       <div>
         <h4>Company</h4>
-        <a href="#faq">FAQ</a>
+        <a href="faq.html">FAQ</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
         <a href="#">Privacy</a>
@@ -534,9 +554,42 @@
 </footer>
 
 <script>
+  const athanAudio = document.getElementById('athanAudio');
+  const athanBtn = document.getElementById('athanPreviewBtn');
+  const athanAutoplay = document.getElementById('athanAutoplay');
+
+  function playAthan(){
+    if(!athanAudio) return;
+    athanAudio.currentTime = 0;
+    athanAudio.play().catch(()=>{ /* browser blocked autoplay until user interacts once */ });
+    if(athanBtn) athanBtn.classList.add('playing');
+  }
+  if(athanAudio){
+    athanAudio.addEventListener('ended', ()=>{ if(athanBtn) athanBtn.classList.remove('playing'); });
+  }
+  if(athanBtn){
+    athanBtn.addEventListener('click', ()=>{
+      if(athanAudio.paused){ playAthan(); }
+      else { athanAudio.pause(); athanAudio.currentTime = 0; athanBtn.classList.remove('playing'); }
+    });
+  }
+
   function updatePrayer(){
     const items = Array.from(document.querySelectorAll('#prayerList li'));
     const now = new Date();
+
+    if(athanAutoplay && athanAutoplay.checked){
+      items.forEach(li=>{
+        const [h,m] = li.dataset.time.split(':').map(Number);
+        const t = new Date(now); t.setHours(h,m,0,0);
+        const diffMs = now - t;
+        if(diffMs >= 0 && diffMs < 60000 && li.dataset.triggered !== now.toDateString()){
+          playAthan();
+          li.dataset.triggered = now.toDateString();
+        }
+      });
+    }
+
     let next = null;
     for(const li of items){
       const [h,m] = li.dataset.time.split(':').map(Number);
