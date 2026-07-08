@@ -548,8 +548,8 @@
     </div>
 
     <div class="map-stats">
-      <div class="map-stat"><span class="map-stat-num" style="color:var(--brass)">0</span><span class="map-stat-label">States active</span></div>
-      <div class="map-stat"><span class="map-stat-num" style="color:var(--brass)">0</span><span class="map-stat-label">Organizations onboarded</span></div>
+      <div class="map-stat"><span class="map-stat-num" id="statStates" style="color:var(--brass)">0</span><span class="map-stat-label">States active</span></div>
+      <div class="map-stat"><span class="map-stat-num" id="statOrgs" style="color:var(--brass)">0</span><span class="map-stat-label">Organizations onboarded</span></div>
       <div class="map-stat"><span class="map-stat-num" style="color:var(--ink)">5</span><span class="map-stat-label">Community pillars</span></div>
     </div>
   </div>
@@ -754,10 +754,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
 <script>
   // ── PILLAR DATA ──
-  // Empty on purpose: no organizations onboarded yet. Populate per state as
-  // founding partners join, e.g.:
-  // 'Virginia': { status:'confirmed', pillars:[ {name:'Community Masjid', city:'City, VA', type:'mosque', lat:38.9, lng:-77.4} ] }
-  const pillarData = {};
+  // Populate per state as founding partners join. Status 'confirmed' lights
+  // the state gold on the map; each pillar entry drops a glow-dot marker.
+  const pillarData = {
+    'Maryland': { status:'confirmed', pillars:[
+      { name:'Muslim Community Center', city:'Silver Spring, MD', type:'mosque', lat:39.003, lng:-77.026 }
+    ]}
+  };
 
   const allStateNames = [
     'Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut',
@@ -845,6 +848,16 @@
 
     drawPillarDots(fipsToName);
     buildGrowthSidebar();
+    updateGrowthStats();
+  }
+
+  function updateGrowthStats(){
+    const confirmedStates = Object.values(pillarData).filter(d => d.status === 'confirmed').length;
+    const totalOrgs = Object.values(pillarData).reduce((sum, d) => sum + (d.pillars ? d.pillars.length : 0), 0);
+    const statesEl = document.getElementById('statStates');
+    const orgsEl = document.getElementById('statOrgs');
+    if (statesEl) statesEl.textContent = confirmedStates;
+    if (orgsEl) orgsEl.textContent = totalOrgs;
   }
 
   function drawPillarDots(){
