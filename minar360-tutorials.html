@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tutorials — Minar360</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B3955; --ink-soft:#24476A; --teal:#0E5C56; --brass:#C9932E; --brass-light:#E3B860;
+    --sand:#F2ECDC; --sand-card:#FFFDF7; --line:#DED4B8; --text-dark:#12201E; --text-soft:#4B5A54;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;} }
+  body{ font-family:'IBM Plex Sans', system-ui, sans-serif; color:var(--text-dark); background:var(--sand); line-height:1.55; }
+  h1,h2,h3,.wordmark{ font-family:'Space Grotesk', system-ui, sans-serif; letter-spacing:-0.02em; }
+  .eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--brass); }
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; max-width:100%; }
+  button{ font-family:'IBM Plex Sans', sans-serif; cursor:pointer; border:none; }
+  :focus-visible{ outline:3px solid var(--brass); outline-offset:3px; }
+  .wrap{ max-width:900px; margin:0 auto; padding:0 32px; }
+  @media (max-width:640px){ .wrap{ padding:0 20px; } }
+
+  nav{ position:sticky; top:0; z-index:50; background:rgba(27,57,85,0.94); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.08); }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:18px 32px; max-width:1180px; margin:0 auto; }
+  .wordmark{ color:var(--sand); font-size:1.25rem; font-weight:700; display:flex; align-items:center; gap:8px; }
+  .logo-mark{ height:26px; width:auto; display:block; background:var(--sand); border-radius:7px; padding:4px; box-sizing:content-box; }
+  .nav-links{ display:flex; gap:32px; }
+  .nav-links a{ color:#CFD8D3; font-size:0.92rem; font-weight:500; transition:color 0.15s; }
+  .nav-links a:hover, .nav-links a.current{ color:var(--sand); }
+  .nav-links a.current{ color:var(--brass-light); }
+  .nav-cta{ background:var(--brass); color:var(--ink); padding:10px 20px; border-radius:100px; font-size:0.88rem; font-weight:600; transition:background 0.15s; }
+  .nav-cta:hover{ background:var(--brass-light); }
+  @media (max-width:860px){ .nav-links{ display:none; } }
+
+  .page-hero{ background:linear-gradient(120deg, var(--ink) 0%, var(--ink-soft) 100%); color:var(--sand); padding:72px 0 44px; text-align:center; }
+  .page-hero h1{ font-size:clamp(2rem,4vw,2.8rem); margin:14px 0 12px; }
+  .page-hero p{ color:#C9D3CE; max-width:540px; margin:0 auto; }
+
+  .filter-bar{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; padding:32px 0 8px; }
+  .filter-chip{ background:var(--sand-card); border:1px solid var(--line); padding:9px 18px; border-radius:100px; font-size:0.86rem; font-weight:500; color:var(--text-soft); transition:background 0.15s, color 0.15s; }
+  .filter-chip.active, .filter-chip:hover{ background:var(--ink); color:var(--sand); border-color:var(--ink); }
+
+  main.wrap{ padding-top:36px; }
+  .tut-section h2{ font-size:1.2rem; margin:36px 0 6px; color:var(--ink); }
+  .tut-item{ border-bottom:1px solid var(--line); padding:18px 0; }
+  .tut-item summary{ cursor:pointer; font-weight:600; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+  .tut-item summary::-webkit-details-marker{ display:none; }
+  .tut-item summary::after{ content:"+"; font-size:1.3rem; color:var(--brass); font-weight:400; flex-shrink:0; }
+  .tut-item[open] summary::after{ content:"–"; }
+  .tut-item ol{ margin:14px 0 0 20px; color:var(--text-soft); font-size:0.93rem; }
+  .tut-item ol li{ margin-bottom:8px; }
+  .tut-item.hidden{ display:none; }
+
+  .notify-band{ background:var(--ink); color:var(--sand); border-radius:20px; padding:48px 40px; text-align:center; margin:56px 0; }
+  .notify-band h2{ font-size:1.5rem; margin-bottom:12px; color:var(--sand); }
+  .notify-band p{ color:#C9D3CE; max-width:480px; margin:0 auto 24px; font-size:0.96rem; }
+  .notify-form{ display:flex; justify-content:center; gap:8px; flex-wrap:wrap; }
+  .notify-form input{ padding:12px 16px; border-radius:10px; border:none; font-family:'IBM Plex Sans',sans-serif; font-size:0.92rem; min-width:260px; }
+  .notify-form button{ background:var(--brass); color:var(--ink); padding:12px 24px; border-radius:10px; font-weight:600; font-size:0.9rem; }
+
+  footer{ background:var(--ink); color:#B9C3BE; padding:56px 0 28px; }
+  .footer-grid{ display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:32px; margin-bottom:40px; max-width:1180px; margin-left:auto; margin-right:auto; padding:0 32px; }
+  @media (max-width:760px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+  .footer-grid h4{ color:var(--sand); font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px; font-family:'IBM Plex Mono',monospace; font-weight:500; }
+  .footer-grid a{ display:block; font-size:0.88rem; margin-bottom:10px; color:#AEB9B3; transition:color 0.15s; }
+  .footer-grid a:hover{ color:var(--sand); }
+  .footer-bottom{ border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:0.82rem; color:#8B9691; max-width:1180px; margin:0 auto; padding-left:32px; padding-right:32px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="wordmark"><img src="minar360-logo.png" alt="Minar360" class="logo-mark">minar360</a>
+    <div class="nav-links">
+      <a href="explore.html">Explore</a>
+      <a href="organizations.html">For Organizations</a>
+      <a href="index.html#how-it-works">How It Works</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+    <a href="organizations.html#signup" class="nav-cta">List your organization</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Support</span>
+    <h1>Tutorials</h1>
+    <p>Step-by-step walkthroughs for getting the most out of Minar360, whether you're a community member, an organization, or a business.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-chip active" data-filter="all">All</button>
+    <button class="filter-chip" data-filter="community">Community Members</button>
+    <button class="filter-chip" data-filter="orgs">Organizations</button>
+    <button class="filter-chip" data-filter="business">Businesses</button>
+  </div>
+</div>
+
+<main class="wrap" id="tutMain">
+
+  <section class="tut-section" data-cat="community">
+    <h2>For Community Members</h2>
+    <details class="tut-item" data-cat="community" open>
+      <summary>How to search for events near you</summary>
+      <ol>
+        <li>Go to the Explore page and use the search bar at the top.</li>
+        <li>Type a keyword like "Jumu'ah" or a location like "Northern Virginia."</li>
+        <li>Use the category chips (Events, Mosques, Businesses) to narrow results.</li>
+        <li>Tap any result to see more details.</li>
+      </ol>
+    </details>
+    <details class="tut-item" data-cat="community">
+      <summary>How to follow a mosque or organization</summary>
+      <ol>
+        <li>Find the organization's profile through search or the Explore page.</li>
+        <li>Tap "Follow" on their profile.</li>
+        <li>Their events, announcements, and prayer times will appear in your feed automatically.</li>
+      </ol>
+    </details>
+    <details class="tut-item" data-cat="community">
+      <summary>How to enable prayer time notifications</summary>
+      <ol>
+        <li>Open your account notification settings.</li>
+        <li>Turn on athan alerts for the prayers you want reminders for.</li>
+        <li>You can preview how the alert sounds using the demo widget on the homepage.</li>
+      </ol>
+    </details>
+  </section>
+
+  <section class="tut-section" data-cat="orgs">
+    <h2>For Organizations</h2>
+    <details class="tut-item" data-cat="orgs">
+      <summary>How to create your organization profile</summary>
+      <ol>
+        <li>Click "List your organization" from any page.</li>
+        <li>Enter your organization's name and contact email.</li>
+        <li>Fill in your profile details — address, description, and category.</li>
+        <li>Submit to join the founding partner program.</li>
+      </ol>
+    </details>
+    <details class="tut-item" data-cat="orgs">
+      <summary>How to publish your first event</summary>
+      <ol>
+        <li>From your organization dashboard, select "Create event."</li>
+        <li>Add the event name, date, time, and location.</li>
+        <li>Choose whether it's free or ticketed.</li>
+        <li>Publish — it will appear on your profile and in your followers' feed.</li>
+      </ol>
+    </details>
+    <details class="tut-item" data-cat="orgs">
+      <summary>How to set up donations</summary>
+      <ol>
+        <li>From your dashboard, go to the Donations section.</li>
+        <li>Connect a secure payment processor to your organization account.</li>
+        <li>Set up a donation form with suggested amounts or a custom entry field.</li>
+        <li>Add the donation button to your public profile.</li>
+      </ol>
+    </details>
+    <details class="tut-item" data-cat="orgs">
+      <summary>How to add team members to your account</summary>
+      <ol>
+        <li>Go to your organization's account settings.</li>
+        <li>Select "Invite team member" and enter their email.</li>
+        <li>Assign their access level.</li>
+        <li>They'll receive an invite to create their own login under your organization.</li>
+      </ol>
+    </details>
+  </section>
+
+  <section class="tut-section" data-cat="business">
+    <h2>For Businesses</h2>
+    <details class="tut-item" data-cat="business">
+      <summary>How to list your business or restaurant</summary>
+      <ol>
+        <li>Click "List your organization" and select the business profile type.</li>
+        <li>Add your business name, category, and location.</li>
+        <li>Include hours, contact info, and a short description.</li>
+        <li>Submit for review as a founding business partner.</li>
+      </ol>
+    </details>
+    <details class="tut-item" data-cat="business">
+      <summary>How to get discovered by the community</summary>
+      <ol>
+        <li>Keep your profile details current, especially hours and location.</li>
+        <li>Encourage regular customers to follow your profile.</li>
+        <li>Post updates — new hours, menu items, or promotions — so followers see them in their feed.</li>
+      </ol>
+    </details>
+  </section>
+
+</main>
+
+<div class="wrap">
+  <div class="notify-band">
+    <span class="eyebrow" style="color:var(--brass-light);">More guides coming</span>
+    <h2>Have a question these don't cover?</h2>
+    <p>We're adding tutorials as Minar360 grows. Let us know what would help and we'll get it written.</p>
+    <form class="notify-form">
+      <input type="email" placeholder="you@email.com" aria-label="Email address">
+      <button type="submit">Send a request</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="wordmark" style="margin-bottom:12px; display:inline-flex;"><img src="minar360-logo.png" alt="Minar360" class="logo-mark">minar360</a>
+      <p style="font-size:0.85rem; color:#8B9691; margin-top:10px; max-width:220px;">The operating system for the local Muslim community.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <a href="explore.html">Five pillars</a>
+      <a href="explore.html">Events</a>
+      <a href="explore.html">Mosque directory</a>
+      <a href="explore.html">Halal businesses</a>
+    </div>
+    <div>
+      <h4>Organizations</h4>
+      <a href="organizations.html">Get listed</a>
+      <a href="index.html#how-it-works">How it works</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="#">Reviews</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="faq.html">FAQ</a>
+      <a href="articles.html">Articles</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Minar360. All rights reserved.</span>
+    <span>minar360.com</span>
+  </div>
+</footer>
+
+<script>
+  const chips = document.querySelectorAll('.filter-chip');
+  const items = document.querySelectorAll('.tut-item');
+  const sections = document.querySelectorAll('.tut-section');
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = chip.dataset.filter;
+      items.forEach(item => item.classList.toggle('hidden', filter !== 'all' && item.dataset.cat !== filter));
+      sections.forEach(section => {
+        const visible = section.querySelectorAll('.tut-item:not(.hidden)');
+        section.style.display = (filter === 'all' || visible.length) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
