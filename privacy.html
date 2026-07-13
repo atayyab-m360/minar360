@@ -44,7 +44,21 @@
   .nav-dropdown.open .nav-dropdown-menu{ opacity:1; visibility:visible; }
   .nav-dropdown-menu a{ display:block; padding:9px 12px; border-radius:7px; font-size:0.88rem; color:#CFD8D3; text-decoration:none; }
   .nav-dropdown-menu a:hover{ background:rgba(255,255,255,0.08); color:var(--sand); }
-  @media (max-width:860px){ .nav-links{ display:none; } }
+  .nav-hamburger{ display:none; flex-direction:column; justify-content:center; gap:5px; background:none; padding:8px; width:36px; height:36px; }
+  .nav-hamburger span{ display:block; width:20px; height:2px; background:var(--sand); border-radius:2px; transition:transform 0.2s ease, opacity 0.2s ease; }
+  .nav-hamburger.active span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-hamburger.active span:nth-child(2){ opacity:0; }
+  .nav-hamburger.active span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .mobile-menu{ display:none; flex-direction:column; background:var(--ink-soft); border-top:1px solid rgba(255,255,255,0.1); padding:8px 24px 20px; }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ color:#CFD8D3; font-size:0.98rem; font-weight:500; padding:14px 2px; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .mobile-menu a.mobile-cta{ margin-top:14px; background:var(--brass); color:var(--ink); text-align:center; border-radius:100px; padding:13px; font-weight:600; border-bottom:none; }
+  @media (max-width:860px){
+    .nav-hamburger{ display:flex; }
+  }
+  @media (min-width:861px){
+    .mobile-menu{ display:none !important; }
+  }
 
   .page-hero{ background:linear-gradient(120deg, var(--ink) 0%, var(--ink-soft) 100%); color:var(--sand); padding:64px 0 40px; text-align:center; }
   .page-hero h1{ font-size:clamp(1.9rem,3.6vw,2.6rem); margin:14px 0 10px; }
@@ -86,8 +100,20 @@
       </div>
     </div>
     <a href="organizations.html#signup" class="nav-cta">List your organization</a>
+    <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="explore.html">Explore</a>
+    <a href="organizations.html">For Organizations</a>
+    <a href="index.html#how-it-works">How It Works</a>
+    <a href="faq.html">FAQ</a>
+    <a href="articles.html">Articles</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="organizations.html#signup" class="mobile-cta">List your organization</a>
+  </div>
 
 <header class="page-hero">
   <div class="wrap">
@@ -181,7 +207,7 @@
       <a href="faq.html">FAQ</a>
       <a href="articles.html">Articles</a>
       <a href="#">About</a>
-      <a href="#">Contact</a>
+      <a href="mailto:areeb.quasem@qubalink.com">Contact</a>
       <a href="privacy.html">Privacy</a>
     </div>
   </div>
@@ -206,5 +232,23 @@
   });
 </script>
 
+<script>
+  const navHamburger = document.getElementById("navHamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (navHamburger && mobileMenu) {
+    navHamburger.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      navHamburger.classList.toggle("active", isOpen);
+      navHamburger.setAttribute("aria-expanded", isOpen);
+    });
+    mobileMenu.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        navHamburger.classList.remove("active");
+        navHamburger.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+</script>
 </body>
 </html>
