@@ -99,7 +99,13 @@
   }
   .hero-overlay{
     position:absolute; inset:0; z-index:1;
-    background:linear-gradient(120deg, rgba(27,57,85,0.62) 0%, rgba(36,71,106,0.34) 55%, rgba(21,48,74,0.62) 100%);
+    background:linear-gradient(90deg,
+      #1B3955 0%,
+      #1B3955 32%,
+      rgba(27,57,85,0.92) 42%,
+      rgba(27,57,85,0.55) 55%,
+      rgba(27,57,85,0.15) 70%,
+      rgba(27,57,85,0.05) 100%);
   }
   .hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; }
   @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
