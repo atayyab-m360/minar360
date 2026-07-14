@@ -108,7 +108,13 @@
       rgba(27,57,85,0.05) 100%);
   }
   .hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; }
-  @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
+  @media (max-width:900px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-overlay{
+      background:linear-gradient(180deg, rgba(27,57,85,0.90) 0%, rgba(27,57,85,0.82) 55%, rgba(27,57,85,0.90) 100%) !important;
+    }
+    .phone-mockups{ margin-top:32px; }
+  }
   .hero h1{ font-size:clamp(2.3rem, 4.6vw, 3.6rem); line-height:1.08; margin:18px 0 22px; text-shadow:0 2px 18px rgba(0,0,0,0.45); }
   .hero h1 em{ font-style:normal; color:var(--brass-light); }
   .hero p.lede{ font-size:1.12rem; color:#EFEFEA; max-width:520px; margin-bottom:32px; text-shadow:0 1px 12px rgba(0,0,0,0.4); }
