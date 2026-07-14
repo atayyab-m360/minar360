@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Minar360</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#1B3955; --brass:#FFD447; --sand:#F9FBFC; --text-soft:#6B7280; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Montserrat', system-ui, sans-serif;
+    background:var(--ink); color:var(--sand);
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:32px; text-align:center;
+  }
+  .card{ max-width:340px; }
+  .logo{ width:72px; height:72px; margin:0 auto 20px; background:var(--sand); border-radius:16px; padding:10px; }
+  .logo img{ width:100%; height:100%; object-fit:contain; }
+  h1{ font-family:'Plus Jakarta Sans', sans-serif; font-size:1.5rem; margin-bottom:10px; }
+  p{ color:#C9D3CE; font-size:0.92rem; margin-bottom:28px; }
+  .btn{ display:block; background:var(--brass); color:var(--ink); padding:14px; border-radius:12px; font-weight:700; text-decoration:none; margin-bottom:12px; font-family:'Plus Jakarta Sans',sans-serif; }
+  .btn.outline{ background:transparent; border:1.5px solid rgba(255,255,255,0.4); color:var(--sand); }
+  .redirecting{ font-size:0.82rem; color:#C9D3CE; margin-top:16px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo"><img src="minar360-logo.png" alt="Minar360"></div>
+    <h1>Get Minar360</h1>
+    <p>Redirecting you to the right app store...</p>
+    <a href="https://apps.apple.com/us/app/minar360/id6748239000" class="btn" id="appleBtn">Download on the App Store</a>
+    <a href="#" class="btn outline" id="playBtn">Get it on Google Play</a>
+    <p class="redirecting" id="statusMsg"></p>
+  </div>
+
+  <script>
+    // NOTE: Google Play link below is a placeholder — swap in the real
+    // Play Store URL once confirmed, then update playBtn.href too.
+    const APPLE_URL = "https://apps.apple.com/us/app/minar360/id6748239000";
+    const PLAY_URL = "#"; // TODO: replace with real Google Play URL
+
+    document.getElementById('playBtn').href = PLAY_URL;
+
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    const isAndroid = /android/i.test(ua);
+
+    const statusEl = document.getElementById('statusMsg');
+
+    if (isIOS) {
+      statusEl.textContent = "Detected iPhone — redirecting to the App Store...";
+      setTimeout(() => { window.location.href = APPLE_URL; }, 900);
+    } else if (isAndroid) {
+      if (PLAY_URL !== "#") {
+        statusEl.textContent = "Detected Android — redirecting to Google Play...";
+        setTimeout(() => { window.location.href = PLAY_URL; }, 900);
+      } else {
+        statusEl.textContent = "Detected Android — Google Play link coming soon.";
+      }
+    } else {
+      statusEl.textContent = "Choose your platform below.";
+    }
+  </script>
+</body>
+</html>
