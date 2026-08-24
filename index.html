@@ -22,6 +22,7 @@
     --line:#E9EDF2;
     --text-dark:#1B3955;
     --text-soft:#6B7280;
+    --gold-dark:#B78200;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -36,7 +37,7 @@
     line-height:1.55;
   }
   h1,h2,h3,.wordmark{ font-family:'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing:-0.02em; }
-  .eyebrow{ font-family:'Montserrat', monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--brass); }
+  .eyebrow{ font-family:'Montserrat', monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold-dark); }
   a{ color:inherit; text-decoration:none; }
   img,svg{ display:block; max-width:100%; }
   button, .btn{ font-family:'Montserrat', sans-serif; cursor:pointer; border:none; }
@@ -167,6 +168,7 @@
   }
   .pillar-card:hover{ transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(27,57,85,0.35); }
   .pillar-card .icon{ width:40px; height:40px; margin-bottom:14px; color:var(--teal); }
+  .pillar-card .icon svg{ width:100%; height:100%; }
   .pillar-card h3{ font-size:1.02rem; margin-bottom:6px; color:var(--ink); }
   .pillar-card p{ font-size:0.88rem; color:var(--text-soft); }
 
@@ -331,7 +333,8 @@
   .trusted-logos{ display:flex; gap:14px; flex-wrap:nowrap; flex-shrink:0; width:max-content; animation:trusted-scroll 28s linear infinite; }
   @keyframes trusted-scroll{ from{ transform:translateX(0); } to{ transform:translateX(-100%); } }
   .trusted-scroll:hover .trusted-logos{ animation-play-state:paused; }
-  .trusted-logo{ font-size:0.85rem; font-weight:600; color:var(--ink); background:var(--sand); border:1px solid var(--line); border-radius:8px; padding:8px 14px; white-space:nowrap; }
+  .trusted-logo-card{ display:flex; align-items:center; justify-content:center; background:var(--sand-card); border:1px solid var(--line); border-radius:10px; padding:10px 20px; height:56px; flex-shrink:0; }
+  .trusted-logo-card img{ height:32px; width:auto; max-width:110px; object-fit:contain; display:block; }
 
   /* ---------- 8-PILLAR GRID ---------- */
   .pillars-8{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
@@ -375,6 +378,7 @@
 
   /* ---------- TESTIMONIALS ---------- */
   .testimonial-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .testimonial-grid-2{ grid-template-columns:repeat(2,1fr); max-width:900px; margin:0 auto; }
   @media (max-width:860px){ .testimonial-grid{ grid-template-columns:1fr; } }
   .testimonial-card{ background:var(--sand-card); border:1px solid var(--line); border-radius:16px; padding:26px 24px; }
   .testimonial-card .quote-mark{ font-family:'Plus Jakarta Sans',sans-serif; font-size:2.4rem; color:var(--brass); line-height:1; display:block; margin-bottom:8px; }
@@ -388,6 +392,9 @@
   .app-buttons{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:18px; }
   .app-btn{ background:var(--sand-card); color:var(--ink); padding:13px 22px; border-radius:12px; font-weight:600; font-size:0.88rem; }
   .app-btn.outline{ background:transparent; border:1.5px solid rgba(255,255,255,0.5); color:var(--sand); }
+  .badge-link{ display:inline-block; line-height:0; }
+  .badge-link img{ height:46px; width:auto; display:block; }
+  @media (max-width:500px){ .badge-link img{ height:40px; } }
 
   /* ---------- FOOTER NEWSLETTER ---------- */
   .footer-newsletter{ display:flex; gap:6px; }
@@ -408,11 +415,12 @@
   .stars{ color:var(--brass); font-size:0.95rem; letter-spacing:2px; margin-right:8px; }
   .trust-line{ font-size:0.82rem; color:#C9D3CE; margin-top:2px; }
 
-  .phone-mockups{ position:relative; height:440px; max-width:380px; margin:0 auto; }
-  .phone{ position:absolute; width:190px; height:390px; background:#0A1420; border-radius:26px; border:5px solid #0A1420; box-shadow:0 30px 60px -20px rgba(0,0,0,0.6); overflow:hidden; }
+  .phone-mockups{ position:relative; height:500px; max-width:430px; margin:0 auto; }
+  .phone{ position:absolute; width:213px; height:437px; background:#0A1420; border-radius:28px; border:5px solid #0A1420; box-shadow:0 30px 60px -20px rgba(0,0,0,0.6); overflow:hidden; }
   .phone-back{ left:0; top:10px; opacity:0.92; transform:rotate(-4deg); }
   .phone-front{ right:0; bottom:0; transform:rotate(4deg); }
   .phone-notch{ position:absolute; top:0; left:50%; transform:translateX(-50%); width:60px; height:16px; background:#0A1420; border-radius:0 0 10px 10px; z-index:2; }
+  .phone-screen-img{ width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
   .phone-screen{ background:var(--sand-card); color:var(--text-dark); height:100%; padding:26px 12px 12px; font-family:'Montserrat',sans-serif; }
   .phone-screen-dark{ background:var(--ink); color:var(--sand); }
   .ps-greeting{ font-size:0.72rem; font-weight:600; margin-bottom:10px; line-height:1.3; }
@@ -425,7 +433,7 @@
   .ps-tag{ font-size:0.58rem; font-weight:700; color:var(--teal); text-transform:uppercase; letter-spacing:0.05em; }
   .ps-tag-brass{ color:var(--brass); }
   .ps-card strong{ font-size:0.76rem; color:inherit; }
-  @media (max-width:900px){ .phone-mockups{ height:340px; } .phone{ width:150px; height:310px; } }
+  @media (max-width:900px){ .phone-mockups{ height:380px; } .phone{ width:168px; height:347px; } }
 
   /* ---------- WHY CHOOSE ---------- */
   .why-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:20px; text-align:center; }
@@ -480,8 +488,8 @@
       <h1>Everything Muslim.<br><em>One App.</em><br>One Purpose.</h1>
       <p class="lede">Find your masjid, discover events, support causes, explore halal businesses, and stay connected with your community — all in one place.</p>
       <div class="hero-ctas">
-        <a href="https://apps.apple.com/us/app/minar360/id6748239000" class="app-btn"> Download on the App Store</a>
-        <a href="#" class="app-btn outline">▶ Get it on Google Play</a>
+        <a href="https://apps.apple.com/us/app/minar360/id6748239000" class="badge-link"><img src="appstore-badge.png" alt="Download on the App Store"></a>
+        <a href="#" class="badge-link"><img src="googleplay-badge.png" alt="Get it on Google Play"></a>
       </div>
       <a href="#" class="watch-demo">▶ Watch Demo</a>
       <div class="trust-row">
@@ -499,32 +507,11 @@
     <div class="phone-mockups" aria-hidden="true">
       <div class="phone phone-back">
         <div class="phone-notch"></div>
-        <div class="phone-screen phone-screen-dark">
-          <p class="ps-greeting">As-Salamu Alaikum,<br>Welcome back!</p>
-          <div class="ps-search">🔍 Search events, masjids...</div>
-          <div class="ps-row">
-            <span>🕌</span><span>📅</span><span>🤝</span><span>👥</span>
-          </div>
-          <div class="ps-card">
-            <span class="ps-tag">Upcoming Event</span>
-            <strong>Community Iftar</strong>
-            <span>May 24, 2025 · 7:00 PM</span>
-          </div>
-        </div>
+        <img class="phone-screen-img" src="screenshot-homepage.png" alt="">
       </div>
       <div class="phone phone-front">
         <div class="phone-notch"></div>
-        <div class="phone-screen">
-          <p class="ps-title">Explore</p>
-          <div class="ps-row">
-            <span>📖</span><span>📅</span><span>🛍️</span><span>🍽️</span>
-          </div>
-          <div class="ps-card ps-card-light">
-            <span class="ps-tag ps-tag-brass">Featured Event</span>
-            <strong>Quran Tafsir Circle</strong>
-            <span>Every Friday · 6:30 PM</span>
-          </div>
-        </div>
+        <img class="phone-screen-img" src="screenshot-events.png" alt="">
       </div>
     </div>
   </div>
@@ -535,25 +522,46 @@
     <span class="trusted-label">Trusted by masajid, organizations &amp; businesses</span>
     <div class="trusted-scroll">
       <div class="trusted-logos">
-        <span class="trusted-logo">🕌 ADAMS Center</span>
-        <span class="trusted-logo">🕌 ICNVT</span>
-        <span class="trusted-logo">🕌 Islamic Society of Annapolis</span>
-        <span class="trusted-logo">🕌 Masjid Al-Ihsaan</span>
-        <span class="trusted-logo">🤝 ACHN</span>
-        <span class="trusted-logo">🤝 ISWA</span>
-        <span class="trusted-logo">🕌 MCC</span>
+        <span class="trusted-logo-card"><img src="logo-dhic.png" alt="Darul Hikmah Islamic Center"></span>
+        <span class="trusted-logo-card"><img src="logo-mcc.png" alt="Muslim Community Center"></span>
+        <span class="trusted-logo-card"><img src="logo-islamic-education-society-md.png" alt="Islamic Education Society of Maryland"></span>
+        <span class="trusted-logo-card"><img src="logo-iswa.png" alt="ISWA"></span>
+        <span class="trusted-logo-card"><img src="logo-kind-hearts-foundation.png" alt="Kind Hearts Foundation"></span>
+        <span class="trusted-logo-card"><img src="logo-thrive-center.png" alt="Thrive Center"></span>
+        <span class="trusted-logo-card"><img src="logo-zaree-kids.png" alt="Zaree Kids"></span>
+        <span class="trusted-logo-card"><img src="logo-mih-design.png" alt="MIH Design"></span>
+        <span class="trusted-logo-card"><img src="logo-loudoun-driving-school.png" alt="Loudoun Driving School"></span>
+        <span class="trusted-logo-card"><img src="logo-pieces-of-purpose.png" alt="Pieces of Purpose Life Coaching"></span>
+        <span class="trusted-logo-card"><img src="logo-property-charm-pros.png" alt="Property Charm Pros"></span>
+        <span class="trusted-logo-card"><img src="logo-bennu-travel.png" alt="Bennu Travel"></span>
+        <span class="trusted-logo-card"><img src="logo-zahra-sami.png" alt="Zahra Sami Makeup Artist"></span>
+        <span class="trusted-logo-card"><img src="logo-1world-fashion.png" alt="1World Fashion"></span>
+        <span class="trusted-logo-card"><img src="logo-buzzaar.png" alt="Buzzaar"></span>
+        <span class="trusted-logo-card"><img src="logo-tawes.png" alt="Tawes"></span>
+        <span class="trusted-logo-card"><img src="logo-million-medias.png" alt="Million Medias"></span>
+        <span class="trusted-logo-card"><img src="logo-kasperia.png" alt="Kasperia"></span>
       </div>
       <div class="trusted-logos" aria-hidden="true">
-        <span class="trusted-logo">🕌 ADAMS Center</span>
-        <span class="trusted-logo">🕌 ICNVT</span>
-        <span class="trusted-logo">🕌 Islamic Society of Annapolis</span>
-        <span class="trusted-logo">🕌 Masjid Al-Ihsaan</span>
-        <span class="trusted-logo">🤝 ACHN</span>
-        <span class="trusted-logo">🤝 ISWA</span>
-        <span class="trusted-logo">🕌 MCC</span>
+        <span class="trusted-logo-card"><img src="logo-dhic.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-mcc.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-islamic-education-society-md.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-iswa.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-kind-hearts-foundation.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-thrive-center.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-zaree-kids.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-mih-design.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-loudoun-driving-school.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-pieces-of-purpose.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-property-charm-pros.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-bennu-travel.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-zahra-sami.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-1world-fashion.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-buzzaar.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-tawes.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-million-medias.png" alt=""></span>
+        <span class="trusted-logo-card"><img src="logo-kasperia.png" alt=""></span>
       </div>
     </div>
-    <p class="dev-note" style="text-align:center; margin-top:10px;">Text placeholders for now — swap in real logo files once you have usage permission confirmed for each.</p>
   </div>
 </section>
 
@@ -566,42 +574,42 @@
     </div>
     <div class="pillars pillars-8">
       <div class="pillar-card">
-        <div class="icon">🕌</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v2.3" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="5.4" r="0.9" fill="#18D6D0"/><path d="M8.5 12v-1.5C8.5 8.6 10 7 12 7s3.5 1.6 3.5 3.5V12" stroke="#1B3955" stroke-width="1.5" stroke-linejoin="round"/><path d="M4 21v-6c0-2.2 1.8-4 4-4h8c2.2 0 4 1.8 4 4v6" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21h16" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round"/><path d="M9.2 21v-4a2.8 2.8 0 0 1 5.6 0v4" stroke="#1B3955" stroke-width="1.5"/></svg></div>
         <h3>Masjids</h3>
-        <p>Find masjids, get updates, view prayer times.</p>
+        <p>Your masjid shouldn't need six WhatsApp groups to reach you.</p>
       </div>
       <div class="pillar-card">
-        <div class="icon">📅</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="15" rx="2.5" stroke="#1B3955" stroke-width="1.5"/><path d="M3.5 9.5h17" stroke="#1B3955" stroke-width="1.5"/><path d="M8 3v4M16 3v4" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="14.5" r="1.6" fill="#18D6D0"/></svg></div>
         <h3>Events</h3>
-        <p>Discover local events and RSVP easily.</p>
+        <p>Never hear about it the day after again.</p>
       </div>
       <div class="pillar-card">
-        <div class="icon">🍽️</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M7 2v8c0 1.1.9 2 2 2v10" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 2v6M9 2v6" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round"/><path d="M17 2c-1.7 0-3 2.2-3 5s1.3 5 3 5v10" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17" cy="7" r="0.9" fill="#18D6D0"/></svg></div>
         <h3>Restaurants</h3>
-        <p>Find halal restaurants near you.</p>
+        <p>Find halal food without the group-chat rabbit hole.</p>
       </div>
       <div class="pillar-card">
-        <div class="icon">🛍️</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 9l1.2-4.5A2 2 0 0 1 6.1 3h11.8a2 2 0 0 1 1.9 1.5L21 9" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 9a2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0 2.5 2.5 0 0 0 5 0" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round"/><path d="M5 9.5V21h14V9.5" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="9.5" y="14" width="5" height="7" fill="#18D6D0" opacity="0.25" stroke="#18D6D0" stroke-width="1.5"/></svg></div>
         <h3>Businesses</h3>
-        <p>Support Muslim-owned businesses in your community.</p>
+        <p>Discover and support Muslim-owned businesses near you.</p>
       </div>
       <div class="pillar-card">
-        <div class="icon">💝</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 20.2s-7.3-4.4-9.6-9.1A4.9 4.9 0 0 1 12 6.3a4.9 4.9 0 0 1 9.6 4.8c-2.3 4.7-9.6 9.1-9.6 9.1z" stroke="#1B3955" stroke-width="1.5" stroke-linejoin="round"/><path d="M9.8 10.5c.7-1.1 2.2-1.1 2.7 0" stroke="#18D6D0" stroke-width="1.5" stroke-linecap="round"/></svg></div>
         <h3>Donations</h3>
-        <p>Give to causes and masjids securely.</p>
+        <p>Give with a tap — no forms, no friction.</p>
       </div>
       <div class="pillar-card">
-        <div class="icon">📖</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5.5c-2-1.4-4.7-2-7.5-1.5v13.5c2.8-.5 5.5.1 7.5 1.5" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5.5c2-1.4 4.7-2 7.5-1.5v13.5c-2.8-.5-5.5.1-7.5 1.5" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5.5v13.5" stroke="#1B3955" stroke-width="1.5"/><circle cx="12" cy="4" r="0.9" fill="#18D6D0"/></svg></div>
         <h3>Quran</h3>
-        <p>Read, listen, and reflect on the Quran.</p>
+        <p>Read, listen, and reflect — right in your pocket.</p>
       </div>
       <div class="pillar-card">
-        <div class="icon">👥</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="8.5" cy="8" r="2.5" stroke="#1B3955" stroke-width="1.5"/><circle cx="16" cy="8.5" r="2" stroke="#1B3955" stroke-width="1.5"/><path d="M3.5 19.5c.5-3 2.4-5 5-5s4.5 2 5 5" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round"/><path d="M14 15c2.2.2 3.8 1.9 4.3 4.5" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.5" cy="8" r="0.6" fill="#18D6D0"/></svg></div>
         <h3>Community</h3>
-        <p>Connect, chat, and stay informed.</p>
+        <p>One place for your groups, chats, and updates.</p>
       </div>
       <div class="pillar-card">
-        <div class="icon">✨</div>
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#1B3955" stroke-width="1.5"/><path d="M12 8v8M8 12h8" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.4" fill="#18D6D0"/></svg></div>
         <h3>And more</h3>
         <p>New features added regularly to serve you.</p>
       </div>
@@ -948,32 +956,21 @@
       <span class="eyebrow">Loved by our community</span>
       <h2>What people are saying</h2>
     </div>
-    <div class="testimonial-grid">
+    <div class="testimonial-grid testimonial-grid-2">
       <div class="testimonial-card">
         <span class="quote-mark">"</span>
-        <p class="dev-note">PLACEHOLDER — replace with confirmed real quote before launch.</p>
-        <p>[Quote to be confirmed]</p>
+        <p>Minar360 gives our community one place to stay connected with what's happening at the masjid and beyond. It makes it easier for people to discover events, receive updates, and stay engaged with the organizations serving them.</p>
         <div class="testimonial-footer">
           <span class="testimonial-avatar">👤</span>
-          <div><div class="testimonial-author">[Name], [Organization]</div><span class="stars">★★★★★</span></div>
+          <div><div class="testimonial-author">Omar Khan, MCC</div></div>
         </div>
       </div>
       <div class="testimonial-card">
         <span class="quote-mark">"</span>
-        <p class="dev-note">This is the real one — confirm exact wording before launch.</p>
-        <p>[Paste the real, exact testimonial text here]</p>
+        <p>Our Muslim communities are incredibly active, but information is often scattered across different platforms and group chats. Minar360 brings those connections together — helping people discover organizations, events, businesses, and opportunities to engage with their community.</p>
         <div class="testimonial-footer">
           <span class="testimonial-avatar">👤</span>
-          <div><div class="testimonial-author">[Real name and title]</div><span class="stars">★★★★★</span></div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <span class="quote-mark">"</span>
-        <p class="dev-note">PLACEHOLDER — replace with confirmed real quote before launch.</p>
-        <p>[Quote to be confirmed]</p>
-        <div class="testimonial-footer">
-          <span class="testimonial-avatar">👤</span>
-          <div><div class="testimonial-author">[Name], [Organization]</div><span class="stars">★★★★★</span></div>
+          <div><div class="testimonial-author">Areeb Quasem</div></div>
         </div>
       </div>
     </div>
@@ -998,8 +995,8 @@
     <div class="cta-qr">
       <img src="minar360-appstore-qr.png" alt="QR code to download Minar360 on the App Store">
       <div class="cta-buttons app-buttons" style="flex-direction:column; gap:8px;">
-        <a href="https://apps.apple.com/us/app/minar360/id6748239000" class="app-btn"> Download on the App Store</a>
-        <a href="#" class="app-btn outline">▶ Get it on Google Play</a>
+        <a href="https://apps.apple.com/us/app/minar360/id6748239000" class="badge-link"><img src="appstore-badge.png" alt="Download on the App Store"></a>
+        <a href="#" class="badge-link"><img src="googleplay-badge.png" alt="Get it on Google Play"></a>
       </div>
     </div>
   </div>
