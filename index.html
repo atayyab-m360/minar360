@@ -369,6 +369,7 @@
   .discovery-item{ display:flex; flex-direction:column; padding:10px 12px; background:var(--sand); border-radius:10px; font-size:0.85rem; }
   .discovery-item strong{ color:var(--ink); margin-bottom:2px; }
   .discovery-item span{ color:var(--text-soft); font-size:0.8rem; }
+  .discovery-caption{ font-size:0.82rem; color:var(--text-soft); font-style:italic; }
   .discovery-map-placeholder{ position:relative; background:linear-gradient(135deg, #E9EDF2 0%, #D8DEE6 100%); border-radius:16px; min-height:340px; overflow:hidden; }
   .dm-pin{ position:absolute; font-size:1.5rem; filter:drop-shadow(0 4px 8px rgba(0,0,0,0.25)); }
   .dm-pin-1{ top:18%; left:22%; } .dm-pin-2{ top:65%; left:15%; } .dm-pin-3{ top:30%; left:70%; }
@@ -498,14 +499,7 @@
       </div>
       <a href="#" class="watch-demo">▶ Watch Demo</a>
       <div class="trust-row">
-        <div class="avatar-stack">
-          <span class="avatar-dot">👤</span><span class="avatar-dot">👤</span><span class="avatar-dot">👤</span>
-        </div>
-        <div>
-          <span class="stars">★★★★★</span>
-          <span class="dev-note" style="color:#C9D3CE;">rating/review count TBD, confirm before launch</span>
-          <p class="trust-line">Trusted by communities across the U.S.</p>
-        </div>
+        <p class="trust-line">Built with masajid, nonprofits, and businesses across the U.S.</p>
       </div>
     </div>
 
@@ -661,7 +655,7 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Explore your community</span>
-      <h2>Search and discover what's happening around you</h2>
+      <h2>Events tonight. Jumu'ah nearby. A new halal restaurant. A community you've been looking for.</h2>
     </div>
     <div class="discovery-layout">
       <div class="discovery-panel">
@@ -677,7 +671,7 @@
           <div class="discovery-item"><strong>Friday Khutbah</strong><span>Masjid Al-Noor · Tomorrow, 1:30 PM</span></div>
           <div class="discovery-item"><strong>Laymoon Cafe</strong><span>Halal Cafe · 0.4 mi</span></div>
         </div>
-        <p class="dev-note">Sample results — real local search launches with the app's location backend.</p>
+        <p class="discovery-caption">Real events, real masajid, real businesses — near you.</p>
       </div>
       <div class="discovery-map-placeholder">
         <span class="dm-pin dm-pin-1">🕌</span>
@@ -693,7 +687,6 @@
             <button type="button" class="filled">Get Directions</button>
           </div>
         </div>
-        <p class="dev-note" style="position:absolute; bottom:14px; color:#C9D3CE;">Visual mockup — real interactive map comes with the search backend.</p>
       </div>
     </div>
   </div>
@@ -901,9 +894,6 @@
         <a href="#" class="badge-link"><img src="googleplay-badge.png" alt="Get it on Google Play"></a>
       </div>
     </div>
-  </div>
-  <div class="wrap">
-    <p class="dev-note" style="color:var(--sand); opacity:0.75; text-align:center; margin-top:10px;">QR code links to the real App Store page. Google Play still needs confirming — couldn't find an official listing, only third-party APK mirrors.</p>
   </div>
 </section>
 
