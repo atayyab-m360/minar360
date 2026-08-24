@@ -69,6 +69,9 @@
   .nav-dropdown-menu a{ display:block; padding:9px 12px; border-radius:7px; font-size:0.88rem; color:#CFD8D3; }
   .nav-dropdown-menu a:hover{ background:rgba(255,255,255,0.08); color:var(--sand); }
   .nav-cta{ background:var(--brass); color:var(--ink); padding:10px 20px; border-radius:100px; font-size:0.88rem; font-weight:600; transition:background 0.15s; }
+  .nav-cta-secondary{ background:transparent; border:1.5px solid rgba(255,255,255,0.35); color:var(--sand); padding:9px 18px; border-radius:100px; font-size:0.88rem; font-weight:600; transition:background 0.15s; white-space:nowrap; }
+  .nav-cta-secondary:hover{ background:rgba(255,255,255,0.1); }
+  @media (max-width:1000px){ .nav-cta-secondary{ display:none; } }
   .nav-cta:hover{ background:var(--brass-light); }
   .nav-hamburger{ display:none; flex-direction:column; justify-content:center; gap:5px; background:none; padding:8px; width:36px; height:36px; }
   .nav-hamburger span{ display:block; width:20px; height:2px; background:var(--sand); border-radius:2px; transition:transform 0.2s ease, opacity 0.2s ease; }
@@ -342,13 +345,14 @@
 
   /* ---------- AUDIENCE GRID ---------- */
   .audience-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
-  @media (max-width:900px){ .audience-grid{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:560px){ .audience-grid{ grid-template-columns:1fr; } }
+  .audience-grid-3{ grid-template-columns:repeat(3,1fr); }
+  @media (max-width:900px){ .audience-grid{ grid-template-columns:repeat(2,1fr); } .audience-grid-3{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .audience-grid{ grid-template-columns:1fr; } .audience-grid-3{ grid-template-columns:1fr; } }
   .audience-card{ background:var(--sand-card); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
   .audience-thumb{ height:120px; display:flex; align-items:center; justify-content:center; font-size:2.4rem; }
   .audience-thumb.community{ background:linear-gradient(135deg, var(--teal), var(--ink)); }
   .audience-thumb.masjids{ background:linear-gradient(135deg, var(--ink), var(--ink-soft)); }
-  .audience-thumb.orgs{ background:linear-gradient(135deg, var(--brass), #a5721f); }
+  .audience-thumb.orgs{ background:linear-gradient(135deg, var(--teal), var(--ink)); }
   .audience-thumb.business{ background:linear-gradient(135deg, var(--ink-soft), var(--teal)); }
   .audience-body{ padding:18px 20px; }
   .audience-body h3{ font-size:1rem; margin-bottom:6px; color:var(--ink); }
@@ -462,6 +466,7 @@
         </div>
       </div>
     </div>
+    <a href="get-app.html" class="nav-cta-secondary">Download App</a>
     <a href="organizations.html#signup" class="nav-cta">List your organization</a>
     <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -621,10 +626,9 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Built for everyone</span>
-      <h2>Whether you're an individual, a community leader, or a business owner</h2>
-      <p>Minar360 is designed for you.</p>
+      <h2>One platform. Built for the whole community.</h2>
     </div>
-    <div class="audience-grid">
+    <div class="audience-grid audience-grid-3">
       <div class="audience-card">
         <div class="audience-thumb community">👨‍👩‍👧‍👦</div>
         <div class="audience-body">
@@ -636,23 +640,15 @@
       <div class="audience-card">
         <div class="audience-thumb masjids">🕌</div>
         <div class="audience-body">
-          <h3>Masjids &amp; Islamic Centers</h3>
-          <p>Engage your community and streamline communications.</p>
-          <a href="organizations.html">Learn more →</a>
-        </div>
-      </div>
-      <div class="audience-card">
-        <div class="audience-thumb orgs">🤝</div>
-        <div class="audience-body">
-          <h3>Organizations &amp; Nonprofits</h3>
-          <p>Amplify your impact and reach more people.</p>
+          <h3>Masjids &amp; Organizations</h3>
+          <p>Engage your community, streamline communications, and amplify your impact.</p>
           <a href="organizations.html">Learn more →</a>
         </div>
       </div>
       <div class="audience-card">
         <div class="audience-thumb business">🛍️</div>
         <div class="audience-body">
-          <h3>Businesses &amp; Restaurants</h3>
+          <h3>Muslim Businesses</h3>
           <p>Grow your visibility and connect with the right audience.</p>
           <a href="organizations.html">Learn more →</a>
         </div>
@@ -706,22 +702,15 @@
 <section class="section">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">See it in action</span>
-      <h2>Prayer times, built into every profile</h2>
-      <p>No separate app to check. Sample times shown below — the real app calculates times based on each person's location.</p>
+      <span class="eyebrow">Real app experience</span>
+      <h2>Prayer &amp; iqamah times, built in</h2>
+      <p>No separate app needed — masjids publish their own prayer and iqamah times, right on their profile.</p>
     </div>
     <div class="prayer-widget">
       <div class="prayer-next">
         <span class="eyebrow">Next prayer</span>
         <h3 id="nextPrayerName">—</h3>
         <p id="prayerCountdown">calculating…</p>
-        <div class="athan-controls">
-          <button type="button" id="athanPreviewBtn" class="athan-btn">🔊 Preview athan</button>
-          <label class="athan-toggle">
-            <input type="checkbox" id="athanAutoplay">
-            <span>Simulate athan at each sample prayer time</span>
-          </label>
-        </div>
       </div>
       <ul class="prayer-list" id="prayerList">
         <li data-name="Fajr" data-time="05:12"><span class="p-name">Fajr</span><span>5:12 AM</span></li>
@@ -730,67 +719,6 @@
         <li data-name="Maghrib" data-time="20:31"><span class="p-name">Maghrib</span><span>8:31 PM</span></li>
         <li data-name="Isha" data-time="21:58"><span class="p-name">Isha</span><span>9:58 PM</span></li>
       </ul>
-    </div>
-    <p class="prayer-note">Sample times shown for preview purposes only. Athan audio to be added — replace <code>athan.mp3</code> with a licensed recording.</p>
-    <audio id="athanAudio" preload="none">
-      <source src="athan.mp3" type="audio/mpeg">
-    </audio>
-  </div>
-</section>
-
-<section class="section comparison">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Why not just use Luma, Eventbrite, or Zeffy?</span>
-      <h2>Built for the community, not retrofitted for it</h2>
-      <p>General event platforms work fine for a single ticket link. They weren't built for a community that also needs prayer times, mosque directories, and halal discovery in the same place.</p>
-    </div>
-    <div class="comp-scroll">
-      <table class="comp-table">
-        <thead>
-          <tr><th></th><th>Luma / Eventbrite / Zeffy</th><th>Minar360</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Discovery</td><td><span class="cross">Generic search, no faith context</span></td><td><span class="check">Built around mosques, halal, and community</span></td></tr>
-          <tr><td>Prayer times & khutbahs</td><td><span class="cross">Not supported</span></td><td><span class="check">Native to every mosque profile</span></td></tr>
-          <tr><td>One community feed</td><td><span class="cross">Events live in isolated links</span></td><td><span class="check">Events, orgs, and businesses in one feed</span></td></tr>
-          <tr><td>Donations & tickets</td><td><span class="cross">Fees eat into what nonprofits raise</span></td><td><span class="check">Built for mosque and nonprofit economics</span></td></tr>
-          <tr><td>Business & restaurant discovery</td><td><span class="cross">Not part of the platform</span></td><td><span class="check">Muslim-owned businesses, halal spots included</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="organizations">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Two ways in</span>
-      <h2>Built for both sides of the community</h2>
-    </div>
-    <div class="journeys">
-      <div class="journey-card member">
-        <span class="eyebrow" style="color:var(--teal)">For the community</span>
-        <h3>Find what's happening near you</h3>
-        <ul>
-          <li>Discover events, mosques, and halal spots nearby</li>
-          <li>Get prayer times without opening a separate app</li>
-          <li>Join groups and RSVP in a few taps</li>
-          <li>Support Muslim-owned businesses on purpose</li>
-        </ul>
-        <a href="explore.html" class="journey-cta">Explore Minar360</a>
-      </div>
-      <div class="journey-card org">
-        <span class="eyebrow" style="color:var(--brass-light)">For your organization</span>
-        <h3>Get your organization on the platform</h3>
-        <ul>
-          <li>Publish events, prayer times, and announcements once</li>
-          <li>Accept donations and sell tickets without punishing fees</li>
-          <li>Manage members and groups in one dashboard</li>
-          <li>Get discovered by a community actively looking for you</li>
-        </ul>
-        <a href="organizations.html#signup" class="journey-cta">Get your organization listed</a>
-      </div>
     </div>
   </div>
 </section>
@@ -808,22 +736,10 @@
       <div class="partner-slot"><span>🛍️</span><p>Business partner</p></div>
       <div class="partner-slot open"><span>+</span><p>Your organization here</p></div>
     </div>
-  </div>
-</section>
-
-<section class="section why-choose">
-  <div class="wrap">
-    <div class="section-head" style="text-align:center; margin:0 auto 36px;">
-      <span class="eyebrow">Why communities choose Minar360</span>
-    </div>
-    <div class="why-grid">
-      <div class="why-item"><span class="why-icon">🔔</span><h3>Real-time Updates</h3><p>Instant notifications that matter.</p></div>
-      <div class="why-item"><span class="why-icon">💝</span><h3>One-Tap Donations</h3><p>Support causes and masjids securely.</p></div>
-      <div class="why-item"><span class="why-icon">📅</span><h3>Event Management</h3><p>Create, manage, and promote events.</p></div>
-      <div class="why-item"><span class="why-icon">🕐</span><h3>Prayer Times &amp; Qibla Finder</h3><p>Never miss a moment.</p></div>
-      <div class="why-item"><span class="why-icon">👥</span><h3>Community Connection</h3><p>Groups, chats, and announcements.</p></div>
-      <div class="why-item"><span class="why-icon">🔄</span><h3>Built for Muslims</h3><p>Made by the community, for the ummah.</p></div>
-    </div>
+    <form class="notify-form" style="margin-top:28px;">
+      <input type="email" placeholder="you@organization.org" aria-label="Email address">
+      <button type="submit">Notify me</button>
+    </form>
   </div>
 </section>
 
@@ -910,20 +826,6 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <div class="founding">
-      <span class="eyebrow">Currently in development</span>
-      <h3>Founding partner network</h3>
-      <p>We're onboarding the first mosques, organizations, and businesses before opening Minar360 more broadly. Join the list and we'll reach out as spots open up.</p>
-      <form class="notify-form">
-        <input type="email" placeholder="you@organization.org" aria-label="Email address">
-        <button type="submit">Notify me</button>
-      </form>
-    </div>
-  </div>
-</section>
-
 <section class="section" id="faq">
   <div class="wrap">
     <div class="section-head">
@@ -989,8 +891,8 @@
       </div>
     </div>
     <div class="cta-center">
-      <h2>Ready to experience Minar360?</h2>
-      <p>Download the app and connect with your community today.</p>
+      <h2>Your community is already happening.</h2>
+      <p>Don't find out about it tomorrow. Find it on Minar360.</p>
     </div>
     <div class="cta-qr">
       <img src="minar360-appstore-qr.png" alt="QR code to download Minar360 on the App Store">
