@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tutorials — Minar360</title>
+<title>Articles — Minar360</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
   img{ display:block; max-width:100%; }
   button{ font-family:'Montserrat', sans-serif; cursor:pointer; border:none; }
   :focus-visible{ outline:3px solid var(--brass); outline-offset:3px; }
-  .wrap{ max-width:900px; margin:0 auto; padding:0 32px; }
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 32px; }
   @media (max-width:640px){ .wrap{ padding:0 20px; } }
 
   nav{ position:sticky; top:0; z-index:50; background:rgba(27,57,85,0.94); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.08); }
@@ -68,16 +68,16 @@
   .filter-chip{ background:var(--sand-card); border:1px solid var(--line); padding:9px 18px; border-radius:100px; font-size:0.86rem; font-weight:500; color:var(--text-soft); transition:background 0.15s, color 0.15s; }
   .filter-chip.active, .filter-chip:hover{ background:var(--ink); color:var(--sand); border-color:var(--ink); }
 
-  main.wrap{ padding-top:36px; }
-  .tut-section h2{ font-size:1.2rem; margin:36px 0 6px; color:var(--ink); }
-  .tut-item{ border-bottom:1px solid var(--line); padding:18px 0; }
-  .tut-item summary{ cursor:pointer; font-weight:600; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:16px; }
-  .tut-item summary::-webkit-details-marker{ display:none; }
-  .tut-item summary::after{ content:"+"; font-size:1.3rem; color:var(--brass); font-weight:400; flex-shrink:0; }
-  .tut-item[open] summary::after{ content:"–"; }
-  .tut-item ol{ margin:14px 0 0 20px; color:var(--text-soft); font-size:0.93rem; }
-  .tut-item ol li{ margin-bottom:8px; }
-  .tut-item.hidden{ display:none; }
+  .article-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:28px 0 16px; }
+  @media (max-width:900px){ .article-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px){ .article-grid{ grid-template-columns:1fr; } }
+  .article-card{ background:var(--sand-card); border:1px solid var(--line); border-radius:16px; padding:24px 22px; transition:transform 0.18s, box-shadow 0.18s; display:flex; flex-direction:column; }
+  .article-card:hover{ transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(27,57,85,0.35); }
+  .article-card .cat{ font-family:'Montserrat',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--brass); margin-bottom:10px; }
+  .article-card h3{ font-size:1.05rem; margin-bottom:8px; color:var(--ink); line-height:1.3; }
+  .article-card p{ font-size:0.88rem; color:var(--text-soft); flex:1; }
+  .badge-dev{ align-self:flex-start; margin-top:14px; font-size:0.72rem; font-weight:600; color:var(--teal); background:rgba(14,92,86,0.1); padding:4px 10px; border-radius:100px; }
+  .article-card.hidden{ display:none; }
 
   .notify-band{ background:var(--ink); color:var(--sand); border-radius:20px; padding:48px 40px; text-align:center; margin:56px 0; }
   .notify-band h2{ font-size:1.5rem; margin-bottom:12px; color:var(--sand); }
@@ -103,6 +103,8 @@
     <div class="nav-links">
       <a href="explore.html">Explore</a>
       <a href="organizations.html">For Organizations</a>
+    <a href="onboarding.html">Onboarding</a>
+      <a href="onboarding.html">Onboarding</a>
       <a href="index.html#how-it-works">How It Works</a>
       <div class="nav-dropdown">
         <button type="button" class="nav-dropdown-trigger current">Resources <span class="caret">&#9662;</span></button>
@@ -110,6 +112,8 @@
           <a href="faq.html">FAQ</a>
           <a href="articles.html">Articles</a>
           <a href="tutorials.html">Tutorials</a>
+    <a href="pricing.html">Pricing</a>
+          <a href="pricing.html">Pricing</a>
         </div>
       </div>
     </div>
@@ -131,123 +135,79 @@
 
 <header class="page-hero">
   <div class="wrap">
-    <span class="eyebrow">Support</span>
-    <h1>Tutorials</h1>
-    <p>Step-by-step walkthroughs for getting the most out of Minar360, whether you're a community member, an organization, or a business.</p>
+    <span class="eyebrow">Resources</span>
+    <h1>Articles &amp; guides</h1>
+    <p>Practical guides for the local Muslim community — mosques, organizations, and everyday questions about faith and community life.</p>
   </div>
 </header>
 
 <div class="wrap">
   <div class="filter-bar" id="filterBar">
     <button class="filter-chip active" data-filter="all">All</button>
-    <button class="filter-chip" data-filter="community">Community Members</button>
-    <button class="filter-chip" data-filter="orgs">Organizations</button>
-    <button class="filter-chip" data-filter="business">Businesses</button>
+    <button class="filter-chip" data-filter="community">Community</button>
+    <button class="filter-chip" data-filter="organizations">Organizations</button>
+    <button class="filter-chip" data-filter="ramadan">Ramadan</button>
+    <button class="filter-chip" data-filter="giving">Giving &amp; Zakat</button>
   </div>
-</div>
 
-<main class="wrap" id="tutMain">
+  <div class="article-grid" id="articleGrid">
+    <div class="article-card" data-cat="community">
+      <span class="cat">Community</span>
+      <h3>How to Find a Mosque Near You</h3>
+      <p>A practical guide to locating prayer spaces, checking prayer times, and getting involved in a new community.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+    <div class="article-card" data-cat="ramadan">
+      <span class="cat">Ramadan</span>
+      <h3>Planning a Community Iftar: A Step-by-Step Guide</h3>
+      <p>From venue logistics to volunteer coordination — how organizations can host a smooth, welcoming iftar.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+    <div class="article-card" data-cat="community">
+      <span class="cat">Community</span>
+      <h3>What Makes Food Halal? A Beginner's Guide</h3>
+      <p>A clear explanation of halal certification and how to evaluate restaurants and products.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+    <div class="article-card" data-cat="organizations">
+      <span class="cat">Organizations</span>
+      <h3>5 Ways Mosques Can Modernize Community Engagement</h3>
+      <p>Practical, low-cost ways masjid boards can improve communication without adding extra work.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+    <div class="article-card" data-cat="giving">
+      <span class="cat">Giving &amp; Zakat</span>
+      <h3>Understanding Zakat: A Practical Guide for Donors</h3>
+      <p>The basics of zakat eligibility, calculation, and how to give with confidence.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+    <div class="article-card" data-cat="giving">
+      <span class="cat">Giving &amp; Zakat</span>
+      <h3>The Difference Between Sadaqah and Zakat</h3>
+      <p>A plain-language breakdown of two commonly confused forms of giving.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+    <div class="article-card" data-cat="organizations">
+      <span class="cat">Organizations</span>
+      <h3>How to Start a Muslim Business Directory in Your City</h3>
+      <p>A guide for community organizers looking to connect local Muslim-owned businesses.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+    <div class="article-card" data-cat="ramadan">
+      <span class="cat">Ramadan</span>
+      <h3>Ramadan Event Planning Checklist for Organizations</h3>
+      <p>A month-by-month checklist to help mosques and nonprofits plan ahead.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+  </div>
 
-  <section class="tut-section" data-cat="community">
-    <h2>For Community Members</h2>
-    <details class="tut-item" data-cat="community" open>
-      <summary>How to search for events near you</summary>
-      <ol>
-        <li>Go to the Explore page and use the search bar at the top.</li>
-        <li>Type a keyword like "Jumu'ah" or a location like "Northern Virginia."</li>
-        <li>Use the category chips (Events, Mosques, Businesses) to narrow results.</li>
-        <li>Tap any result to see more details.</li>
-      </ol>
-    </details>
-    <details class="tut-item" data-cat="community">
-      <summary>How to follow a mosque or organization</summary>
-      <ol>
-        <li>Find the organization's profile through search or the Explore page.</li>
-        <li>Tap "Follow" on their profile.</li>
-        <li>Their events, announcements, and prayer times will appear in your feed automatically.</li>
-      </ol>
-    </details>
-    <details class="tut-item" data-cat="community">
-      <summary>How to enable prayer time notifications</summary>
-      <ol>
-        <li>Open your account notification settings.</li>
-        <li>Turn on athan alerts for the prayers you want reminders for.</li>
-        <li>You can preview how the alert sounds using the demo widget on the homepage.</li>
-      </ol>
-    </details>
-  </section>
-
-  <section class="tut-section" data-cat="orgs">
-    <h2>For Organizations</h2>
-    <details class="tut-item" data-cat="orgs">
-      <summary>How to create your organization profile</summary>
-      <ol>
-        <li>Click "List your organization" from any page.</li>
-        <li>Enter your organization's name and contact email.</li>
-        <li>Fill in your profile details — address, description, and category.</li>
-        <li>Submit to join the founding partner program.</li>
-      </ol>
-    </details>
-    <details class="tut-item" data-cat="orgs">
-      <summary>How to publish your first event</summary>
-      <ol>
-        <li>From your organization dashboard, select "Create event."</li>
-        <li>Add the event name, date, time, and location.</li>
-        <li>Choose whether it's free or ticketed.</li>
-        <li>Publish — it will appear on your profile and in your followers' feed.</li>
-      </ol>
-    </details>
-    <details class="tut-item" data-cat="orgs">
-      <summary>How to set up donations</summary>
-      <ol>
-        <li>From your dashboard, go to the Donations section.</li>
-        <li>Connect a secure payment processor to your organization account.</li>
-        <li>Set up a donation form with suggested amounts or a custom entry field.</li>
-        <li>Add the donation button to your public profile.</li>
-      </ol>
-    </details>
-    <details class="tut-item" data-cat="orgs">
-      <summary>How to add team members to your account</summary>
-      <ol>
-        <li>Go to your organization's account settings.</li>
-        <li>Select "Invite team member" and enter their email.</li>
-        <li>Assign their access level.</li>
-        <li>They'll receive an invite to create their own login under your organization.</li>
-      </ol>
-    </details>
-  </section>
-
-  <section class="tut-section" data-cat="business">
-    <h2>For Businesses</h2>
-    <details class="tut-item" data-cat="business">
-      <summary>How to list your business or restaurant</summary>
-      <ol>
-        <li>Click "List your organization" and select the business profile type.</li>
-        <li>Add your business name, category, and location.</li>
-        <li>Include hours, contact info, and a short description.</li>
-        <li>Submit for review as a founding business partner.</li>
-      </ol>
-    </details>
-    <details class="tut-item" data-cat="business">
-      <summary>How to get discovered by the community</summary>
-      <ol>
-        <li>Keep your profile details current, especially hours and location.</li>
-        <li>Encourage regular customers to follow your profile.</li>
-        <li>Post updates — new hours, menu items, or promotions — so followers see them in their feed.</li>
-      </ol>
-    </details>
-  </section>
-
-</main>
-
-<div class="wrap">
   <div class="notify-band">
-    <span class="eyebrow" style="color:var(--brass-light);">More guides coming</span>
-    <h2>Have a question these don't cover?</h2>
-    <p>We're adding tutorials as Minar360 grows. Let us know what would help and we'll get it written.</p>
+    <span class="eyebrow" style="color:var(--brass-light);">Currently in development</span>
+    <h2>Get notified when new articles publish</h2>
+    <p>We're writing these guides now. Join the list and we'll let you know as each one goes live.</p>
     <form class="notify-form">
       <input type="email" placeholder="you@email.com" aria-label="Email address">
-      <button type="submit">Send a request</button>
+      <button type="submit">Notify me</button>
     </form>
   </div>
 </div>
@@ -289,18 +249,13 @@
 
 <script>
   const chips = document.querySelectorAll('.filter-chip');
-  const items = document.querySelectorAll('.tut-item');
-  const sections = document.querySelectorAll('.tut-section');
+  const cards = document.querySelectorAll('.article-card');
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
       chips.forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       const filter = chip.dataset.filter;
-      items.forEach(item => item.classList.toggle('hidden', filter !== 'all' && item.dataset.cat !== filter));
-      sections.forEach(section => {
-        const visible = section.querySelectorAll('.tut-item:not(.hidden)');
-        section.style.display = (filter === 'all' || visible.length) ? '' : 'none';
-      });
+      cards.forEach(card => card.classList.toggle('hidden', filter !== 'all' && card.dataset.cat !== filter));
     });
   });
 </script>
