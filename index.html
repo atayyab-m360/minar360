@@ -160,7 +160,7 @@
   .section{ padding:88px 0; }
   .section-head{ max-width:640px; margin-bottom:48px; }
   .section-head h2{ font-size:clamp(1.7rem,3vw,2.3rem); margin-top:10px; color:var(--ink); }
-  .section-head p{ color:var(--text-soft); margin-top:12px; font-size:1.02rem; }
+  .section-head p{ color:var(--text-soft); margin-top:18px; font-size:1.02rem; }
 
   .pillars{ display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
   @media (max-width:960px){ .pillars{ grid-template-columns:repeat(2,1fr); } }
@@ -285,7 +285,15 @@
   .partner-slot p{ font-size:0.85rem; font-weight:500; }
   .partner-slot.open{ border-color:var(--brass); color:var(--brass); }
   /* ---------- GROWTH MAP ---------- */
+  .growth-map-layout{ display:grid; grid-template-columns:0.9fr 1.4fr; gap:40px; align-items:start; }
+  .growth-map-side .eyebrow{ display:block; margin-bottom:10px; }
+  .growth-map-side h2{ font-size:clamp(1.5rem,2.6vw,2rem); color:var(--ink); margin-bottom:14px; }
+  .growth-map-side p{ color:var(--text-soft); font-size:0.98rem; margin-bottom:24px; }
+  .map-stats-side{ grid-template-columns:1fr; gap:12px; margin-top:24px; }
+  .map-stats-side .map-stat{ display:flex; flex-direction:row; align-items:center; justify-content:space-between; text-align:left; padding:14px 18px; }
+  .map-stats-side .map-stat-num{ margin-bottom:0; font-size:1.5rem; }
   .map-header{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:36px; flex-wrap:wrap; gap:24px; }
+  @media (max-width:900px){ .growth-map-layout{ grid-template-columns:1fr; } }
   .map-legend{ display:flex; flex-direction:column; gap:10px; padding-top:8px; flex-shrink:0; }
   .legend-item{ display:flex; align-items:center; gap:10px; font-size:0.82rem; color:var(--text-soft); font-weight:500; }
   .legend-dot{ width:14px; height:14px; border-radius:3px; flex-shrink:0; }
@@ -331,7 +339,8 @@
 
   /* ---------- TRUSTED STRIP ---------- */
   .trusted-strip{ padding:28px 0; background:var(--sand-card); border-bottom:1px solid var(--line); }
-  .trusted-label{ display:block; text-align:center; font-family:'Montserrat',sans-serif; font-size:0.72rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-soft); margin-bottom:18px; }
+  .trusted-label{ display:block; text-align:center; font-family:'Montserrat',sans-serif; font-size:0.72rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-soft); margin-bottom:8px; }
+  .trusted-subhead{ text-align:center; color:var(--text-soft); font-size:0.92rem; margin-bottom:18px; }
   .trusted-scroll{ display:flex; overflow:hidden; width:100%; -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
   .trusted-logos{ display:flex; gap:14px; flex-wrap:nowrap; flex-shrink:0; width:max-content; animation:trusted-scroll 28s linear infinite; }
   @keyframes trusted-scroll{ from{ transform:translateX(0); } to{ transform:translateX(-100%); } }
@@ -342,6 +351,11 @@
   /* ---------- 8-PILLAR GRID ---------- */
   .pillars-8{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
   @media (max-width:900px){ .pillars-8{ grid-template-columns:repeat(2,1fr); } }
+  .pillars-5{ display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+  @media (max-width:1000px){ .pillars-5{ grid-template-columns:repeat(3,1fr); } }
+  @media (max-width:600px){ .pillars-5{ grid-template-columns:repeat(2,1fr); } }
+  .btn-primary{ background:var(--brass); color:var(--ink); padding:13px 28px; border-radius:100px; font-weight:600; font-size:0.92rem; }
+  .btn-primary:hover{ background:var(--brass-light); }
 
   /* ---------- AUDIENCE GRID ---------- */
   .audience-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
@@ -370,6 +384,19 @@
   .discovery-item strong{ color:var(--ink); margin-bottom:2px; }
   .discovery-item span{ color:var(--text-soft); font-size:0.8rem; }
   .discovery-caption{ font-size:0.82rem; color:var(--text-soft); font-style:italic; }
+
+  /* ---------- TIMELINE (Minar360 in Action) ---------- */
+  .timeline-section{ background:var(--ink); color:var(--sand); }
+  .timeline-section .eyebrow{ color:var(--brass-light); }
+  .timeline-section .section-head p{ color:#C9D3CE; }
+  .timeline-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+  @media (max-width:900px){ .timeline-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .timeline-grid{ grid-template-columns:1fr; } }
+  .timeline-item{ text-align:center; }
+  .timeline-phone{ border-radius:18px; overflow:hidden; border:4px solid var(--ink-soft); box-shadow:0 20px 40px -16px rgba(0,0,0,0.5); margin-bottom:16px; aspect-ratio:9/17; }
+  .timeline-phone img{ width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+  .timeline-label{ font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; color:var(--brass-light); font-size:0.95rem; display:block; margin-bottom:6px; }
+  .timeline-item p{ font-size:0.88rem; color:#C9D3CE; }
   .discovery-map-placeholder{ position:relative; background:linear-gradient(135deg, #E9EDF2 0%, #D8DEE6 100%); border-radius:16px; min-height:340px; overflow:hidden; }
   .dm-pin{ position:absolute; font-size:1.5rem; filter:drop-shadow(0 4px 8px rgba(0,0,0,0.25)); }
   .dm-pin-1{ top:18%; left:22%; } .dm-pin-2{ top:65%; left:15%; } .dm-pin-3{ top:30%; left:70%; }
@@ -518,7 +545,8 @@
 
 <section class="trusted-strip">
   <div class="wrap" style="max-width:none; padding:0;">
-    <span class="trusted-label">Trusted by masajid, organizations &amp; businesses</span>
+    <span class="trusted-label">Trusted Across Our Community</span>
+    <p class="trusted-subhead">Built alongside the organizations that bring our communities together.</p>
     <div class="trusted-scroll">
       <div class="trusted-logos">
         <span class="trusted-logo-card"><img src="logo-dhic.png" alt="Darul Hikmah Islamic Center"></span>
@@ -567,11 +595,14 @@
 <section class="section" id="pillars">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">One app, endless possibilities</span>
-      <h2>Everything the community needs, in one place</h2>
-      <p>Not another prayer app. Not another event board. Minar360 connects the pieces that already make up your local Muslim community.</p>
+      <span class="eyebrow">One App, Endless Possibilities</span>
+      <h2>One app. Your whole community.</h2>
+      <p><strong>Less searching. More connecting.</strong> Your Muslim community is already active — but finding it can mean checking Instagram, WhatsApp groups, websites, event platforms, and word of mouth. Minar360 brings it together.</p>
     </div>
-    <div class="pillars pillars-8">
+    <div class="section-head" style="margin-bottom:24px;">
+      <span class="eyebrow">Everything the Community Needs</span>
+    </div>
+    <div class="pillars pillars-5">
       <div class="pillar-card">
         <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v2.3" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="5.4" r="0.9" fill="#18D6D0"/><path d="M8.5 12v-1.5C8.5 8.6 10 7 12 7s3.5 1.6 3.5 3.5V12" stroke="#1B3955" stroke-width="1.5" stroke-linejoin="round"/><path d="M4 21v-6c0-2.2 1.8-4 4-4h8c2.2 0 4 1.8 4 4v6" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 21h16" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round"/><path d="M9.2 21v-4a2.8 2.8 0 0 1 5.6 0v4" stroke="#1B3955" stroke-width="1.5"/></svg></div>
         <h3>Masjids</h3>
@@ -597,21 +628,9 @@
         <h3>Donations</h3>
         <p>Give with a tap — no forms, no friction.</p>
       </div>
-      <div class="pillar-card">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5.5c-2-1.4-4.7-2-7.5-1.5v13.5c2.8-.5 5.5.1 7.5 1.5" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5.5c2-1.4 4.7-2 7.5-1.5v13.5c-2.8-.5-5.5.1-7.5 1.5" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5.5v13.5" stroke="#1B3955" stroke-width="1.5"/><circle cx="12" cy="4" r="0.9" fill="#18D6D0"/></svg></div>
-        <h3>Quran</h3>
-        <p>Read, listen, and reflect — right in your pocket.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="8.5" cy="8" r="2.5" stroke="#1B3955" stroke-width="1.5"/><circle cx="16" cy="8.5" r="2" stroke="#1B3955" stroke-width="1.5"/><path d="M3.5 19.5c.5-3 2.4-5 5-5s4.5 2 5 5" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round"/><path d="M14 15c2.2.2 3.8 1.9 4.3 4.5" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.5" cy="8" r="0.6" fill="#18D6D0"/></svg></div>
-        <h3>Community</h3>
-        <p>One place for your groups, chats, and updates.</p>
-      </div>
-      <div class="pillar-card">
-        <div class="icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#1B3955" stroke-width="1.5"/><path d="M12 8v8M8 12h8" stroke="#1B3955" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="1.4" fill="#18D6D0"/></svg></div>
-        <h3>And more</h3>
-        <p>New features added regularly to serve you.</p>
-      </div>
+    </div>
+    <div style="text-align:center; margin-top:32px;">
+      <a href="mailto:areeb.quasem@qubalink.com?subject=Minar360%20Demo%20Request" class="btn-primary" style="display:inline-block;">Request a demo</a>
     </div>
   </div>
 </section>
@@ -651,67 +670,34 @@
   </div>
 </section>
 
-<section class="section" id="local-discovery">
+<section class="section timeline-section">
   <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Explore your community</span>
-      <h2>Events tonight. Jumu'ah nearby. A new halal restaurant. A community you've been looking for.</h2>
+    <div class="section-head" style="text-align:center; margin:0 auto 48px;">
+      <span class="eyebrow">Minar360 in Action</span>
+      <h2>Your community, in your pocket.</h2>
+      <p>From Fajr to Friday night — one app that moves with your day.</p>
     </div>
-    <div class="discovery-layout">
-      <div class="discovery-panel">
-        <div class="discovery-search"><input type="text" placeholder="Search for events, masjids, businesses..." aria-label="Search"></div>
-        <div class="discovery-tabs">
-          <button class="filter-chip active">Events</button>
-          <button class="filter-chip">Masjids</button>
-          <button class="filter-chip">Businesses</button>
-          <button class="filter-chip">Restaurants</button>
-        </div>
-        <div class="discovery-list">
-          <div class="discovery-item"><strong>Community Iftar Dinner</strong><span>Dar Al-Hijrah Islamic Center · Today, 7:00 PM</span></div>
-          <div class="discovery-item"><strong>Friday Khutbah</strong><span>Masjid Al-Noor · Tomorrow, 1:30 PM</span></div>
-          <div class="discovery-item"><strong>Laymoon Cafe</strong><span>Halal Cafe · 0.4 mi</span></div>
-        </div>
-        <p class="discovery-caption">Real events, real masajid, real businesses — near you.</p>
+    <div class="timeline-grid">
+      <div class="timeline-item">
+        <div class="timeline-phone"><img src="screenshot-homepage.png" alt="Prayer and iqamah times in the Minar360 app"></div>
+        <span class="timeline-label">Morning</span>
+        <p>Check prayer and iqamah times.</p>
       </div>
-      <div class="discovery-map-placeholder">
-        <span class="dm-pin dm-pin-1">🕌</span>
-        <span class="dm-pin dm-pin-2">🍽️</span>
-        <span class="dm-pin dm-pin-3">🛍️</span>
-        <span class="dm-pin dm-pin-4">🤝</span>
-        <span class="dm-pin dm-pin-5" style="color:var(--rose);">📍</span>
-        <div class="dm-info-card">
-          <strong>Dar Al-Hijrah Islamic Center</strong>
-          <span>Falls Church, VA</span>
-          <div class="dm-info-buttons">
-            <button type="button">View Profile</button>
-            <button type="button" class="filled">Get Directions</button>
-          </div>
-        </div>
+      <div class="timeline-item">
+        <div class="timeline-phone"><img src="screenshot-business.png" alt="Finding a halal business in the Minar360 app"></div>
+        <span class="timeline-label">Afternoon</span>
+        <p>Find a halal spot nearby.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Real app experience</span>
-      <h2>Prayer &amp; iqamah times, built in</h2>
-      <p>No separate app needed — masjids publish their own prayer and iqamah times, right on their profile.</p>
-    </div>
-    <div class="prayer-widget">
-      <div class="prayer-next">
-        <span class="eyebrow">Next prayer</span>
-        <h3 id="nextPrayerName">—</h3>
-        <p id="prayerCountdown">calculating…</p>
+      <div class="timeline-item">
+        <div class="timeline-phone"><img src="screenshot-conversations.png" alt="Community group in the Minar360 app"></div>
+        <span class="timeline-label">Evening</span>
+        <p>See what's happening in your community.</p>
       </div>
-      <ul class="prayer-list" id="prayerList">
-        <li data-name="Fajr" data-time="05:12"><span class="p-name">Fajr</span><span>5:12 AM</span></li>
-        <li data-name="Dhuhr" data-time="13:02"><span class="p-name">Dhuhr</span><span>1:02 PM</span></li>
-        <li data-name="Asr" data-time="16:45"><span class="p-name">Asr</span><span>4:45 PM</span></li>
-        <li data-name="Maghrib" data-time="20:31"><span class="p-name">Maghrib</span><span>8:31 PM</span></li>
-        <li data-name="Isha" data-time="21:58"><span class="p-name">Isha</span><span>9:58 PM</span></li>
-      </ul>
+      <div class="timeline-item">
+        <div class="timeline-phone"><img src="screenshot-events.png" alt="Discovering events in the Minar360 app"></div>
+        <span class="timeline-label">Weekend</span>
+        <p>Discover an event you didn't know was happening.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -738,57 +724,58 @@
 
 <section class="section" id="growth-map">
   <div class="wrap">
-    <div class="map-header">
-      <div class="section-head" style="margin-bottom:0;">
+    <div class="growth-map-layout">
+      <div class="growth-map-side">
         <span class="eyebrow">Growing across the country</span>
         <h2>Building the network, city by city</h2>
         <p>Every mosque, nonprofit, business, halal spot, and community group that joins shows up here. Nothing's onboarded yet — this map fills in as founding partners join.</p>
-      </div>
-      <div class="map-legend">
-        <div class="legend-item"><div class="legend-dot dot-gold"></div><span>Organization onboarded</span></div>
-        <div class="legend-item"><div class="legend-dot dot-gray"></div><span>Coming soon</span></div>
-        <div class="legend-item"><div class="legend-glow-sample"></div><span>Pillar location</span></div>
-      </div>
-    </div>
-
-    <div class="map-layout">
-      <div class="map-wrap" id="mapWrap">
-        <svg id="usaMap" viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" class="usa-map">
-          <defs>
-            <radialGradient id="dotGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#FFE076" stop-opacity="1"/>
-              <stop offset="45%" stop-color="#FFD447" stop-opacity="0.7"/>
-              <stop offset="100%" stop-color="#FFD447" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-          <g id="statesGroup"></g>
-          <g id="pillarDots"></g>
-        </svg>
-        <div class="map-tooltip" id="mapTooltip"></div>
-      </div>
-      <div class="state-sidebar">
-        <div class="sidebar-search">
-          <input type="text" id="stateSearch" placeholder="🔍 Search states..." oninput="filterStates(this.value)">
+        <div class="map-legend">
+          <div class="legend-item"><div class="legend-dot dot-gold"></div><span>Organization onboarded</span></div>
+          <div class="legend-item"><div class="legend-dot dot-gray"></div><span>Coming soon</span></div>
+          <div class="legend-item"><div class="legend-glow-sample"></div><span>Pillar location</span></div>
         </div>
-        <div class="state-list" id="stateList"></div>
-      </div>
-    </div>
-
-    <div class="state-detail" id="stateDetail" style="display:none;">
-      <div class="state-detail-header">
-        <div>
-          <span class="state-detail-name" id="detailName"></span>
-          <span class="state-detail-status" id="detailStatus"></span>
+        <div class="map-stats map-stats-side">
+          <div class="map-stat"><span class="map-stat-num" id="statStates" style="color:var(--brass)">0</span><span class="map-stat-label">States active</span></div>
+          <div class="map-stat"><span class="map-stat-num" id="statOrgs" style="color:var(--brass)">0</span><span class="map-stat-label">Organizations onboarded</span></div>
+          <div class="map-stat"><span class="map-stat-num" style="color:var(--ink)">5</span><span class="map-stat-label">Community pillars</span></div>
         </div>
-        <button onclick="closeDetail()" class="detail-close">✕ Close</button>
       </div>
-      <div class="state-detail-body" id="detailBody"></div>
-    </div>
 
-    <div class="map-stats">
-      <div class="map-stat"><span class="map-stat-num" id="statStates" style="color:var(--brass)">0</span><span class="map-stat-label">States active</span></div>
-      <div class="map-stat"><span class="map-stat-num" id="statOrgs" style="color:var(--brass)">0</span><span class="map-stat-label">Organizations onboarded</span></div>
-      <div class="map-stat"><span class="map-stat-num" style="color:var(--ink)">5</span><span class="map-stat-label">Community pillars</span></div>
+      <div class="growth-map-main">
+        <div class="map-layout">
+          <div class="map-wrap" id="mapWrap">
+            <svg id="usaMap" viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg" class="usa-map">
+              <defs>
+                <radialGradient id="dotGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#FFE076" stop-opacity="1"/>
+                  <stop offset="45%" stop-color="#FFD447" stop-opacity="0.7"/>
+                  <stop offset="100%" stop-color="#FFD447" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <g id="statesGroup"></g>
+              <g id="pillarDots"></g>
+            </svg>
+            <div class="map-tooltip" id="mapTooltip"></div>
+          </div>
+          <div class="state-sidebar">
+            <div class="sidebar-search">
+              <input type="text" id="stateSearch" placeholder="🔍 Search states..." oninput="filterStates(this.value)">
+            </div>
+            <div class="state-list" id="stateList"></div>
+          </div>
+        </div>
+
+        <div class="state-detail" id="stateDetail" style="display:none;">
+          <div class="state-detail-header">
+            <div>
+              <span class="state-detail-name" id="detailName"></span>
+              <span class="state-detail-status" id="detailStatus"></span>
+            </div>
+            <button onclick="closeDetail()" class="detail-close">✕ Close</button>
+          </div>
+          <div class="state-detail-body" id="detailBody"></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -847,14 +834,15 @@
 
 <section class="section" id="testimonials">
   <div class="wrap">
-    <div class="section-head" style="text-align:center; margin:0 auto 36px;">
-      <span class="eyebrow">Loved by our community</span>
-      <h2>What people are saying</h2>
+    <div class="section-head" style="text-align:center; margin:0 auto 12px;">
+      <span class="eyebrow">Community Testimonials</span>
+      <h2>Built for the community. Loved by the people in it.</h2>
     </div>
-    <div class="testimonial-grid testimonial-grid-2">
+    <p style="text-align:center; color:var(--text-soft); margin-bottom:36px;">One community. One place to stay connected.</p>
+    <div class="testimonial-grid">
       <div class="testimonial-card">
         <span class="quote-mark">"</span>
-        <p>Minar360 gives our community one place to stay connected with what's happening at the masjid and beyond. It makes it easier for people to discover events, receive updates, and stay engaged with the organizations serving them.</p>
+        <p>Minar360 makes it easier for our community to stay connected — not just to one organization, but to everything happening around them. It brings the community closer in a way that feels simple and natural.</p>
         <div class="testimonial-footer">
           <span class="testimonial-avatar">👤</span>
           <div><div class="testimonial-author">Omar Khan, MCC</div></div>
@@ -862,10 +850,18 @@
       </div>
       <div class="testimonial-card">
         <span class="quote-mark">"</span>
-        <p>Our Muslim communities are incredibly active, but information is often scattered across different platforms and group chats. Minar360 brings those connections together — helping people discover organizations, events, businesses, and opportunities to engage with their community.</p>
+        <p>Our community has never lacked things to do or organizations to support. The challenge has always been finding them. Minar360 finally brings that discovery into one place.</p>
         <div class="testimonial-footer">
           <span class="testimonial-avatar">👤</span>
           <div><div class="testimonial-author">Areeb Quasem</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <span class="quote-mark">"</span>
+        <p>I used to hear about events after they happened or find out through someone else. With Minar360, I can actually see what's happening around me and stay connected to the communities I care about.</p>
+        <div class="testimonial-footer">
+          <span class="testimonial-avatar">👤</span>
+          <div><div class="testimonial-author">Hafiz</div></div>
         </div>
       </div>
     </div>
