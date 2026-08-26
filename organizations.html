@@ -111,6 +111,12 @@
   .feature-card .icon{ font-size:1.6rem; margin-bottom:14px; }
   .feature-card h3{ font-size:1.05rem; margin-bottom:8px; color:var(--ink); }
   .feature-card p{ font-size:0.9rem; color:var(--text-soft); }
+  .feature-category{ margin-bottom:32px; }
+  .feature-category:last-child{ margin-bottom:0; }
+  .feature-category-title{ font-family:'Montserrat',monospace; font-size:0.76rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--teal); margin-bottom:14px; }
+  .feature-grid-1{ grid-template-columns:1fr; }
+  .feature-grid-2{ grid-template-columns:repeat(2,1fr); }
+  @media (max-width:600px){ .feature-grid-2{ grid-template-columns:1fr; } }
 
   /* COMPARISON */
   .comparison{ background:var(--ink); color:var(--sand); }
@@ -232,36 +238,64 @@
       <h2>Built for how organizations actually run</h2>
       <p>Every tool your organization needs, under one login your team already shares.</p>
     </div>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="icon">💝</div>
-        <h3>Donations &amp; fundraising</h3>
-        <p>Accept donations directly through your profile, with standard secure payment processing — no separate fundraising tool needed.</p>
+
+    <div class="feature-category">
+      <h3 class="feature-category-title">Organization Management Tools</h3>
+      <div class="feature-grid feature-grid-1">
+        <div class="feature-card">
+          <div class="icon">🔑</div>
+          <h3>Multi-staff access</h3>
+          <p>Invite your team with their own logins, so more than one person can manage events, donations, and announcements together.</p>
+        </div>
       </div>
-      <div class="feature-card">
-        <div class="icon">📅</div>
-        <h3>Events &amp; ticketing</h3>
-        <p>Publish free or ticketed events with RSVP tracking, so your community can find and join what's happening without a separate link every time.</p>
+    </div>
+
+    <div class="feature-category">
+      <h3 class="feature-category-title">Community Engagement Tools</h3>
+      <div class="feature-grid feature-grid-2">
+        <div class="feature-card">
+          <div class="icon">👥</div>
+          <h3>Member &amp; group management</h3>
+          <p>Organize your congregation or membership into groups, without a separate spreadsheet or group chat to maintain.</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon">📍</div>
+          <h3>Get discovered</h3>
+          <p>Show up automatically when community members search or browse — instead of relying only on word of mouth.</p>
+        </div>
       </div>
-      <div class="feature-card">
-        <div class="icon">🕌</div>
-        <h3>Prayer times &amp; announcements</h3>
-        <p>Publish prayer times and announcements once — they show up on your profile and in your followers' feed automatically.</p>
+    </div>
+
+    <div class="feature-category">
+      <h3 class="feature-category-title">Events &amp; Ticketing</h3>
+      <div class="feature-grid feature-grid-1">
+        <div class="feature-card">
+          <div class="icon">📅</div>
+          <h3>Events &amp; ticketing</h3>
+          <p>Publish free or ticketed events with RSVP tracking, so your community can find and join what's happening without a separate link every time.</p>
+        </div>
       </div>
-      <div class="feature-card">
-        <div class="icon">👥</div>
-        <h3>Member &amp; group management</h3>
-        <p>Organize your congregation or membership into groups, without a separate spreadsheet or group chat to maintain.</p>
+    </div>
+
+    <div class="feature-category">
+      <h3 class="feature-category-title">Donations &amp; Fundraising</h3>
+      <div class="feature-grid feature-grid-1">
+        <div class="feature-card">
+          <div class="icon">💝</div>
+          <h3>Donations &amp; fundraising</h3>
+          <p>Accept donations directly through your profile, with standard secure payment processing — no separate fundraising tool needed.</p>
+        </div>
       </div>
-      <div class="feature-card">
-        <div class="icon">🔑</div>
-        <h3>Multi-staff access</h3>
-        <p>Invite your team with their own logins, so more than one person can manage events, donations, and announcements together.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">📍</div>
-        <h3>Get discovered</h3>
-        <p>Show up automatically when community members search or browse — instead of relying only on word of mouth.</p>
+    </div>
+
+    <div class="feature-category">
+      <h3 class="feature-category-title">Prayer Times &amp; Iqamah</h3>
+      <div class="feature-grid feature-grid-1">
+        <div class="feature-card">
+          <div class="icon">🕌</div>
+          <h3>Prayer times &amp; announcements</h3>
+          <p>Publish prayer times and announcements once — they show up on your profile and in your followers' feed automatically.</p>
+        </div>
       </div>
     </div>
   </div>
