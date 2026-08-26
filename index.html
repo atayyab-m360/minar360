@@ -280,9 +280,8 @@
   /* ---------- PARTNER LOGOS ---------- */
   .partner-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
   @media (max-width:760px){ .partner-grid{ grid-template-columns:repeat(2,1fr); } }
-  .partner-slot{ border:1.5px dashed var(--line); border-radius:14px; padding:28px 16px; text-align:center; color:var(--text-soft); background:var(--sand-card); }
-  .partner-slot span{ font-size:1.6rem; display:block; margin-bottom:10px; }
-  .partner-slot p{ font-size:0.85rem; font-weight:500; }
+  .partner-slot{ border:1.5px dashed var(--line); border-radius:14px; padding:20px 16px; text-align:center; color:var(--text-soft); background:var(--sand-card); display:flex; align-items:center; justify-content:center; min-height:64px; }
+  .partner-slot p{ font-size:0.9rem; font-weight:600; }
   .partner-slot.open{ border-color:var(--brass); color:var(--brass); }
   /* ---------- GROWTH MAP ---------- */
   .growth-map-layout{ display:grid; grid-template-columns:0.9fr 1.4fr; gap:40px; align-items:start; }
@@ -342,11 +341,14 @@
   .trusted-label{ display:block; text-align:center; font-family:'Montserrat',sans-serif; font-size:0.72rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-soft); margin-bottom:8px; }
   .trusted-subhead{ text-align:center; color:var(--text-soft); font-size:0.92rem; margin-bottom:18px; }
   .trusted-scroll{ display:flex; overflow:hidden; width:100%; -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-  .trusted-logos{ display:flex; gap:14px; flex-wrap:nowrap; flex-shrink:0; width:max-content; animation:trusted-scroll 28s linear infinite; }
-  @keyframes trusted-scroll{ from{ transform:translateX(0); } to{ transform:translateX(-100%); } }
+  .trusted-logos{ display:flex; gap:18px; flex-wrap:nowrap; flex-shrink:0; width:max-content; }
+  .trusted-logos.row-left{ animation:trusted-scroll-left 70s linear infinite; }
+  .trusted-logos.row-right{ animation:trusted-scroll-right 65s linear infinite; }
+  @keyframes trusted-scroll-left{ from{ transform:translateX(0); } to{ transform:translateX(-100%); } }
+  @keyframes trusted-scroll-right{ from{ transform:translateX(-100%); } to{ transform:translateX(0); } }
   .trusted-scroll:hover .trusted-logos{ animation-play-state:paused; }
-  .trusted-logo-card{ display:flex; align-items:center; justify-content:center; background:var(--sand-card); border:1px solid var(--line); border-radius:10px; padding:10px 20px; height:56px; flex-shrink:0; }
-  .trusted-logo-card img{ height:32px; width:auto; max-width:110px; object-fit:contain; display:block; }
+  .trusted-logo-card{ display:flex; align-items:center; justify-content:center; background:var(--sand-card); border:1px solid var(--line); border-radius:14px; padding:15px 30px; height:84px; flex-shrink:0; }
+  .trusted-logo-card img{ height:48px; width:auto; max-width:165px; object-fit:contain; display:block; }
 
   /* ---------- 8-PILLAR GRID ---------- */
   .pillars-8{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
@@ -363,7 +365,8 @@
   @media (max-width:900px){ .audience-grid{ grid-template-columns:repeat(2,1fr); } .audience-grid-3{ grid-template-columns:repeat(2,1fr); } }
   @media (max-width:560px){ .audience-grid{ grid-template-columns:1fr; } .audience-grid-3{ grid-template-columns:1fr; } }
   .audience-card{ background:var(--sand-card); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
-  .audience-thumb{ height:120px; display:flex; align-items:center; justify-content:center; font-size:2.4rem; }
+  .audience-thumb{ height:120px; display:flex; align-items:center; justify-content:center; font-size:2.4rem; padding:16px; text-align:center; }
+  .audience-thumb h3{ color:#fff; font-size:1.15rem; font-weight:700; line-height:1.25; text-shadow:0 1px 8px rgba(0,0,0,0.2); }
   .audience-thumb.community{ background:linear-gradient(135deg, var(--teal), var(--ink)); }
   .audience-thumb.masjids{ background:linear-gradient(135deg, var(--ink), var(--ink-soft)); }
   .audience-thumb.orgs{ background:linear-gradient(135deg, var(--teal), var(--ink)); }
@@ -552,7 +555,7 @@
     <span class="trusted-label">Trusted Across Our Community</span>
     <p class="trusted-subhead">Built alongside the organizations that bring our communities together.</p>
     <div class="trusted-scroll">
-      <div class="trusted-logos">
+      <div class="trusted-logos row-left">
         <span class="trusted-logo-card"><img src="logo-dhic.png" alt="Darul Hikmah Islamic Center"></span>
         <span class="trusted-logo-card"><img src="logo-mcc.png" alt="Muslim Community Center"></span>
         <span class="trusted-logo-card"><img src="logo-islamic-education-society-md.png" alt="Islamic Education Society of Maryland"></span>
@@ -562,17 +565,6 @@
         <span class="trusted-logo-card"><img src="logo-zaree-kids.png" alt="Zaree Kids"></span>
         <span class="trusted-logo-card"><img src="logo-mih-design.png" alt="MIH Design"></span>
         <span class="trusted-logo-card"><img src="logo-loudoun-driving-school.png" alt="Loudoun Driving School"></span>
-        <span class="trusted-logo-card"><img src="logo-pieces-of-purpose.png" alt="Pieces of Purpose Life Coaching"></span>
-        <span class="trusted-logo-card"><img src="logo-property-charm-pros.png" alt="Property Charm Pros"></span>
-        <span class="trusted-logo-card"><img src="logo-bennu-travel.png" alt="Bennu Travel"></span>
-        <span class="trusted-logo-card"><img src="logo-zahra-sami.png" alt="Zahra Sami Makeup Artist"></span>
-        <span class="trusted-logo-card"><img src="logo-1world-fashion.png" alt="1World Fashion"></span>
-        <span class="trusted-logo-card"><img src="logo-buzzaar.png" alt="Buzzaar"></span>
-        <span class="trusted-logo-card"><img src="logo-tawes.png" alt="Tawes"></span>
-        <span class="trusted-logo-card"><img src="logo-million-medias.png" alt="Million Medias"></span>
-        <span class="trusted-logo-card"><img src="logo-kasperia.png" alt="Kasperia"></span>
-      </div>
-      <div class="trusted-logos" aria-hidden="true">
         <span class="trusted-logo-card"><img src="logo-dhic.png" alt=""></span>
         <span class="trusted-logo-card"><img src="logo-mcc.png" alt=""></span>
         <span class="trusted-logo-card"><img src="logo-islamic-education-society-md.png" alt=""></span>
@@ -582,6 +574,19 @@
         <span class="trusted-logo-card"><img src="logo-zaree-kids.png" alt=""></span>
         <span class="trusted-logo-card"><img src="logo-mih-design.png" alt=""></span>
         <span class="trusted-logo-card"><img src="logo-loudoun-driving-school.png" alt=""></span>
+      </div>
+    </div>
+    <div class="trusted-scroll" style="margin-top:16px;">
+      <div class="trusted-logos row-right">
+        <span class="trusted-logo-card"><img src="logo-pieces-of-purpose.png" alt="Pieces of Purpose Life Coaching"></span>
+        <span class="trusted-logo-card"><img src="logo-property-charm-pros.png" alt="Property Charm Pros"></span>
+        <span class="trusted-logo-card"><img src="logo-bennu-travel.png" alt="Bennu Travel"></span>
+        <span class="trusted-logo-card"><img src="logo-zahra-sami.png" alt="Zahra Sami Makeup Artist"></span>
+        <span class="trusted-logo-card"><img src="logo-1world-fashion.png" alt="1World Fashion"></span>
+        <span class="trusted-logo-card"><img src="logo-buzzaar.png" alt="Buzzaar"></span>
+        <span class="trusted-logo-card"><img src="logo-tawes.png" alt="Tawes"></span>
+        <span class="trusted-logo-card"><img src="logo-million-medias.png" alt="Million Medias"></span>
+        <span class="trusted-logo-card"><img src="logo-kasperia.png" alt="Kasperia"></span>
         <span class="trusted-logo-card"><img src="logo-pieces-of-purpose.png" alt=""></span>
         <span class="trusted-logo-card"><img src="logo-property-charm-pros.png" alt=""></span>
         <span class="trusted-logo-card"><img src="logo-bennu-travel.png" alt=""></span>
@@ -647,25 +652,22 @@
     </div>
     <div class="audience-grid audience-grid-3">
       <div class="audience-card">
-        <div class="audience-thumb community"></div>
+        <div class="audience-thumb community"><h3>Community Members</h3></div>
         <div class="audience-body">
-          <h3>Community Members</h3>
           <p>Stay connected, informed, and inspired.</p>
           <a href="explore.html">Learn more →</a>
         </div>
       </div>
       <div class="audience-card">
-        <div class="audience-thumb masjids"></div>
+        <div class="audience-thumb masjids"><h3>Masjids &amp; Organizations</h3></div>
         <div class="audience-body">
-          <h3>Masjids &amp; Organizations</h3>
           <p>Engage your community, streamline communications, and amplify your impact.</p>
           <a href="organizations.html">Learn more →</a>
         </div>
       </div>
       <div class="audience-card">
-        <div class="audience-thumb business"></div>
+        <div class="audience-thumb business"><h3>Muslim Businesses</h3></div>
         <div class="audience-body">
-          <h3>Muslim Businesses</h3>
           <p>Grow your visibility and connect with the right audience.</p>
           <a href="organizations.html">Learn more →</a>
         </div>
@@ -714,10 +716,10 @@
       <p>Minar360 is opening city by city. Here's who's building the founding network — with more joining every week.</p>
     </div>
     <div class="partner-grid">
-      <div class="partner-slot"><span>🕌</span><p>Mosque partner</p></div>
-      <div class="partner-slot"><span>🤝</span><p>Nonprofit partner</p></div>
-      <div class="partner-slot"><span>🛍️</span><p>Business partner</p></div>
-      <div class="partner-slot open"><span>+</span><p>Your organization here</p></div>
+      <div class="partner-slot"><p>Mosque partner</p></div>
+      <div class="partner-slot"><p>Nonprofit partner</p></div>
+      <div class="partner-slot"><p>Business partner</p></div>
+      <div class="partner-slot open"><p>Your organization here</p></div>
     </div>
     <form class="notify-form" style="margin-top:28px;">
       <input type="email" placeholder="you@organization.org" aria-label="Email address">
