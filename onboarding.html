@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onboarding — Minar360</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B3955; --ink-soft:#24476A; --teal:#18D6D0; --brass:#FFD447; --brass-light:#FFE076;
+    --sand:#F9FBFC; --sand-card:#FFFFFF; --line:#E9EDF2; --text-dark:#1B3955; --text-soft:#6B7280;
+    --gold-dark:#B78200;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;} }
+  body{ font-family:'Montserrat', system-ui, sans-serif; color:var(--text-dark); background:var(--sand); line-height:1.55; }
+  h1,h2,h3,.wordmark{ font-family:'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing:-0.02em; }
+  .eyebrow{ font-family:'Montserrat', monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold-dark); }
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; max-width:100%; }
+  button{ font-family:'Montserrat', sans-serif; cursor:pointer; border:none; }
+  :focus-visible{ outline:3px solid var(--brass); outline-offset:3px; }
+  .wrap{ max-width:900px; margin:0 auto; padding:0 32px; }
+  @media (max-width:640px){ .wrap{ padding:0 20px; } }
+
+  nav{ position:sticky; top:0; z-index:50; background:rgba(27,57,85,0.94); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.08); }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:18px 32px; max-width:1180px; margin:0 auto; }
+  .wordmark{ color:var(--sand); font-size:1.25rem; font-weight:700; display:flex; align-items:center; gap:8px; }
+  .logo-mark{ height:26px; width:auto; display:block; background:var(--sand); border-radius:7px; padding:4px; box-sizing:content-box; }
+  .nav-links{ display:flex; gap:32px; align-items:center; }
+  .nav-links a{ color:#CFD8D3; font-size:0.92rem; font-weight:500; transition:color 0.15s; }
+  .nav-links a:hover, .nav-links a.current{ color:var(--sand); }
+  .nav-links a.current{ color:var(--brass-light); }
+  .nav-dropdown{ position:relative; }
+  .nav-dropdown-trigger{ background:none; color:#CFD8D3; font-size:0.92rem; font-weight:500; display:flex; align-items:center; gap:4px; font-family:'Montserrat', sans-serif; transition:color 0.15s; }
+  .nav-dropdown-trigger:hover, .nav-dropdown.open .nav-dropdown-trigger{ color:var(--brass-light); }
+  .nav-dropdown-trigger .caret{ font-size:0.7rem; transition:transform 0.15s; }
+  .nav-dropdown.open .nav-dropdown-trigger .caret{ transform:rotate(180deg); }
+  .nav-dropdown-menu{ position:absolute; top:calc(100% + 14px); left:50%; transform:translateX(-50%); background:var(--ink-soft); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:8px; min-width:150px; box-shadow:0 20px 40px -16px rgba(0,0,0,0.55); opacity:0; visibility:hidden; transition:opacity 0.15s, visibility 0.15s; z-index:60; }
+  .nav-dropdown.open .nav-dropdown-menu{ opacity:1; visibility:visible; }
+  .nav-dropdown-menu a{ display:block; padding:9px 12px; border-radius:7px; font-size:0.88rem; color:#CFD8D3; }
+  .nav-dropdown-menu a:hover{ background:rgba(255,255,255,0.08); color:var(--sand); }
+  .nav-cta{ background:var(--brass); color:var(--ink); padding:10px 20px; border-radius:100px; font-size:0.88rem; font-weight:600; transition:background 0.15s; }
+  .nav-cta:hover{ background:var(--brass-light); }
+  .nav-hamburger{ display:none; flex-direction:column; justify-content:center; gap:5px; background:none; padding:8px; width:36px; height:36px; }
+  .nav-hamburger span{ display:block; width:20px; height:2px; background:var(--sand); border-radius:2px; transition:transform 0.2s ease, opacity 0.2s ease; }
+  .nav-hamburger.active span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-hamburger.active span:nth-child(2){ opacity:0; }
+  .nav-hamburger.active span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .mobile-menu{ display:none; flex-direction:column; background:var(--ink-soft); border-top:1px solid rgba(255,255,255,0.1); padding:8px 24px 20px; }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ color:#CFD8D3; font-size:0.98rem; font-weight:500; padding:14px 2px; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .mobile-menu a.mobile-cta{ margin-top:14px; background:var(--brass); color:var(--ink); text-align:center; border-radius:100px; padding:13px; font-weight:600; border-bottom:none; }
+  @media (max-width:860px){ .nav-links{ display:none; } .nav-hamburger{ display:flex; } }
+  @media (min-width:861px){ .mobile-menu{ display:none !important; } }
+
+  .page-hero{ background:linear-gradient(120deg, var(--ink) 0%, var(--ink-soft) 100%); color:var(--sand); padding:72px 0 44px; text-align:center; }
+  .page-hero h1{ font-size:clamp(2rem,4vw,2.8rem); margin:14px 0 12px; }
+  .page-hero p{ color:#C9D3CE; max-width:560px; margin:0 auto; }
+  .flow-strip{ display:flex; justify-content:center; align-items:center; gap:10px; flex-wrap:wrap; margin-top:28px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:0.95rem; }
+  .flow-strip span.step-word{ color:var(--brass-light); }
+  .flow-strip span.arrow{ color:#7A8CA0; font-weight:400; }
+
+  main.wrap{ padding:56px 32px 64px; }
+  .onb-step{ display:grid; grid-template-columns:56px 1fr; gap:20px; padding-bottom:40px; margin-bottom:40px; border-bottom:1px solid var(--line); }
+  .onb-step:last-of-type{ border-bottom:none; }
+  .onb-num{ width:44px; height:44px; border-radius:50%; background:var(--ink); color:var(--brass-light); font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:1.05rem; display:flex; align-items:center; justify-content:center; }
+  .onb-step h3{ font-size:1.15rem; margin-bottom:8px; color:var(--ink); }
+  .onb-step p{ font-size:0.95rem; color:var(--text-soft); }
+
+  .checklist-band{ background:var(--sand-card); border:1px solid var(--line); border-radius:16px; padding:32px 28px; margin-top:8px; }
+  .checklist-band h3{ font-size:1.1rem; color:var(--ink); margin-bottom:16px; }
+  .checklist-band label{ display:flex; align-items:flex-start; gap:10px; font-size:0.92rem; color:var(--text-dark); margin-bottom:12px; cursor:pointer; }
+  .checklist-band input{ margin-top:3px; accent-color:var(--teal); width:16px; height:16px; flex-shrink:0; }
+
+  .support-band{ background:var(--ink); color:var(--sand); border-radius:20px; padding:44px 36px; text-align:center; margin-top:56px; }
+  .support-band h2{ font-size:1.4rem; margin-bottom:12px; }
+  .support-band p{ color:#C9D3CE; margin-bottom:22px; }
+  .support-band a{ display:inline-block; background:var(--brass); color:var(--ink); padding:12px 26px; border-radius:100px; font-weight:600; font-size:0.9rem; }
+
+  footer{ background:var(--ink); color:#B9C3BE; padding:56px 0 28px; }
+  .footer-grid{ display:grid; grid-template-columns:1.1fr repeat(3,0.8fr) 1.2fr; gap:28px; margin-bottom:40px; max-width:1180px; margin-left:auto; margin-right:auto; padding:0 32px; }
+  @media (max-width:760px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+  .footer-grid h4{ color:var(--sand); font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px; font-family:'Montserrat',monospace; font-weight:500; }
+  .footer-grid a{ display:block; font-size:0.88rem; margin-bottom:10px; color:#AEB9B3; transition:color 0.15s; }
+  .footer-grid a:hover{ color:var(--sand); }
+  .footer-bottom{ border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:0.82rem; color:#8B9691; max-width:1180px; margin:0 auto; padding-left:32px; padding-right:32px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="wordmark"><img src="minar360-logo.png" alt="Minar360" class="logo-mark">minar360</a>
+    <div class="nav-links">
+      <a href="explore.html">Explore</a>
+      <a href="organizations.html">For Organizations</a>
+      <a href="onboarding.html" class="current">Onboarding</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-trigger">Resources <span class="caret">&#9662;</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="faq.html">FAQ</a>
+          <a href="articles.html">Articles</a>
+          <a href="tutorials.html">Tutorials</a>
+  <a href="pricing.html">Pricing</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+      </div>
+    </div>
+    <a href="organizations.html#signup" class="nav-cta">List your organization</a>
+    <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="explore.html">Explore</a>
+  <a href="organizations.html">For Organizations</a>
+  <a href="onboarding.html">Onboarding</a>
+  <a href="faq.html">FAQ</a>
+  <a href="articles.html">Articles</a>
+  <a href="tutorials.html">Tutorials</a>
+  <a href="organizations.html#signup" class="mobile-cta">List your organization</a>
+</div>
+
+<header class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">For organizations</span>
+    <h1>From download to live, step by step</h1>
+    <p>You've decided to bring your organization to Minar360 — here's exactly how to get your profile live.</p>
+    <div class="flow-strip">
+      <span class="step-word">Download</span><span class="arrow">→</span>
+      <span class="step-word">Create</span><span class="arrow">→</span>
+      <span class="step-word">Go Live</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="onb-step">
+    <div class="onb-num">1</div>
+    <div>
+      <h3>Download Minar360</h3>
+      <p>Get the app from the App Store on your phone or tablet. (Android via Google Play is on the way.)</p>
+    </div>
+  </div>
+
+  <div class="onb-step">
+    <div class="onb-num">2</div>
+    <div>
+      <h3>Create an account</h3>
+      <p>Sign up with your email, then choose "Organization" as your account type.</p>
+    </div>
+  </div>
+
+  <div class="onb-step">
+    <div class="onb-num">3</div>
+    <div>
+      <h3>Create your organization profile</h3>
+      <p>Add your organization's name, category (masjid, nonprofit, or business), address, and contact details.</p>
+    </div>
+  </div>
+
+  <div class="onb-step">
+    <div class="onb-num">4</div>
+    <div>
+      <h3>Complete your profile</h3>
+      <p>Add a logo, a short description, and your hours — this is what your community sees first.</p>
+    </div>
+  </div>
+
+  <div class="onb-step">
+    <div class="onb-num">5</div>
+    <div>
+      <h3>Add prayer &amp; iqamah times</h3>
+      <p>Masjids can publish daily prayer and iqamah times directly to their profile, visible to anyone who follows you.</p>
+    </div>
+  </div>
+
+  <div class="onb-step">
+    <div class="onb-num">6</div>
+    <div>
+      <h3>Create your first announcement</h3>
+      <p>Share news, updates, or reminders with your followers — it lands right in their feed.</p>
+    </div>
+  </div>
+
+  <div class="onb-step">
+    <div class="onb-num">7</div>
+    <div>
+      <h3>Create your first event</h3>
+      <p>Add a date, time, and location. Choose whether it's free or ticketed, and publish.</p>
+    </div>
+  </div>
+
+  <div class="onb-step">
+    <div class="onb-num">8</div>
+    <div>
+      <h3>Set up donations</h3>
+      <p>Connect a secure payment processor so your organization can start accepting donations — funds go directly to you, Minar360 never holds them.</p>
+    </div>
+  </div>
+
+  <div class="onb-step">
+    <div class="onb-num">9</div>
+    <div>
+      <h3>Invite your community to follow</h3>
+      <p>Share your Minar360 profile link with your community so your events and updates start reaching them.</p>
+    </div>
+  </div>
+
+  <div class="checklist-band">
+    <h3>Profile launch checklist</h3>
+    <label><input type="checkbox"> Profile photo and description added</label>
+    <label><input type="checkbox"> Prayer/iqamah times published (masjids)</label>
+    <label><input type="checkbox"> First announcement posted</label>
+    <label><input type="checkbox"> First event created</label>
+    <label><input type="checkbox"> Donations connected</label>
+    <label><input type="checkbox"> Community invited to follow</label>
+  </div>
+
+  <div class="support-band">
+    <h2>Need help getting set up?</h2>
+    <p>We're happy to walk through onboarding with you directly.</p>
+    <a href="mailto:areeb.quasem@qubalink.com?subject=Minar360%20Onboarding%20Help">Contact support</a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="wordmark" style="margin-bottom:12px; display:inline-flex;"><img src="minar360-logo.png" alt="Minar360" class="logo-mark">minar360</a>
+      <p style="font-size:0.85rem; color:#8B9691; margin-top:10px; max-width:220px;">The operating system for the local Muslim community.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <a href="explore.html">Five pillars</a>
+      <a href="explore.html">Events</a>
+      <a href="explore.html">Mosque directory</a>
+      <a href="explore.html">Halal businesses</a>
+    </div>
+    <div>
+      <h4>Organizations</h4>
+      <a href="organizations.html">Get listed</a>
+      <a href="onboarding.html">Onboarding</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="#">Reviews</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="articles.html">Articles</a>
+      <a href="faq.html">FAQ</a>
+      <a href="#">About</a>
+      <a href="mailto:areeb.quasem@qubalink.com">Contact</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+    <div>
+      <h4>Stay Connected</h4>
+      <p style="font-size:0.85rem; color:#AEB9B3; margin-bottom:12px;">Get the latest updates and community highlights straight to your inbox.</p>
+      <form class="footer-newsletter" style="display:flex; gap:6px;">
+        <input type="email" placeholder="Enter your email" aria-label="Email address" style="flex:1; padding:10px 12px; border-radius:8px; border:none; font-family:'Montserrat',sans-serif; font-size:0.85rem; min-width:0;">
+        <button type="submit" style="background:var(--teal); color:#fff; padding:10px 16px; border-radius:8px; font-weight:600; font-size:0.85rem; white-space:nowrap;">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Minar360. All rights reserved.</span>
+    <span><a href="privacy.html">Privacy Policy</a> · <a href="#">Terms of Service</a> · <a href="#">Community Guidelines</a></span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll(".nav-dropdown").forEach(dd => {
+    const trigger = dd.querySelector(".nav-dropdown-trigger");
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = dd.classList.contains("open");
+      document.querySelectorAll(".nav-dropdown.open").forEach(o => o.classList.remove("open"));
+      if (!isOpen) dd.classList.add("open");
+    });
+  });
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".nav-dropdown.open").forEach(o => o.classList.remove("open"));
+  });
+  const navHamburger = document.getElementById("navHamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (navHamburger && mobileMenu) {
+    navHamburger.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      navHamburger.classList.toggle("active", isOpen);
+      navHamburger.setAttribute("aria-expanded", isOpen);
+    });
+    mobileMenu.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        navHamburger.classList.remove("active");
+        navHamburger.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+</script>
+
+</body>
+</html>

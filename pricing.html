@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Minar360</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B3955; --ink-soft:#24476A; --teal:#18D6D0; --brass:#FFD447; --brass-light:#FFE076;
+    --sand:#F9FBFC; --sand-card:#FFFFFF; --line:#E9EDF2; --text-dark:#1B3955; --text-soft:#6B7280;
+    --gold-dark:#B78200;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;} }
+  body{ font-family:'Montserrat', system-ui, sans-serif; color:var(--text-dark); background:var(--sand); line-height:1.55; }
+  h1,h2,h3,.wordmark{ font-family:'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing:-0.02em; }
+  .eyebrow{ font-family:'Montserrat', monospace; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold-dark); }
+  a{ color:inherit; text-decoration:none; }
+  img{ display:block; max-width:100%; }
+  button{ font-family:'Montserrat', sans-serif; cursor:pointer; border:none; }
+  :focus-visible{ outline:3px solid var(--brass); outline-offset:3px; }
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 32px; }
+  @media (max-width:640px){ .wrap{ padding:0 20px; } }
+
+  nav{ position:sticky; top:0; z-index:50; background:rgba(27,57,85,0.94); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.08); }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:18px 32px; max-width:1180px; margin:0 auto; }
+  .wordmark{ color:var(--sand); font-size:1.25rem; font-weight:700; display:flex; align-items:center; gap:8px; }
+  .logo-mark{ height:26px; width:auto; display:block; background:var(--sand); border-radius:7px; padding:4px; box-sizing:content-box; }
+  .nav-links{ display:flex; gap:32px; align-items:center; }
+  .nav-links a{ color:#CFD8D3; font-size:0.92rem; font-weight:500; transition:color 0.15s; }
+  .nav-links a:hover, .nav-links a.current{ color:var(--sand); }
+  .nav-dropdown{ position:relative; }
+  .nav-dropdown-trigger{ background:none; color:#CFD8D3; font-size:0.92rem; font-weight:500; display:flex; align-items:center; gap:4px; font-family:'Montserrat', sans-serif; transition:color 0.15s; }
+  .nav-dropdown-trigger:hover, .nav-dropdown.open .nav-dropdown-trigger{ color:var(--brass-light); }
+  .nav-dropdown-trigger .caret{ font-size:0.7rem; transition:transform 0.15s; }
+  .nav-dropdown.open .nav-dropdown-trigger .caret{ transform:rotate(180deg); }
+  .nav-dropdown-menu{ position:absolute; top:calc(100% + 14px); left:50%; transform:translateX(-50%); background:var(--ink-soft); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:8px; min-width:150px; box-shadow:0 20px 40px -16px rgba(0,0,0,0.55); opacity:0; visibility:hidden; transition:opacity 0.15s, visibility 0.15s; z-index:60; }
+  .nav-dropdown.open .nav-dropdown-menu{ opacity:1; visibility:visible; }
+  .nav-dropdown-menu a{ display:block; padding:9px 12px; border-radius:7px; font-size:0.88rem; color:#CFD8D3; }
+  .nav-dropdown-menu a:hover{ background:rgba(255,255,255,0.08); color:var(--sand); }
+  .nav-cta{ background:var(--brass); color:var(--ink); padding:10px 20px; border-radius:100px; font-size:0.88rem; font-weight:600; transition:background 0.15s; }
+  .nav-cta:hover{ background:var(--brass-light); }
+  .nav-hamburger{ display:none; flex-direction:column; justify-content:center; gap:5px; background:none; padding:8px; width:36px; height:36px; }
+  .nav-hamburger span{ display:block; width:20px; height:2px; background:var(--sand); border-radius:2px; transition:transform 0.2s ease, opacity 0.2s ease; }
+  .nav-hamburger.active span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-hamburger.active span:nth-child(2){ opacity:0; }
+  .nav-hamburger.active span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .mobile-menu{ display:none; flex-direction:column; background:var(--ink-soft); border-top:1px solid rgba(255,255,255,0.1); padding:8px 24px 20px; }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ color:#CFD8D3; font-size:0.98rem; font-weight:500; padding:14px 2px; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .mobile-menu a.mobile-cta{ margin-top:14px; background:var(--brass); color:var(--ink); text-align:center; border-radius:100px; padding:13px; font-weight:600; border-bottom:none; }
+  @media (max-width:860px){ .nav-links{ display:none; } .nav-hamburger{ display:flex; } }
+  @media (min-width:861px){ .mobile-menu{ display:none !important; } }
+
+  .page-hero{ background:linear-gradient(120deg, var(--ink) 0%, var(--ink-soft) 100%); color:var(--sand); padding:72px 0 48px; text-align:center; }
+  .page-hero h1{ font-size:clamp(2rem,4vw,2.8rem); margin:14px 0 12px; }
+  .page-hero p{ color:#C9D3CE; max-width:560px; margin:0 auto; }
+
+  .section{ padding:64px 0; }
+  .pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  @media (max-width:900px){ .pricing-grid{ grid-template-columns:1fr; } }
+  .price-card{ background:var(--sand-card); border:1px solid var(--line); border-radius:18px; padding:32px 28px; display:flex; flex-direction:column; }
+  .price-card.featured{ border:2px solid var(--brass); box-shadow:0 20px 40px -20px rgba(27,57,85,0.25); }
+  .price-tag{ font-family:'Montserrat',monospace; font-size:0.7rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--teal); margin-bottom:10px; }
+  .price-card h3{ font-size:1.3rem; color:var(--ink); margin-bottom:6px; }
+  .price-amount{ font-family:'Plus Jakarta Sans',sans-serif; font-size:1.8rem; font-weight:800; color:var(--ink); margin-bottom:16px; }
+  .price-amount span{ font-size:0.9rem; font-weight:500; color:var(--text-soft); }
+  .price-card ul{ list-style:none; margin-bottom:24px; flex:1; }
+  .price-card li{ padding:8px 0 8px 22px; position:relative; font-size:0.9rem; color:var(--text-soft); }
+  .price-card li::before{ content:"✓"; position:absolute; left:0; color:var(--teal); font-weight:700; }
+  .price-cta{ display:block; text-align:center; padding:12px; border-radius:100px; font-weight:600; font-size:0.9rem; background:var(--ink); color:var(--sand); }
+  .price-card.featured .price-cta{ background:var(--brass); color:var(--ink); }
+
+  .founding-note{ background:var(--sand-card); border:1px dashed var(--line); border-radius:16px; padding:32px 28px; text-align:center; margin-top:40px; }
+  .founding-note h3{ font-size:1.1rem; color:var(--ink); margin-bottom:10px; }
+  .founding-note p{ color:var(--text-soft); font-size:0.94rem; max-width:560px; margin:0 auto; }
+
+  footer{ background:var(--ink); color:#B9C3BE; padding:56px 0 28px; }
+  .footer-grid{ display:grid; grid-template-columns:1.1fr repeat(3,0.8fr) 1.2fr; gap:28px; margin-bottom:40px; max-width:1180px; margin-left:auto; margin-right:auto; padding:0 32px; }
+  @media (max-width:760px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+  .footer-grid h4{ color:var(--sand); font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px; font-family:'Montserrat',monospace; font-weight:500; }
+  .footer-grid a{ display:block; font-size:0.88rem; margin-bottom:10px; color:#AEB9B3; transition:color 0.15s; }
+  .footer-grid a:hover{ color:var(--sand); }
+  .footer-bottom{ border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:0.82rem; color:#8B9691; max-width:1180px; margin:0 auto; padding-left:32px; padding-right:32px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="wordmark"><img src="minar360-logo.png" alt="Minar360" class="logo-mark">minar360</a>
+    <div class="nav-links">
+      <a href="explore.html">Explore</a>
+      <a href="organizations.html">For Organizations</a>
+      <a href="onboarding.html">Onboarding</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-trigger">Resources <span class="caret">&#9662;</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="faq.html">FAQ</a>
+          <a href="articles.html">Articles</a>
+          <a href="tutorials.html">Tutorials</a>
+  <a href="pricing.html">Pricing</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+      </div>
+    </div>
+    <a href="organizations.html#signup" class="nav-cta">List your organization</a>
+    <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="explore.html">Explore</a>
+  <a href="organizations.html">For Organizations</a>
+  <a href="onboarding.html">Onboarding</a>
+  <a href="faq.html">FAQ</a>
+  <a href="articles.html">Articles</a>
+  <a href="tutorials.html">Tutorials</a>
+  <a href="organizations.html#signup" class="mobile-cta">List your organization</a>
+</div>
+
+<header class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Pricing</span>
+    <h1>Free to start. Fair as you grow.</h1>
+    <p>Minar360 is free for community members. Organizations join free as founding partners — formal pricing tiers are still being finalized.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="pricing-grid">
+      <div class="price-card">
+        <span class="price-tag">Community</span>
+        <h3>For everyone</h3>
+        <div class="price-amount">Free</div>
+        <ul>
+          <li>Discover events, masajid, and businesses</li>
+          <li>Prayer &amp; iqamah times</li>
+          <li>Follow organizations you care about</li>
+          <li>One feed for everything you follow</li>
+        </ul>
+        <a href="get-app.html" class="price-cta">Get the app</a>
+      </div>
+      <div class="price-card featured">
+        <span class="price-tag">Founding Partner</span>
+        <h3>For organizations</h3>
+        <div class="price-amount">Free <span>while onboarding</span></div>
+        <ul>
+          <li>Full organization profile</li>
+          <li>Events, announcements &amp; donations</li>
+          <li>Prayer &amp; iqamah time publishing</li>
+          <li>Multi-staff access</li>
+          <li>Listed as a founding partner</li>
+          <li>Direct input on new features</li>
+        </ul>
+        <a href="organizations.html#signup" class="price-cta">Join as a founding partner</a>
+      </div>
+      <div class="price-card">
+        <span class="price-tag">What's next</span>
+        <h3>Beyond founding</h3>
+        <div class="price-amount">TBD</div>
+        <ul>
+          <li>Formal pricing tiers are still being finalized</li>
+          <li>Founding partners will be notified before anything changes</li>
+          <li>Early organizations get input on what pricing looks like</li>
+        </ul>
+        <a href="mailto:areeb.quasem@qubalink.com?subject=Minar360%20Pricing%20Question" class="price-cta">Ask a question</a>
+      </div>
+    </div>
+
+    <div class="founding-note">
+      <h3>Why free right now?</h3>
+      <p>Minar360 is onboarding its first organizations before opening more broadly. Founding partners help shape what the platform becomes — and won't be surprised by pricing changes down the line.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="wordmark" style="margin-bottom:12px; display:inline-flex;"><img src="minar360-logo.png" alt="Minar360" class="logo-mark">minar360</a>
+      <p style="font-size:0.85rem; color:#8B9691; margin-top:10px; max-width:220px;">The operating system for the local Muslim community.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <a href="explore.html">Five pillars</a>
+      <a href="explore.html">Events</a>
+      <a href="explore.html">Mosque directory</a>
+      <a href="explore.html">Halal businesses</a>
+    </div>
+    <div>
+      <h4>Organizations</h4>
+      <a href="organizations.html">Get listed</a>
+      <a href="onboarding.html">Onboarding</a>
+      <a href="tutorials.html">Tutorials</a>
+      <a href="#">Reviews</a>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <a href="articles.html">Articles</a>
+      <a href="faq.html">FAQ</a>
+      <a href="#">About</a>
+      <a href="mailto:areeb.quasem@qubalink.com">Contact</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+    <div>
+      <h4>Stay Connected</h4>
+      <p style="font-size:0.85rem; color:#AEB9B3; margin-bottom:12px;">Get the latest updates and community highlights straight to your inbox.</p>
+      <form class="footer-newsletter" style="display:flex; gap:6px;">
+        <input type="email" placeholder="Enter your email" aria-label="Email address" style="flex:1; padding:10px 12px; border-radius:8px; border:none; font-family:'Montserrat',sans-serif; font-size:0.85rem; min-width:0;">
+        <button type="submit" style="background:var(--teal); color:#fff; padding:10px 16px; border-radius:8px; font-weight:600; font-size:0.85rem; white-space:nowrap;">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Minar360. All rights reserved.</span>
+    <span><a href="privacy.html">Privacy Policy</a> · <a href="#">Terms of Service</a> · <a href="#">Community Guidelines</a></span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll(".nav-dropdown").forEach(dd => {
+    const trigger = dd.querySelector(".nav-dropdown-trigger");
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = dd.classList.contains("open");
+      document.querySelectorAll(".nav-dropdown.open").forEach(o => o.classList.remove("open"));
+      if (!isOpen) dd.classList.add("open");
+    });
+  });
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".nav-dropdown.open").forEach(o => o.classList.remove("open"));
+  });
+  const navHamburger = document.getElementById("navHamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (navHamburger && mobileMenu) {
+    navHamburger.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      navHamburger.classList.toggle("active", isOpen);
+      navHamburger.setAttribute("aria-expanded", isOpen);
+    });
+    mobileMenu.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        navHamburger.classList.remove("active");
+        navHamburger.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
