@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — Minar360</title>
+<title>Explore — Minar360</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -29,36 +29,40 @@
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;} }
-  body{ font-family:'Montserrat', system-ui, sans-serif; color:var(--text-dark); background:var(--sand); line-height:1.6; }
-  h1,h2,.wordmark{ font-family:'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing:-0.02em; }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  body{ font-family:'Montserrat', system-ui, sans-serif; color:var(--text-dark); background:var(--sand); line-height:1.55; }
+  h1,h2,h3,.wordmark{ font-family:'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing:-0.02em; }
   .eyebrow{ font-family:'Montserrat', sans-serif; font-size:0.82rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-dark); }
-  a{ color:var(--teal); text-decoration:underline; }
-  nav a, footer a{ text-decoration:none; }
+  a{ color:inherit; text-decoration:none; }
   img{ display:block; max-width:100%; }
   button{ font-family:'Montserrat', sans-serif; cursor:pointer; border:none; }
   :focus-visible{ outline:3px solid var(--brass); outline-offset:3px; }
   .wrap{ max-width:1100px; margin:0 auto; padding:0 32px; }
   @media (max-width:640px){ .wrap{ padding:0 20px; } }
 
+  /* NAV */
   nav{ position:sticky; top:0; z-index:50; background:rgba(27,57,85,0.94); backdrop-filter:blur(10px); border-bottom:1px solid rgba(255,255,255,0.08); }
   .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:18px 32px; max-width:1180px; margin:0 auto; }
   .wordmark{ color:var(--sand); font-size:1.25rem; font-weight:700; display:flex; align-items:center; gap:8px; }
   .logo-mark{ height:26px; width:auto; display:block; background:var(--sand); border-radius:7px; padding:4px; box-sizing:content-box; }
-  .nav-links{ display:flex; gap:32px; align-items:center; }
-  .nav-links a{ color:#CFD8D3; font-size:0.92rem; font-weight:500; transition:color 0.15s; text-decoration:none; }
-  .nav-links a:hover{ color:var(--sand); }
-  .nav-cta{ background:var(--teal); color:#fff; padding:12px 24px; border-radius:9px; font-size:0.9rem; font-weight:600; transition:background 0.15s; text-decoration:none; }
-  .nav-cta:hover{ background:var(--teal-light); }
+  .nav-links{ display:flex; gap:32px; }
+  .nav-links a{ color:#CFD8D3; font-size:0.92rem; font-weight:500; transition:color 0.15s; }
+  .nav-links a:hover, .nav-links a.current{ color:var(--sand); }
+  .nav-links a.current{ color:var(--brass-light); }
   .nav-dropdown{ position:relative; }
-  .nav-dropdown-trigger{ background:none; color:#CFD8D3; font-size:0.92rem; font-weight:500; display:flex; align-items:center; gap:4px; font-family:'Montserrat', sans-serif; transition:color 0.15s; }
-  .nav-dropdown-trigger:hover, .nav-dropdown.open .nav-dropdown-trigger{ color:var(--brass-light); }
+  .nav-dropdown-trigger{ background:none; color:#CFD8D3; font-size:0.92rem; font-weight:500; display:flex; align-items:center; gap:4px; font-family:"Montserrat", sans-serif; transition:color 0.15s; }
+  .nav-dropdown-trigger:hover, .nav-dropdown-trigger.current, .nav-dropdown.open .nav-dropdown-trigger{ color:var(--brass-light); }
   .nav-dropdown-trigger .caret{ font-size:0.7rem; transition:transform 0.15s; }
   .nav-dropdown.open .nav-dropdown-trigger .caret{ transform:rotate(180deg); }
   .nav-dropdown-menu{ position:absolute; top:calc(100% + 14px); left:50%; transform:translateX(-50%); background:var(--ink-soft); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:8px; min-width:150px; box-shadow:0 20px 40px -16px rgba(0,0,0,0.55); opacity:0; visibility:hidden; transition:opacity 0.15s, visibility 0.15s; z-index:60; }
   .nav-dropdown.open .nav-dropdown-menu{ opacity:1; visibility:visible; }
-  .nav-dropdown-menu a{ display:block; padding:9px 12px; border-radius:7px; font-size:0.88rem; color:#CFD8D3; text-decoration:none; }
+  .nav-dropdown-menu a{ display:block; padding:9px 12px; border-radius:7px; font-size:0.88rem; color:#CFD8D3; }
   .nav-dropdown-menu a:hover{ background:rgba(255,255,255,0.08); color:var(--sand); }
+  .nav-cta{ background:var(--teal); color:#fff; padding:12px 24px; border-radius:9px; font-size:0.9rem; font-weight:600; transition:background 0.15s; }
+  .nav-cta:hover{ background:var(--teal-light); }
   .nav-hamburger{ display:none; flex-direction:column; justify-content:center; gap:5px; background:none; padding:8px; width:36px; height:36px; }
   .nav-hamburger span{ display:block; width:20px; height:2px; background:var(--sand); border-radius:2px; transition:transform 0.2s ease, opacity 0.2s ease; }
   .nav-hamburger.active span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
@@ -75,23 +79,76 @@
     .mobile-menu{ display:none !important; }
   }
 
-  .page-hero{ background:linear-gradient(120deg, var(--ink-deep) 0%, var(--ink-soft) 100%); color:var(--sand); padding:64px 0 40px; text-align:center; }
-  .page-hero h1{ font-size:clamp(1.9rem,3.6vw,2.6rem); margin:14px 0 10px; }
-  .page-hero p{ color:#C9D3CE; font-size:0.88rem; }
+  /* HERO */
+  .explore-hero{ background:linear-gradient(120deg, var(--ink-deep) 0%, var(--ink-soft) 100%); color:var(--sand); padding:72px 0 64px; text-align:center; }
+  .explore-hero h1{ font-size:clamp(2rem,4vw,2.8rem); margin:14px 0 12px; }
+  .explore-hero p{ color:#C9D3CE; max-width:520px; margin:0 auto 28px; }
+  .explore-search{ max-width:520px; margin:0 auto; display:flex; background:var(--sand-card); border-radius:14px; padding:6px; box-shadow:0 16px 36px -18px rgba(0,0,0,0.5); }
+  .explore-search input{ flex:1; border:none; background:transparent; padding:12px 14px; font-size:0.95rem; font-family:'Montserrat',sans-serif; color:var(--ink); }
+  .explore-search input:focus{ outline:none; }
+  .explore-search button{ background:var(--teal); color:#fff; border-radius:10px; padding:12px 22px; font-weight:600; font-size:0.92rem; }
 
-  main.wrap{ max-width:760px; padding:48px 32px 64px; }
-  .legal-notice{ background:var(--sand-card); border:1px solid var(--line); border-left:4px solid var(--brass); border-radius:10px; padding:18px 22px; margin-bottom:40px; font-size:0.88rem; color:var(--text-soft); }
-  main h2{ font-size:1.2rem; color:var(--ink); margin:36px 0 12px; }
-  main p{ font-size:0.94rem; color:var(--text-soft); margin-bottom:12px; }
-  main ul{ margin:0 0 12px 22px; }
-  main li{ font-size:0.94rem; color:var(--text-soft); margin-bottom:6px; }
-  main strong{ color:var(--text-dark); }
+  /* FILTER CHIPS */
+  .filter-bar{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; padding:28px 0 8px; }
+  .filter-chip{ background:var(--sand-card); border:1px solid var(--line); padding:9px 18px; border-radius:100px; font-size:0.86rem; font-weight:500; color:var(--text-soft); transition:background 0.15s, color 0.15s; }
+  .filter-chip.active, .filter-chip:hover{ background:var(--ink); color:var(--sand); border-color:var(--ink); }
 
+  /* SAMPLE GRID */
+  .sample-note{ text-align:center; font-size:0.85rem; color:var(--text-soft); margin:18px 0 8px; }
+  .sample-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:24px 0 16px; }
+  @media (max-width:900px){ .sample-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px){ .sample-grid{ grid-template-columns:1fr; } }
+  .sample-card{ background:var(--sand-card); border:1px solid var(--line); border-radius:16px; overflow:hidden; transition:transform 0.18s, box-shadow 0.18s; }
+  .sample-card:hover{ transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(27,57,85,0.35); }
+  .sample-card .thumb{ height:110px; display:flex; align-items:center; justify-content:center; font-size:2.2rem; background:var(--ink); }
+  .sample-card .thumb.events{ background:linear-gradient(135deg, var(--teal), var(--ink)); }
+  .sample-card .thumb.mosques{ background:linear-gradient(135deg, var(--ink), var(--ink-soft)); }
+  .sample-card .thumb.businesses{ background:linear-gradient(135deg, var(--brass), #a5721f); }
+  .sample-card .body{ padding:18px 20px; }
+  .sample-card .cat{ font-family:'Montserrat',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--brass); margin-bottom:6px; display:block; }
+  .sample-card h3{ font-size:1rem; margin-bottom:6px; color:var(--ink); }
+  .sample-card p{ font-size:0.86rem; color:var(--text-soft); }
+  .sample-card.hidden{ display:none; }
+
+  /* PITCH SECTION */
+  .section{ padding:80px 0; }
+  .section-head{ max-width:640px; margin-bottom:44px; }
+  .section-head h2{ font-size:clamp(2rem,3.2vw,2.5rem); font-weight:700; margin-top:14px; color:var(--ink); }
+  .section-head p{ color:var(--text-soft); margin-top:18px; font-size:1.05rem; }
+
+  .feed-explainer{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+  @media (max-width:800px){ .feed-explainer{ grid-template-columns:1fr; } }
+  .feed-mock{ background:var(--sand-card); border:1px solid var(--line); border-radius:16px; padding:18px; }
+  .feed-mock .feed-item{ display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); }
+  .feed-mock .feed-item:last-child{ border-bottom:none; }
+  .feed-mock .feed-icon{ width:38px; height:38px; border-radius:10px; background:var(--ink); color:var(--sand); display:flex; align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+  .feed-mock .feed-text strong{ display:block; font-size:0.88rem; color:var(--ink); }
+  .feed-mock .feed-text span{ font-size:0.8rem; color:var(--text-soft); }
+  .feed-explainer ul{ list-style:none; margin-top:16px; }
+  .feed-explainer li{ padding:7px 0 7px 22px; position:relative; font-size:0.94rem; color:var(--text-soft); }
+  .feed-explainer li::before{ content:"—"; position:absolute; left:0; color:var(--brass); }
+
+  /* STEPS */
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  @media (max-width:760px){ .steps{ grid-template-columns:1fr; } }
+  .step .num{ font-family:'Montserrat',monospace; color:var(--brass); font-size:0.85rem; margin-bottom:10px; display:block; }
+  .step h3{ font-size:1.02rem; margin-bottom:8px; color:var(--ink); }
+  .step p{ font-size:0.9rem; color:var(--text-soft); }
+
+  /* NOTIFY CTA */
+  .notify-band{ background:var(--ink); color:var(--sand); border-radius:20px; padding:48px 40px; text-align:center; }
+  .notify-band h2{ font-size:1.5rem; margin-bottom:12px; color:var(--sand); }
+  .notify-band p{ color:#C9D3CE; max-width:480px; margin:0 auto 24px; font-size:0.96rem; }
+  .notify-form{ display:flex; justify-content:center; gap:8px; flex-wrap:wrap; }
+  .notify-form input{ padding:12px 16px; border-radius:10px; border:none; font-family:'Montserrat',sans-serif; font-size:0.92rem; min-width:260px; }
+  .notify-form button{ background:var(--teal); color:#fff; padding:12px 24px; border-radius:9px; font-weight:600; font-size:0.9rem; }
+
+  /* FOOTER */
   footer{ background:var(--ink-deep); color:#B9C3BE; padding:56px 0 28px; }
   .footer-grid{ display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:32px; margin-bottom:40px; max-width:1180px; margin-left:auto; margin-right:auto; padding:0 32px; }
   @media (max-width:760px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
   .footer-grid h4{ color:var(--sand); font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px; font-family:'Montserrat',monospace; font-weight:500; }
-  .footer-grid a{ display:block; font-size:0.88rem; margin-bottom:10px; color:#AEB9B3; transition:color 0.15s; text-decoration:none; }
+  .footer-grid a{ display:block; font-size:0.88rem; margin-bottom:10px; color:#AEB9B3; transition:color 0.15s; }
   .footer-grid a:hover{ color:var(--sand); }
   .footer-bottom{ border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:0.82rem; color:#8B9691; max-width:1180px; margin:0 auto; padding-left:32px; padding-right:32px; }
 </style>
@@ -102,7 +159,7 @@
   <div class="nav-inner">
     <a href="index.html" class="wordmark"><img src="minar360-logo.png" alt="Minar360" class="logo-mark">minar360</a>
     <div class="nav-links">
-      <a href="explore.html">Explore</a>
+      <a href="explore.html" class="current">Explore</a>
       <a href="organizations.html">For Organizations</a>
     <a href="onboarding.html">Onboarding</a>
       <a href="onboarding.html">Onboarding</a>
@@ -134,72 +191,138 @@
     <a href="organizations.html#signup" class="mobile-cta">List your organization</a>
   </div>
 
-<header class="page-hero">
+<header class="explore-hero">
   <div class="wrap">
-    <span class="eyebrow">Legal</span>
-    <h1>Privacy Policy</h1>
-    <p>Last updated: July 13, 2026</p>
+    <span class="eyebrow">For the community</span>
+    <h1>Everything happening near you, in one search.</h1>
+    <p>Events, mosques, halal spots, and organizations — search once instead of checking five different apps and group chats.</p>
+    <form class="explore-search" role="search" aria-label="Search Minar360">
+      <input type="text" placeholder="Search events, mosques, or halal spots near you" aria-label="Search">
+      <button type="submit">Search</button>
+    </form>
   </div>
 </header>
 
-<main class="wrap">
-
-  <div class="legal-notice">
-    <strong>Note:</strong> This policy is written to plainly describe how Minar360 handles information. It is a working draft and has not yet been reviewed by an attorney — it should get a legal review before Minar360 formally launches, particularly once donations and organization accounts are live.
+<div class="wrap">
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-chip active" data-filter="all">All</button>
+    <button class="filter-chip" data-filter="events">Events</button>
+    <button class="filter-chip" data-filter="mosques">Mosques</button>
+    <button class="filter-chip" data-filter="organizations">Organizations</button>
+    <button class="filter-chip" data-filter="businesses">Businesses &amp; halal food</button>
   </div>
+  <p class="sample-note">Sample listings shown for preview — real organizations and businesses are onboarding now.</p>
 
-  <h2>1. Who we are</h2>
-  <p>Minar360 ("we," "us," "our") operates minar360.com and the Minar360 platform, connecting mosques, nonprofits, businesses, halal restaurants, and community members. This policy explains what information we collect, how we use it, and the choices you have.</p>
+  <div class="sample-grid" id="sampleGrid">
+    <div class="sample-card" data-cat="events">
+      <div class="thumb events">📅</div>
+      <div class="body"><span class="cat">Event</span><h3>Jumu'ah Khutbah Series</h3><p>Weekly Friday sermon and community lunch — sample listing.</p></div>
+    </div>
+    <div class="sample-card" data-cat="events">
+      <div class="thumb events">🌙</div>
+      <div class="body"><span class="cat">Event</span><h3>Community Iftar Night</h3><p>Shared iftar open to the whole neighborhood — sample listing.</p></div>
+    </div>
+    <div class="sample-card" data-cat="events">
+      <div class="thumb events">📖</div>
+      <div class="body"><span class="cat">Event</span><h3>Youth Halaqa</h3><p>Weekly discussion circle for teens and young adults — sample listing.</p></div>
+    </div>
+    <div class="sample-card" data-cat="mosques">
+      <div class="thumb mosques">🕌</div>
+      <div class="body"><span class="cat">Mosque</span><h3>Community Masjid</h3><p>Prayer times, khutbahs, and announcements — sample profile.</p></div>
+    </div>
+    <div class="sample-card" data-cat="mosques">
+      <div class="thumb mosques">🕌</div>
+      <div class="body"><span class="cat">Mosque</span><h3>Neighborhood Islamic Center</h3><p>Daily prayers and weekend programs — sample profile.</p></div>
+    </div>
+    <div class="sample-card" data-cat="businesses">
+      <div class="thumb businesses">🍽️</div>
+      <div class="body"><span class="cat">Halal food</span><h3>Local Halal Grill</h3><p>Family-owned halal restaurant — sample listing.</p></div>
+    </div>
+    <div class="sample-card" data-cat="businesses">
+      <div class="thumb businesses">🛍️</div>
+      <div class="body"><span class="cat">Business</span><h3>Downtown Islamic Bookstore</h3><p>Muslim-owned bookstore and gift shop — sample listing.</p></div>
+    </div>
+    <div class="sample-card" data-cat="businesses">
+      <div class="thumb businesses">✂️</div>
+      <div class="body"><span class="cat">Business</span><h3>Sunnah Barbershop</h3><p>Muslim-owned barbershop — sample listing.</p></div>
+    </div>
+    <div class="sample-card" data-cat="mosques">
+      <div class="thumb mosques">🕌</div>
+      <div class="body"><span class="cat">Mosque</span><h3>Riverside Masjid</h3><p>Jumu'ah and weekend Islamic school — sample profile.</p></div>
+    </div>
+    <div class="sample-card" data-cat="organizations">
+      <div class="thumb mosques">🤝</div>
+      <div class="body"><span class="cat">Organization</span><h3>Community Relief Fund</h3><p>Local nonprofit supporting families in need — sample profile.</p></div>
+    </div>
+    <div class="sample-card" data-cat="organizations">
+      <div class="thumb mosques">🤝</div>
+      <div class="body"><span class="cat">Organization</span><h3>Youth Education Society</h3><p>After-school programs and mentorship — sample profile.</p></div>
+    </div>
+  </div>
+</div>
 
-  <h2>2. Information we collect</h2>
-  <p>Depending on how you use Minar360, we may collect:</p>
-  <ul>
-    <li><strong>Contact information</strong> you provide directly, such as your name and email address when you sign up for updates, join the founding partner list, or create an account.</li>
-    <li><strong>Organization information</strong> submitted by mosques, nonprofits, and businesses creating a profile — name, address, contact details, and content you choose to publish (events, prayer times, announcements).</li>
-    <li><strong>Location information</strong> you provide, such as a zip code or address, to search for nearby events, mosques, or halal businesses.</li>
-    <li><strong>Payment-related information</strong> when making or receiving a donation or ticket purchase. Full payment card details are handled directly by our payment processor and are not stored on Minar360's own servers.</li>
-    <li><strong>Usage information</strong> such as pages visited and general device/browser information, which helps us understand how the site is used and fix problems.</li>
-  </ul>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">One feed, not five apps</span>
+      <h2>Follow, and it shows up automatically</h2>
+      <p>Once you follow a mosque, organization, or business, their events, prayer times, and announcements land in one feed — instead of you having to remember to check each one separately.</p>
+    </div>
+    <div class="feed-explainer">
+      <div class="feed-mock">
+        <div class="feed-item"><div class="feed-icon">🕌</div><div class="feed-text"><strong>Community Masjid</strong><span>Posted new Jumu'ah khutbah topic</span></div></div>
+        <div class="feed-item"><div class="feed-icon">🤝</div><div class="feed-text"><strong>Local Relief Fund</strong><span>Ramadan food drive — 3 days left</span></div></div>
+        <div class="feed-item"><div class="feed-icon">🍽️</div><div class="feed-text"><strong>Local Halal Grill</strong><span>New weekend hours posted</span></div></div>
+      </div>
+      <ul>
+        <li>Follow mosques, nonprofits, and businesses in one tap</li>
+        <li>See their events, announcements, and prayer times in your feed</li>
+        <li>Join groups without a separate app or group chat</li>
+        <li>Get notified only for what you actually follow</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <h2>3. How we use information</h2>
-  <p>We use the information we collect to:</p>
-  <ul>
-    <li>Operate core features — event discovery, organization profiles, prayer time and athan notifications, donations, and search</li>
-    <li>Send updates you've signed up for, such as founding partner notifications or responses to inquiries</li>
-    <li>Maintain and improve the platform, including fixing bugs and understanding usage patterns</li>
-    <li>Communicate with organizations about their account or listing</li>
-  </ul>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How discovery works</span>
+      <h2>Finding your community, in three steps</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="num">01</span>
+        <h3>Search or browse</h3>
+        <p>Look up events, mosques, or halal spots by name, category, or location.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h3>Follow what matters to you</h3>
+        <p>Follow mosques, organizations, and businesses you want to hear from.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h3>Check one feed</h3>
+        <p>Everything you follow shows up in a single place, updated automatically.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <h2>4. Payment processing</h2>
-  <p>When you donate through an organization's profile, your payment goes directly to that organization through a third-party payment processor. <strong>Minar360 does not hold, take custody of, or have access to donated funds</strong> — we facilitate the connection between donor and organization, but the payment processor moves funds directly to the receiving organization. Those providers have their own privacy and security practices governing how they handle your payment details. We do not sell or independently store full card numbers.</p>
-
-  <h2>5. Cookies and similar technologies</h2>
-  <p>We may use basic cookies or similar local storage to keep the site functioning properly (for example, remembering your search filters) and to understand general site usage. We do not currently use cookies for third-party advertising.</p>
-
-  <h2>6. How we share information</h2>
-  <p><strong>We do not sell your personal information.</strong> We may share information in limited circumstances:</p>
-  <ul>
-    <li>With service providers who help us operate the platform (such as payment processors and hosting providers), only as needed to provide their service</li>
-    <li>With an organization you've chosen to interact with (for example, if you RSVP to their event or donate through their profile)</li>
-    <li>If required by law, or to protect the rights, safety, or property of Minar360, our users, or the public</li>
-  </ul>
-
-  <h2>7. Data security</h2>
-  <p>We take reasonable steps to protect information using industry-standard practices, including relying on established, secure providers for payment processing and hosting. No method of storing or transmitting data is completely secure, and we can't guarantee absolute security.</p>
-
-  <h2>8. Your choices</h2>
-  <p>You can opt out of email updates at any time using the unsubscribe link in any message we send, or by contacting us directly. Organizations can update or request removal of their profile information by contacting us. Community members can request access to or deletion of their personal information by reaching out through the contact details below.</p>
-
-  <h2>9. Children's privacy</h2>
-  <p>Minar360 is not directed at children under 13, and we do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can remove it.</p>
-
-  <h2>10. Changes to this policy</h2>
-  <p>We may update this policy as Minar360 grows and adds new features. We'll update the "last updated" date above when changes are made, and significant changes will be communicated clearly.</p>
-
-  <h2>11. Contact us</h2>
-  <p>Questions about this policy or your information can be directed to us through the <a href="organizations.html#signup">contact options on this site</a>.</p>
-
-</main>
+<section class="section">
+  <div class="wrap">
+    <div class="notify-band">
+      <span class="eyebrow" style="color:var(--brass-light);">Coming to your city</span>
+      <h2>Be the first to know when Minar360 launches near you</h2>
+      <p>We're onboarding organizations city by city. Join the list and we'll let you know as soon as your area is live.</p>
+      <form class="notify-form">
+        <input type="email" placeholder="you@email.com" aria-label="Email address">
+        <button type="submit">Notify me</button>
+      </form>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="footer-grid">
@@ -223,8 +346,8 @@
     </div>
     <div>
       <h4>Company</h4>
-      <a href="faq.html">FAQ</a>
       <a href="articles.html">Articles</a>
+      <a href="faq.html">FAQ</a>
       <a href="#">About</a>
       <a href="mailto:areeb.quasem@qubalink.com">Contact</a>
       <a href="privacy.html">Privacy</a>
@@ -235,6 +358,21 @@
     <span>minar360.com</span>
   </div>
 </footer>
+
+<script>
+  const chips = document.querySelectorAll('.filter-chip');
+  const cards = document.querySelectorAll('.sample-card');
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = chip.dataset.filter;
+      cards.forEach(card => {
+        card.classList.toggle('hidden', filter !== 'all' && card.dataset.cat !== filter);
+      });
+    });
+  });
+</script>
 
 <script>
   document.querySelectorAll(".nav-dropdown").forEach(dd => {
@@ -250,7 +388,6 @@
     document.querySelectorAll(".nav-dropdown.open").forEach(o => o.classList.remove("open"));
   });
 </script>
-
 <script>
   const navHamburger = document.getElementById("navHamburger");
   const mobileMenu = document.getElementById("mobileMenu");
