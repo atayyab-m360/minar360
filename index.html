@@ -344,13 +344,12 @@
   .trusted-strip{ padding:28px 0; background:var(--cool-gray); border-bottom:1px solid var(--line); }
   .trusted-label{ display:block; text-align:center; font-family:'Montserrat',sans-serif; font-size:0.72rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-soft); margin-bottom:8px; }
   .trusted-subhead{ text-align:center; color:var(--text-soft); font-size:0.92rem; margin-bottom:18px; }
-  .trusted-scroll{ display:flex; overflow:hidden; width:100%; -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-  .trusted-logos{ display:flex; gap:18px; flex-wrap:nowrap; flex-shrink:0; width:max-content; }
-  .trusted-logos.row-left{ animation:trusted-scroll-left 70s linear infinite; }
-  .trusted-logos.row-right{ animation:trusted-scroll-right 65s linear infinite; }
-  @keyframes trusted-scroll-left{ from{ transform:translateX(0); } to{ transform:translateX(-100%); } }
-  @keyframes trusted-scroll-right{ from{ transform:translateX(-100%); } to{ transform:translateX(0); } }
-  .trusted-scroll:hover .trusted-logos{ animation-play-state:paused; }
+  .trusted-carousel{ display:flex; align-items:center; gap:12px; }
+  .trusted-scroll{ flex:1; overflow-x:auto; scroll-behavior:smooth; scrollbar-width:none; -ms-overflow-style:none; -webkit-mask-image:linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent); mask-image:linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent); }
+  .trusted-scroll::-webkit-scrollbar{ display:none; }
+  .trusted-logos{ display:flex; gap:18px; flex-wrap:nowrap; width:max-content; }
+  .trusted-arrow{ flex-shrink:0; width:40px; height:40px; border-radius:50%; background:var(--sand-card); border:1px solid var(--line); color:var(--ink); font-size:1.1rem; display:flex; align-items:center; justify-content:center; transition:background 0.15s; }
+  .trusted-arrow:hover{ background:var(--pale-teal); }
   .trusted-logo-card{ display:flex; align-items:center; justify-content:center; background:var(--sand-card); border:1px solid var(--line); border-radius:16px; padding:19px 38px; height:105px; flex-shrink:0; }
   .trusted-logo-card img{ height:60px; width:auto; max-width:206px; object-fit:contain; display:block; }
 
@@ -407,7 +406,7 @@
   .timeline-phone{ border-radius:18px; overflow:hidden; border:4px solid var(--ink-soft); box-shadow:0 20px 40px -16px rgba(0,0,0,0.5); margin-bottom:16px; aspect-ratio:9/17; }
   .timeline-phone img{ width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
   .timeline-phone img.fit-contain{ object-fit:contain; object-position:center; background:#0A1420; }
-  .timeline-label{ font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; color:var(--brass-light); font-size:0.95rem; display:block; margin-bottom:6px; }
+  .timeline-label{ font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; color:var(--teal-light); font-size:0.95rem; display:block; margin-bottom:6px; }
   .timeline-item p{ font-size:0.88rem; color:#C9D3CE; }
   .discovery-map-placeholder{ position:relative; background:linear-gradient(135deg, #E9EDF2 0%, #D8DEE6 100%); border-radius:16px; min-height:340px; overflow:hidden; }
   .dm-pin{ position:absolute; font-size:1.5rem; filter:drop-shadow(0 4px 8px rgba(0,0,0,0.25)); }
@@ -559,6 +558,40 @@
   </div>
 </header>
 
+<section class="trusted-strip">
+  <div class="wrap" style="max-width:none; padding:0;">
+    <span class="trusted-label">Trusted Across Our Community</span>
+    <p class="trusted-subhead">Built alongside the organizations that bring our communities together.</p>
+    <div class="trusted-carousel">
+      <button type="button" class="trusted-arrow trusted-arrow-left" id="trustedPrev" aria-label="Show previous logos">&#8592;</button>
+      <div class="trusted-scroll" id="trustedScroll">
+        <div class="trusted-logos">
+          <span class="trusted-logo-card"><img src="logo-coreai.png" alt="Core AI"></span>
+          <span class="trusted-logo-card"><img src="logo-dhic.png" alt="Darul Hikmah Islamic Center"></span>
+          <span class="trusted-logo-card"><img src="logo-mcc.png" alt="Muslim Community Center"></span>
+          <span class="trusted-logo-card"><img src="logo-islamic-education-society-md.png" alt="Islamic Education Society of Maryland"></span>
+          <span class="trusted-logo-card"><img src="logo-iswa.png" alt="ISWA"></span>
+          <span class="trusted-logo-card"><img src="logo-kind-hearts-foundation.png" alt="Kind Hearts Foundation"></span>
+          <span class="trusted-logo-card"><img src="logo-thrive-center.png" alt="Thrive Center"></span>
+          <span class="trusted-logo-card"><img src="logo-zaree-kids.png" alt="Zaree Kids"></span>
+          <span class="trusted-logo-card"><img src="logo-mih-design.png" alt="MIH Design"></span>
+          <span class="trusted-logo-card"><img src="logo-loudoun-driving-school.png" alt="Loudoun Driving School"></span>
+          <span class="trusted-logo-card"><img src="logo-pieces-of-purpose.png" alt="Pieces of Purpose Life Coaching"></span>
+          <span class="trusted-logo-card"><img src="logo-property-charm-pros.png" alt="Property Charm Pros"></span>
+          <span class="trusted-logo-card"><img src="logo-bennu-travel.png" alt="Bennu Travel"></span>
+          <span class="trusted-logo-card"><img src="logo-zahra-sami.png" alt="Zahra Sami Makeup Artist"></span>
+          <span class="trusted-logo-card"><img src="logo-1world-fashion.png" alt="1World Fashion"></span>
+          <span class="trusted-logo-card"><img src="logo-buzzaar.png" alt="Buzzaar"></span>
+          <span class="trusted-logo-card"><img src="logo-tawes.png" alt="Tawes"></span>
+          <span class="trusted-logo-card"><img src="logo-million-medias.png" alt="Million Medias"></span>
+          <span class="trusted-logo-card"><img src="logo-kasperia.png" alt="Kasperia"></span>
+        </div>
+      </div>
+      <button type="button" class="trusted-arrow trusted-arrow-right" id="trustedNext" aria-label="Show next logos">&#8594;</button>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="pillars">
   <div class="wrap">
     <div class="section-head">
@@ -598,59 +631,6 @@
     </div>
     <div style="text-align:center; margin-top:32px;">
       <a href="mailto:areeb.quasem@qubalink.com?subject=Minar360%20Demo%20Request" class="btn-primary" style="display:inline-block;">Request a demo</a>
-    </div>
-  </div>
-</section>
-
-<section class="trusted-strip">
-  <div class="wrap" style="max-width:none; padding:0;">
-    <span class="trusted-label">Trusted Across Our Community</span>
-    <p class="trusted-subhead">Built alongside the organizations that bring our communities together.</p>
-    <div class="trusted-scroll">
-      <div class="trusted-logos row-left">
-        <span class="trusted-logo-card"><img src="logo-dhic.png" alt="Darul Hikmah Islamic Center"></span>
-        <span class="trusted-logo-card"><img src="logo-mcc.png" alt="Muslim Community Center"></span>
-        <span class="trusted-logo-card"><img src="logo-islamic-education-society-md.png" alt="Islamic Education Society of Maryland"></span>
-        <span class="trusted-logo-card"><img src="logo-iswa.png" alt="ISWA"></span>
-        <span class="trusted-logo-card"><img src="logo-kind-hearts-foundation.png" alt="Kind Hearts Foundation"></span>
-        <span class="trusted-logo-card"><img src="logo-thrive-center.png" alt="Thrive Center"></span>
-        <span class="trusted-logo-card"><img src="logo-zaree-kids.png" alt="Zaree Kids"></span>
-        <span class="trusted-logo-card"><img src="logo-mih-design.png" alt="MIH Design"></span>
-        <span class="trusted-logo-card"><img src="logo-loudoun-driving-school.png" alt="Loudoun Driving School"></span>
-        <span class="trusted-logo-card"><img src="logo-dhic.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-mcc.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-islamic-education-society-md.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-iswa.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-kind-hearts-foundation.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-thrive-center.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-zaree-kids.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-mih-design.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-loudoun-driving-school.png" alt=""></span>
-      </div>
-    </div>
-    <div class="trusted-scroll" style="margin-top:16px;">
-      <div class="trusted-logos row-right">
-        <span class="trusted-logo-card"><img src="logo-coreai.png" alt="Core AI"></span>
-        <span class="trusted-logo-card"><img src="logo-pieces-of-purpose.png" alt="Pieces of Purpose Life Coaching"></span>
-        <span class="trusted-logo-card"><img src="logo-property-charm-pros.png" alt="Property Charm Pros"></span>
-        <span class="trusted-logo-card"><img src="logo-bennu-travel.png" alt="Bennu Travel"></span>
-        <span class="trusted-logo-card"><img src="logo-zahra-sami.png" alt="Zahra Sami Makeup Artist"></span>
-        <span class="trusted-logo-card"><img src="logo-1world-fashion.png" alt="1World Fashion"></span>
-        <span class="trusted-logo-card"><img src="logo-buzzaar.png" alt="Buzzaar"></span>
-        <span class="trusted-logo-card"><img src="logo-tawes.png" alt="Tawes"></span>
-        <span class="trusted-logo-card"><img src="logo-million-medias.png" alt="Million Medias"></span>
-        <span class="trusted-logo-card"><img src="logo-kasperia.png" alt="Kasperia"></span>
-        <span class="trusted-logo-card"><img src="logo-coreai.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-pieces-of-purpose.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-property-charm-pros.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-bennu-travel.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-zahra-sami.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-1world-fashion.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-buzzaar.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-tawes.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-million-medias.png" alt=""></span>
-        <span class="trusted-logo-card"><img src="logo-kasperia.png" alt=""></span>
-      </div>
     </div>
   </div>
 </section>
@@ -1237,6 +1217,19 @@
         navHamburger.classList.remove("active");
         navHamburger.setAttribute("aria-expanded", "false");
       });
+    });
+  }
+
+  const trustedScroll = document.getElementById("trustedScroll");
+  const trustedPrev = document.getElementById("trustedPrev");
+  const trustedNext = document.getElementById("trustedNext");
+  if (trustedScroll && trustedPrev && trustedNext) {
+    const scrollAmount = () => trustedScroll.clientWidth * 0.8;
+    trustedPrev.addEventListener("click", () => {
+      trustedScroll.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+    });
+    trustedNext.addEventListener("click", () => {
+      trustedScroll.scrollBy({ left: scrollAmount(), behavior: "smooth" });
     });
   }
 </script>
