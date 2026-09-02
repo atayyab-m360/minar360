@@ -97,6 +97,15 @@
 
   /* ---------- HERO ---------- */
   .hero{
+    /* Hero geometry lives here so the content block and the navy panel can
+       never drift apart — both derive from these three values.
+       --hero-inset: gap from the left screen edge to the content.
+       --hero-video: minimum clear strip reserved for the video on the right.
+       To align the hero with the nav/site grid instead of bleeding further
+       left, set --hero-inset to max(32px, calc(50% - 558px)). */
+    --hero-inset:clamp(28px, 5vw, 140px);
+    --hero-video:300px;
+    --hero-content:min(940px, calc(100% - var(--hero-inset) - var(--hero-video)));
     background:var(--ink-deep);
     color:var(--sand);
     padding:56px 0 72px;
@@ -107,35 +116,42 @@
     position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;
   }
   /* The video gets its own clean zone on the right. ::before is a solid navy
-     panel anchored left, sized to end where the hero content ends; ::after
-     feathers it out so there's no hard vertical seam. Widen the panel by
-     raising the 366px in both calc() values together. */
+     panel anchored left, ending 28px past the content; ::after feathers it
+     out so there's no hard vertical seam. Both are derived from the --hero-*
+     values on .hero, so widening the content widens the panel automatically. */
   .hero-overlay{ position:absolute; inset:0; z-index:1; }
   .hero-overlay::before{
     content:""; position:absolute; top:0; bottom:0; left:0;
-    width:calc(50% + 366px);
+    width:calc(var(--hero-inset) + var(--hero-content) + 28px);
     background:var(--ink-deep);
   }
   .hero-overlay::after{
     content:""; position:absolute; top:0; bottom:0;
-    left:calc(50% + 366px); width:300px;
+    left:calc(var(--hero-inset) + var(--hero-content) + 28px); width:300px;
     background:linear-gradient(90deg, #071F38 0%, rgba(7,31,56,0.55) 46%, rgba(7,31,56,0) 100%);
   }
-  /* Phones left, copy right, side by side. Capped at 900px and left-aligned
-     inside .wrap so the content ends where the navy panel ends — the 900px
-     here and the 366px in the .hero-overlay calcs are a matched pair. */
-  .hero-layout{ position:relative; z-index:2; display:grid; grid-template-columns:360px 1fr; gap:40px; align-items:center; max-width:900px; }
+  /* Phones left, copy right. Explicitly left-aligned — it no longer uses
+     .wrap, whose margin:0 auto was centring the block and stranding a wide
+     empty gutter on the left. */
+  .hero-layout{
+    position:relative; z-index:2;
+    display:grid; grid-template-columns:360px 1fr; gap:40px; align-items:center;
+    margin-left:var(--hero-inset);
+    width:var(--hero-content);
+  }
   .hero .hero-copy h1{ margin:0 0 22px; }
-  /* Under 1180px there isn't room for both the 900px content block and a
-     video strip, so the panel goes full width as a heavy wash instead —
-     the video ghosts through rather than getting its own zone. */
-  @media (max-width:1180px){
-    .hero-layout{ max-width:none; }
+  /* Below 1080px there isn't room for the content block and a usable video
+     strip, so the panel becomes a full-width wash and the video ghosts. */
+  @media (max-width:1080px){
+    .hero-layout{ margin-left:32px; width:calc(100% - 64px); }
     .hero-overlay::before{ width:100%; background:rgba(7,31,56,0.90); }
     .hero-overlay::after{ display:none; }
   }
   @media (max-width:900px){
     .hero-layout{ grid-template-columns:1fr; gap:32px; }
+  }
+  @media (max-width:640px){
+    .hero-layout{ margin-left:20px; width:calc(100% - 40px); }
   }
   .hero h1{ font-size:clamp(2.3rem, 3.7vw, 3.5rem); font-weight:700; line-height:1.15; margin:14px 0 22px; text-shadow:0 2px 18px rgba(0,0,0,0.45); }
   .hero h1 em{ font-style:normal; color:var(--brass-light); }
@@ -567,7 +583,7 @@
     <source src="hero-community.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
-  <div class="wrap hero-layout">
+  <div class="hero-layout">
     <div class="phone-mockups" aria-hidden="true">
       <div class="phone phone-back">
         <div class="phone-notch"></div>
