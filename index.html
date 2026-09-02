@@ -99,30 +99,45 @@
   .hero{
     background:var(--ink-deep);
     color:var(--sand);
-    padding:96px 0 96px;
+    padding:56px 0 72px;
     position:relative;
     overflow:hidden;
   }
   .hero-video{
     position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;
   }
+  /* Two layers: a vertical wash that darkens toward the bottom band, and a
+     softer horizontal one behind the phones. Top-right stays clearest so the
+     video reads. Raise the 0.30 / 0.75 stops to dim the video further. */
   .hero-overlay{
     position:absolute; inset:0; z-index:1;
-    background:linear-gradient(90deg,
-      #071F38 0%,
-      #071F38 32%,
-      rgba(7,31,56,0.92) 42%,
-      rgba(7,31,56,0.55) 55%,
-      rgba(7,31,56,0.15) 70%,
-      rgba(7,31,56,0.05) 100%);
+    background:
+      linear-gradient(180deg,
+        rgba(7,31,56,0.30) 0%,
+        rgba(7,31,56,0.24) 28%,
+        rgba(7,31,56,0.72) 56%,
+        rgba(7,31,56,0.95) 76%,
+        #071F38 100%),
+      linear-gradient(90deg,
+        rgba(7,31,56,0.78) 0%,
+        rgba(7,31,56,0.46) 30%,
+        rgba(7,31,56,0.12) 54%,
+        rgba(7,31,56,0) 76%);
   }
-  .hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1.15fr 0.85fr; gap:40px; align-items:center; max-width:900px; margin:0; }
+  /* Hero is now two stacked zones: phones pinned left (video shows to their
+     right), then a full-width text band underneath. */
+  .hero-stack{ position:relative; z-index:2; display:flex; flex-direction:column; gap:44px; }
+  .hero-phones{ display:flex; justify-content:flex-start; }
+  /* The band runs full width. Headline left, supporting copy and CTAs right.
+     Set grid-template-columns:1fr to stack them instead. */
+  .hero-band{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:44px; align-items:end; }
+  .hero .hero-band h1{ margin:0; }
   @media (max-width:900px){
-    .hero-grid{ grid-template-columns:1fr; }
+    .hero-stack{ gap:32px; }
+    .hero-band{ grid-template-columns:1fr; gap:26px; align-items:start; }
     .hero-overlay{
-      background:linear-gradient(180deg, rgba(7,31,56,0.90) 0%, rgba(7,31,56,0.82) 55%, rgba(7,31,56,0.90) 100%) !important;
+      background:linear-gradient(180deg, rgba(7,31,56,0.55) 0%, rgba(7,31,56,0.72) 42%, rgba(7,31,56,0.94) 78%, #071F38 100%) !important;
     }
-    .phone-mockups{ margin-top:32px; }
   }
   .hero h1{ font-size:clamp(2.6rem, 5vw, 4rem); font-weight:700; line-height:1.15; margin:14px 0 22px; text-shadow:0 2px 18px rgba(0,0,0,0.45); }
   .hero h1 em{ font-style:normal; color:var(--brass-light); }
@@ -482,9 +497,10 @@
   .stars{ color:var(--brass); font-size:0.95rem; letter-spacing:2px; margin-right:8px; }
   .trust-line{ font-size:0.82rem; color:#C9D3CE; margin-top:2px; }
 
-  .phone-mockups{ position:relative; height:420px; max-width:340px; margin:0 auto; }
-  .phone{ position:absolute; width:178px; height:365px; background:#0A1420; border-radius:24px; border:4px solid #0A1420; box-shadow:0 30px 60px -20px rgba(0,0,0,0.6); overflow:hidden; opacity:0.55; transition:opacity 0.25s; }
-  .phone-mockups:hover .phone{ opacity:0.85; }
+  /* Left-aligned now (margin:0, not auto). Fully opaque — the old 0.55 was
+     what made them look washed out against the video. */
+  .phone-mockups{ position:relative; height:440px; width:368px; margin:0; }
+  .phone{ position:absolute; width:192px; height:394px; background:#0A1420; border-radius:26px; border:4px solid #0A1420; box-shadow:0 34px 64px -18px rgba(0,0,0,0.72); overflow:hidden; opacity:1; }
   .phone-back{ left:0; top:10px; transform:rotate(-4deg); }
   .phone-front{ right:0; bottom:0; transform:rotate(4deg); }
   .phone-notch{ position:absolute; top:0; left:50%; transform:translateX(-50%); width:60px; height:16px; background:#0A1420; border-radius:0 0 10px 10px; z-index:2; }
@@ -501,7 +517,8 @@
   .ps-tag{ font-size:0.58rem; font-weight:700; color:var(--teal); text-transform:uppercase; letter-spacing:0.05em; }
   .ps-tag-brass{ color:var(--brass); }
   .ps-card strong{ font-size:0.76rem; color:inherit; }
-  @media (max-width:900px){ .phone-mockups{ height:380px; } .phone{ width:168px; height:347px; } }
+  @media (max-width:900px){ .phone-mockups{ height:410px; width:340px; } .phone{ width:178px; height:366px; } }
+  @media (max-width:560px){ .phone-mockups{ height:372px; width:100%; max-width:308px; } .phone{ width:162px; height:332px; } }
 
   /* ---------- WHY CHOOSE ---------- */
   .why-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:20px; text-align:center; }
@@ -552,28 +569,32 @@
     <source src="hero-community.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
-  <div class="wrap hero-grid">
-    <div>
-      <h1>Everything Muslim.<br><em>One App.</em><br>One Purpose.</h1>
-      <p class="lede">Find your masjid, discover events, support causes, explore halal businesses, and stay connected with your community — all in one place.</p>
-      <div class="hero-ctas">
-        <a href="https://apps.apple.com/us/app/minar360/id6748239000" class="badge-link"><img src="appstore-badge.png" alt="Download on the App Store"></a>
-        <a href="#" class="badge-link"><img src="googleplay-badge.png" alt="Get it on Google Play"></a>
-      </div>
-      <a href="mailto:areeb.quasem@qubalink.com?subject=Minar360%20Demo%20Request" class="watch-demo">▶ Request a Demo</a>
-      <div class="trust-row">
-        <p class="trust-line">Built with masajid, nonprofits, and businesses across the U.S.</p>
+  <div class="wrap hero-stack">
+    <div class="hero-phones">
+      <div class="phone-mockups" aria-hidden="true">
+        <div class="phone phone-back">
+          <div class="phone-notch"></div>
+          <img class="phone-screen-img" src="screenshot-homepage.png" alt="">
+        </div>
+        <div class="phone phone-front">
+          <div class="phone-notch"></div>
+          <img class="phone-screen-img" src="screenshot-events.png" alt="">
+        </div>
       </div>
     </div>
 
-    <div class="phone-mockups" aria-hidden="true">
-      <div class="phone phone-back">
-        <div class="phone-notch"></div>
-        <img class="phone-screen-img" src="screenshot-homepage.png" alt="">
-      </div>
-      <div class="phone phone-front">
-        <div class="phone-notch"></div>
-        <img class="phone-screen-img" src="screenshot-events.png" alt="">
+    <div class="hero-band">
+      <h1>Everything Muslim.<br><em>One App.</em><br>One Purpose.</h1>
+      <div>
+        <p class="lede">Find your masjid, discover events, support causes, explore halal businesses, and stay connected with your community — all in one place.</p>
+        <div class="hero-ctas">
+          <a href="https://apps.apple.com/us/app/minar360/id6748239000" class="badge-link"><img src="appstore-badge.png" alt="Download on the App Store"></a>
+          <a href="#" class="badge-link"><img src="googleplay-badge.png" alt="Get it on Google Play"></a>
+        </div>
+        <a href="mailto:areeb.quasem@qubalink.com?subject=Minar360%20Demo%20Request" class="watch-demo">▶ Request a Demo</a>
+        <div class="trust-row">
+          <p class="trust-line">Built with masajid, nonprofits, and businesses across the U.S.</p>
+        </div>
       </div>
     </div>
   </div>
