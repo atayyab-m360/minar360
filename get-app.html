@@ -3,66 +3,353 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Get Minar360</title>
+<title>Privacy Policy — Minar360</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{ --ink:#1B3955; --brass:#FFD447; --sand:#F9FBFC; --text-soft:#6B7280; }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{
-    font-family:'Montserrat', system-ui, sans-serif;
-    background:var(--ink); color:var(--sand);
-    min-height:100vh; display:flex; align-items:center; justify-content:center;
-    padding:32px; text-align:center;
+  :root{
+    --ink:#1B3955;
+    --ink-deep:#071F38;
+    --ink-soft:#24476A;
+    --teal:#00A6A6;
+    --teal-light:#46C9C7;
+    --pale-teal:#EFFAFA;
+    --cool-gray:#F7F9FB;
+    --brass:#FFD447;
+    --brass-light:#FFE076;
+    --sand:#FFFFFF;
+    --sand-card:#FFFFFF;
+    --rose:#00A6A6;
+    --sage:#5E7082;
+    --line:#DFE7EC;
+    --text-dark:#1B3955;
+    --text-soft:#5E7082;
+    --gold-dark:#00A6A6;
   }
-  .card{ max-width:340px; }
-  .logo{ width:72px; height:72px; margin:0 auto 20px; background:var(--sand); border-radius:16px; padding:10px; }
-  .logo img{ width:100%; height:100%; object-fit:contain; }
-  h1{ font-family:'Plus Jakarta Sans', sans-serif; font-size:1.5rem; margin-bottom:10px; }
-  p{ color:#C9D3CE; font-size:0.92rem; margin-bottom:28px; }
-  .btn{ display:block; background:var(--brass); color:var(--ink); padding:14px; border-radius:12px; font-weight:700; text-decoration:none; margin-bottom:12px; font-family:'Plus Jakarta Sans',sans-serif; }
-  .btn.outline{ background:transparent; border:1.5px solid rgba(255,255,255,0.4); color:var(--sand); }
-  .redirecting{ font-size:0.82rem; color:#C9D3CE; margin-top:16px; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;} }
+  body{ font-family:'Montserrat', system-ui, sans-serif; color:var(--text-dark); background:var(--sand); line-height:1.6; }
+  h1,h2,.wordmark{ font-family:'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing:-0.02em; }
+  .eyebrow{ font-family:'Montserrat', sans-serif; font-size:0.82rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-dark); }
+  a{ color:var(--teal); text-decoration:underline; }
+  nav a, footer a{ text-decoration:none; }
+  img{ display:block; max-width:100%; }
+  button{ font-family:'Montserrat', sans-serif; cursor:pointer; border:none; }
+  :focus-visible{ outline:3px solid var(--brass); outline-offset:3px; }
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 32px; }
+
+  .page-hero{ background:linear-gradient(120deg, var(--ink-deep) 0%, var(--ink-soft) 100%); color:var(--sand); padding:72px 0 64px; text-align:center; }
+  .page-hero h1{ font-size:clamp(1.9rem,3.6vw,2.6rem); margin:14px 0 10px; }
+  .page-hero p{ color:#C9D3CE; font-size:0.88rem; }
+
+  main.wrap{ max-width:760px; padding:48px 32px 64px; }
+  .legal-notice{ background:var(--sand-card); border:1px solid var(--line); border-left:4px solid var(--brass); border-radius:10px; padding:18px 22px; margin-bottom:40px; font-size:0.88rem; color:var(--text-soft); }
+  main h2{ font-size:1.2rem; color:var(--ink); margin:36px 0 12px; }
+  main p{ font-size:0.94rem; color:var(--text-soft); margin-bottom:12px; }
+  main ul{ margin:0 0 12px 22px; }
+  main li{ font-size:0.94rem; color:var(--text-soft); margin-bottom:6px; }
+
+  /* ===== SHARED SITE HEADER + FOOTER ==================================
+     Master components, identical on every page. Defined last in the
+     stylesheet so they override any page-level rule left above.
+     Change here, then mirror to the other pages. */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(27,57,85,0.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:18px 32px; max-width:1180px; margin:0 auto; }
+  .wordmark{ color:var(--sand); font-size:1.25rem; font-weight:700; display:flex; align-items:center; gap:8px; }
+  /* No background or padding here. The logo is white now, so a white
+     rounded box behind it would make it invisible. */
+  .logo-mark{ height:34px; width:auto; display:block; background:none; border-radius:0; padding:0; box-sizing:border-box; }
+  .nav-links{ display:flex; gap:32px; margin-left:56px; align-items:center; }
+  .nav-links a{ color:#CFD8D3; font-size:0.92rem; font-weight:500; transition:color 0.15s; }
+  .nav-links a:hover{ color:var(--sand); }
+  .nav-links a.current{ color:var(--brass-light); }
+  .nav-dropdown{ position:relative; }
+  .nav-dropdown-trigger{ background:none; color:#CFD8D3; font-size:0.92rem; font-weight:500; display:flex; align-items:center; gap:4px; font-family:"Montserrat", sans-serif; transition:color 0.15s; }
+  .nav-dropdown-trigger:hover, .nav-dropdown-trigger.current, .nav-dropdown.open .nav-dropdown-trigger{ color:var(--brass-light); }
+  .nav-dropdown-trigger .caret{ font-size:0.7rem; transition:transform 0.15s; }
+  .nav-dropdown.open .nav-dropdown-trigger .caret{ transform:rotate(180deg); }
+  .nav-dropdown-menu{ position:absolute; top:calc(100% + 14px); left:50%; transform:translateX(-50%); background:var(--ink-soft); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:8px; min-width:150px; box-shadow:0 20px 40px -16px rgba(0,0,0,0.55); opacity:0; visibility:hidden; transition:opacity 0.15s, visibility 0.15s; z-index:60; }
+  .nav-dropdown.open .nav-dropdown-menu{ opacity:1; visibility:visible; }
+  .nav-dropdown-menu a{ display:block; padding:9px 12px; border-radius:7px; font-size:0.88rem; color:#CFD8D3; }
+  .nav-dropdown-menu a:hover, .nav-dropdown-menu a.current{ background:rgba(255,255,255,0.08); color:var(--sand); }
+  .nav-actions{ display:flex; align-items:center; gap:12px; }
+  .nav-cta{ background:var(--teal); color:#fff; padding:12px 24px; border-radius:9px; font-size:0.9rem; font-weight:600; transition:background 0.15s; }
+  .nav-cta:hover{ background:var(--teal-light); }
+  .nav-cta-secondary{ background:transparent; border:1.5px solid rgba(255,255,255,0.4); color:var(--sand); padding:10.5px 22.5px; border-radius:9px; font-size:0.9rem; font-weight:600; transition:background 0.15s; white-space:nowrap; }
+  .nav-cta-secondary:hover{ background:rgba(255,255,255,0.1); }
+  @media (max-width:1000px){ .nav-cta-secondary{ display:none; } }
+  .nav-hamburger{ display:none; flex-direction:column; justify-content:center; gap:5px; background:none; padding:8px; width:36px; height:36px; }
+  .nav-hamburger span{ display:block; width:20px; height:2px; background:var(--sand); border-radius:2px; transition:transform 0.2s ease, opacity 0.2s ease; }
+  .nav-hamburger.active span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-hamburger.active span:nth-child(2){ opacity:0; }
+  .nav-hamburger.active span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .mobile-menu{ display:none; flex-direction:column; background:var(--ink-soft); border-top:1px solid rgba(255,255,255,0.1); padding:8px 24px 20px; }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ color:#CFD8D3; font-size:0.98rem; font-weight:500; padding:14px 2px; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .mobile-menu a.mobile-cta{ margin-top:14px; background:var(--teal); color:#fff; text-align:center; border-radius:9px; padding:13px; font-weight:600; border-bottom:none; }
+  @media (max-width:860px){
+    .nav-links{ display:none; }
+    .nav-hamburger{ display:flex; }
+    .nav-cta{ display:none; }
+  }
+  @media (min-width:861px){ .mobile-menu{ display:none !important; } }
+
+  footer{ background:var(--ink-deep); color:#B9C3BE; padding:56px 0 28px; }
+  /* The footer gets its own wrapper. Page .wrap widths vary (900 / 1100 /
+     1180), and reusing it would render the footer narrower on some pages. */
+  .site-wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  @media (max-width:640px){ .site-wrap{ padding:0 20px; } }
+  .footer-grid{ display:grid; grid-template-columns:repeat(3,0.85fr) 1.5fr; gap:32px; margin:0 0 36px; max-width:none; padding:0; }
+  @media (max-width:860px){ .footer-grid{ grid-template-columns:1fr 1fr; gap:28px; } }
+  @media (max-width:560px){ .footer-grid{ grid-template-columns:1fr; } }
+  .footer-grid h4{ color:var(--sand); font-size:0.86rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:16px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; }
+  .footer-grid a{ display:block; font-size:0.88rem; margin-bottom:10px; color:#AEB9B3; transition:color 0.15s; text-decoration:none; }
+  .footer-grid a:hover{ color:var(--sand); }
+  .footer-col-icon{ width:26px; height:26px; color:var(--teal-light); margin-bottom:14px; }
+  .footer-col-icon svg{ width:100%; height:100%; }
+  .badge-link{ display:inline-block; line-height:0; margin-bottom:0; }
+  .badge-link img{ height:46px; width:auto; display:block; }
+  @media (max-width:500px){ .badge-link img{ height:40px; } }
+  .footer-newsletter{ display:flex; gap:6px; }
+  .footer-newsletter input{ flex:1; padding:10px 12px; border-radius:8px; border:none; font-family:'Montserrat',sans-serif; font-size:0.85rem; min-width:0; }
+  .footer-newsletter button{ background:var(--teal); color:#fff; padding:10px 16px; border-radius:8px; font-weight:600; font-size:0.85rem; white-space:nowrap; }
+  .footer-badges{ display:flex; gap:10px; margin-top:18px; flex-wrap:wrap; }
+  .footer-badges img{ height:42px; width:auto; }
+  .footer-divider{ height:1px; background:rgba(255,255,255,0.12); margin-bottom:26px; }
+  .footer-bottom{ display:grid; grid-template-columns:auto 1fr auto; gap:28px; align-items:center; border-top:none; padding:0; max-width:none; margin:0; }
+  @media (max-width:980px){ .footer-bottom{ grid-template-columns:1fr; justify-items:center; text-align:center; gap:22px; } }
+  .footer-brand .wordmark{ font-size:1.1rem; }
+  .footer-tagline{ font-size:0.86rem; color:#AEB9B3; margin-top:10px; line-height:1.5; }
+  .footer-copy{ font-size:0.82rem; color:#8B9691; margin-top:12px; }
+  .footer-legal-links{ display:flex; flex-wrap:wrap; gap:8px 20px; justify-content:center; font-size:0.84rem; }
+  .footer-legal-links a{ text-decoration:none; color:#AEB9B3; transition:color 0.15s; }
+  .footer-legal-links a:hover{ color:var(--sand); }
+  .footer-social{ display:flex; gap:12px; }
+  .footer-social a{ width:38px; height:38px; border-radius:50%; border:1px solid rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center; color:#CFD8D3; transition:background 0.15s, color 0.15s; }
+  .footer-social a:hover{ background:rgba(255,255,255,0.10); color:var(--sand); }
+  .footer-social svg{ width:17px; height:17px; }
+  /* ===== END SHARED HEADER + FOOTER ================================== */
 </style>
 </head>
 <body>
-  <div class="card">
-    <div class="logo"><img src="minar360-logo.png" alt="Minar360"></div>
-    <h1>Get Minar360</h1>
-    <p>Redirecting you to the right app store...</p>
-    <a href="https://apps.apple.com/us/app/minar360/id6748239000" class="btn" id="appleBtn">Download on the App Store</a>
-    <a href="#" class="btn outline" id="playBtn">Get it on Google Play</a>
-    <p class="redirecting" id="statusMsg"></p>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="wordmark"><img src="minar360-logo-white.png" alt="Minar360" class="logo-mark">minar360</a>
+    <div class="nav-links">
+      <a href="explore.html">Explore</a>
+      <a href="organizations.html">For Organizations</a>
+      <a href="tutorials.html">Tutorials</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-trigger current">Resources <span class="caret">&#9662;</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="faq.html">FAQ</a>
+          <a href="articles.html">Articles</a>
+          <a href="onboarding.html">Onboarding</a>
+          <a href="careers.html">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <a href="get-app.html" class="nav-cta-secondary">Download App</a>
+      <a href="https://minar360.com/login" target="_blank" rel="noopener noreferrer" class="nav-cta">Login</a>
+    </div>
+    <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="explore.html">Explore</a>
+    <a href="organizations.html">For Organizations</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="faq.html">FAQ</a>
+    <a href="articles.html">Articles</a>
+    <a href="onboarding.html">Onboarding</a>
+    <a href="careers.html">Careers</a>
+    <a href="https://minar360.com/login" target="_blank" rel="noopener noreferrer" class="mobile-cta">Login</a>
   </div>
 
-  <script>
-    // NOTE: Google Play link below is a placeholder — swap in the real
-    // Play Store URL once confirmed, then update playBtn.href too.
-    const APPLE_URL = "https://apps.apple.com/us/app/minar360/id6748239000";
-    const PLAY_URL = "#"; // TODO: replace with real Google Play URL
+<header class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p>Last updated: July 13, 2026</p>
+  </div>
+</header>
 
-    document.getElementById('playBtn').href = PLAY_URL;
+<main class="wrap">
 
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
-    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
-    const isAndroid = /android/i.test(ua);
+  <div class="legal-notice">
+    <strong>Note:</strong> This policy is written to plainly describe how Minar360 handles information. It is a working draft and has not yet been reviewed by an attorney — it should get a legal review before Minar360 formally launches, particularly once donations and organization accounts are live.
+  </div>
 
-    const statusEl = document.getElementById('statusMsg');
+  <h2>1. Who we are</h2>
+  <p>Minar360 ("we," "us," "our") operates minar360.com and the Minar360 platform, connecting mosques, nonprofits, businesses, halal restaurants, and community members. This policy explains what information we collect, how we use it, and the choices you have.</p>
 
-    if (isIOS) {
-      statusEl.textContent = "Detected iPhone — redirecting to the App Store...";
-      setTimeout(() => { window.location.href = APPLE_URL; }, 900);
-    } else if (isAndroid) {
-      if (PLAY_URL !== "#") {
-        statusEl.textContent = "Detected Android — redirecting to Google Play...";
-        setTimeout(() => { window.location.href = PLAY_URL; }, 900);
-      } else {
-        statusEl.textContent = "Detected Android — Google Play link coming soon.";
-      }
-    } else {
-      statusEl.textContent = "Choose your platform below.";
-    }
-  </script>
+  <h2>2. Information we collect</h2>
+  <p>Depending on how you use Minar360, we may collect:</p>
+  <ul>
+    <li><strong>Contact information</strong> you provide directly, such as your name and email address when you sign up for updates, join the founding partner list, or create an account.</li>
+    <li><strong>Organization information</strong> submitted by mosques, nonprofits, and businesses creating a profile — name, address, contact details, and content you choose to publish (events, prayer times, announcements).</li>
+    <li><strong>Location information</strong> you provide, such as a zip code or address, to search for nearby events, mosques, or halal businesses.</li>
+    <li><strong>Payment-related information</strong> when making or receiving a donation or ticket purchase. Full payment card details are handled directly by our payment processor and are not stored on Minar360's own servers.</li>
+    <li><strong>Usage information</strong> such as pages visited and general device/browser information, which helps us understand how the site is used and fix problems.</li>
+  </ul>
+
+  <h2>3. How we use information</h2>
+  <p>We use the information we collect to:</p>
+  <ul>
+    <li>Operate core features — event discovery, organization profiles, prayer time and athan notifications, donations, and search</li>
+    <li>Send updates you've signed up for, such as founding partner notifications or responses to inquiries</li>
+    <li>Maintain and improve the platform, including fixing bugs and understanding usage patterns</li>
+    <li>Communicate with organizations about their account or listing</li>
+  </ul>
+
+  <h2>4. Payment processing</h2>
+  <p>When you donate through an organization's profile, your payment goes directly to that organization through a third-party payment processor. <strong>Minar360 does not hold, take custody of, or have access to donated funds</strong> — we facilitate the connection between donor and organization, but the payment processor moves funds directly to the receiving organization. Those providers have their own privacy and security practices governing how they handle your payment details. We do not sell or independently store full card numbers.</p>
+
+  <h2>5. Cookies and similar technologies</h2>
+  <p>We may use basic cookies or similar local storage to keep the site functioning properly (for example, remembering your search filters) and to understand general site usage. We do not currently use cookies for third-party advertising.</p>
+
+  <h2>6. How we share information</h2>
+  <p><strong>We do not sell your personal information.</strong> We may share information in limited circumstances:</p>
+  <ul>
+    <li>With service providers who help us operate the platform (such as payment processors and hosting providers), only as needed to provide their service</li>
+    <li>With an organization you've chosen to interact with (for example, if you RSVP to their event or donate through their profile)</li>
+    <li>If required by law, or to protect the rights, safety, or property of Minar360, our users, or the public</li>
+  </ul>
+
+  <h2>7. Data security</h2>
+  <p>We take reasonable steps to protect information using industry-standard practices, including relying on established, secure providers for payment processing and hosting. No method of storing or transmitting data is completely secure, and we can't guarantee absolute security.</p>
+
+  <h2>8. Your choices</h2>
+  <p>You can opt out of email updates at any time using the unsubscribe link in any message we send, or by contacting us directly. Organizations can update or request removal of their profile information by contacting us. Community members can request access to or deletion of their personal information by reaching out through the contact details below.</p>
+
+  <h2>9. Children's privacy</h2>
+  <p>Minar360 is not directed at children under 13, and we do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can remove it.</p>
+
+  <h2>10. Changes to this policy</h2>
+  <p>We may update this policy as Minar360 grows and adds new features. We'll update the "last updated" date above when changes are made, and significant changes will be communicated clearly.</p>
+
+  <h2>11. Contact us</h2>
+  <p>Questions about this policy or your information can be directed to us through the <a href="organizations.html#signup">contact options on this site</a>.</p>
+
+</main>
+
+<footer>
+  <div class="site-wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-col-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 8.5l-2 5-5 2 2-5z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Explore</h4>
+        <a href="#pillars">Five Pillars</a>
+        <a href="#">Events</a>
+        <a href="#">Mosque Directory</a>
+        <a href="#">Halal Businesses</a>
+        <a href="articles.html">Articles</a>
+      </div>
+      <div>
+        <div class="footer-col-icon"><svg viewBox="0 0 24 24"><path d="M5 21V6l7-3v18" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 21h7V11l-7-2.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 9.5v0M8.5 13v0M15.5 13.5v0M15.5 17v0" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Organizations</h4>
+        <a href="organizations.html">Get Listed</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="#">Reviews</a>
+        <a href="#">Resources</a>
+      </div>
+      <div>
+        <div class="footer-col-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 6.2a3.2 3.2 0 0 1 0 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 14.4c1.8.7 3 2.4 3 4.6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Company</h4>
+        <a href="articles.html">Articles</a>
+        <a href="faq.html">FAQ</a>
+        <a href="#">About</a>
+        <a href="mailto:areeb.quasem@qubalink.com">Contact</a>
+        <a href="careers.html">Careers</a>
+      </div>
+      <div>
+        <div class="footer-col-icon"><svg viewBox="0 0 24 24"><rect x="2.8" y="5.5" width="18.4" height="13" rx="2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.4 6.8L12 13l8.6-6.2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Stay Connected</h4>
+        <p style="font-size:0.86rem; color:#AEB9B3; margin-bottom:14px; max-width:280px;">Get the latest updates and community highlights straight to your inbox.</p>
+        <form class="footer-newsletter">
+          <input type="email" placeholder="Enter your email" aria-label="Email address">
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="footer-badges">
+          <a href="https://apps.apple.com/us/app/minar360/id6748239000" class="badge-link"><img src="appstore-badge.png" alt="Download on the App Store"></a>
+          <a href="https://play.google.com/store/apps/details?id=com.qubalinkzenythlabs.minar360&amp;hl=en_US" class="badge-link"><img src="googleplay-badge.png" alt="Get it on Google Play"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+      <div class="footer-brand">
+        <a href="#top" class="wordmark" style="display:inline-flex;"><img src="minar360-logo-white.png" alt="Minar360" class="logo-mark">minar360</a>
+        <p class="footer-tagline">One Ummah. One App.<br>One Purpose.</p>
+        <p class="footer-copy">&copy; 2026 Minar360. All rights reserved.</p>
+      </div>
+      <div class="footer-legal-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Community Guidelines</a>
+        <a href="#">Cookie Preferences</a>
+        <a href="#">Accessibility</a>
+      </div>
+      <!-- Social icons are parked until real URLs are supplied. X/Twitter was
+           removed permanently at the team's request. To restore, delete the
+           comment markers around the block below and drop the real hrefs in.
+      <div class="footer-social">
+  <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+  <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14.5 8.5h2.2M14.5 21V8.9c0-1.9 1.1-2.9 2.8-2.9h1.4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 12.5h5.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2.6" y="5.6" width="18.8" height="12.8" rx="4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.4 9.6l5 2.4-5 2.4z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 10.6V17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="7.6" r="0.9" fill="currentColor" stroke="none"/><path d="M11.4 17v-3.6a2.2 2.2 0 0 1 4.4 0V17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      -->
+      <div></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll(".nav-dropdown").forEach(dd => {
+    const trigger = dd.querySelector(".nav-dropdown-trigger");
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = dd.classList.contains("open");
+      document.querySelectorAll(".nav-dropdown.open").forEach(o => o.classList.remove("open"));
+      if (!isOpen) dd.classList.add("open");
+    });
+  });
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".nav-dropdown.open").forEach(o => o.classList.remove("open"));
+  });
+</script>
+
+<script>
+  const navHamburger = document.getElementById("navHamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (navHamburger && mobileMenu) {
+    navHamburger.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      navHamburger.classList.toggle("active", isOpen);
+      navHamburger.setAttribute("aria-expanded", isOpen);
+    });
+    mobileMenu.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        navHamburger.classList.remove("active");
+        navHamburger.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+</script>
 </body>
 </html>
