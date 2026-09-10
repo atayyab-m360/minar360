@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy — Minar360</title>
+<title>Pricing — Minar360</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -30,26 +30,36 @@
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
   @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;} }
-  body{ font-family:'Montserrat', system-ui, sans-serif; color:var(--text-dark); background:var(--sand); line-height:1.6; }
-  h1,h2,.wordmark{ font-family:'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing:-0.02em; }
+  body{ font-family:'Montserrat', system-ui, sans-serif; color:var(--text-dark); background:var(--sand); line-height:1.55; }
+  h1,h2,h3,.wordmark{ font-family:'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing:-0.02em; }
   .eyebrow{ font-family:'Montserrat', sans-serif; font-size:0.82rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-dark); }
-  a{ color:var(--teal); text-decoration:underline; }
-  nav a, footer a{ text-decoration:none; }
+  a{ color:inherit; text-decoration:none; }
   img{ display:block; max-width:100%; }
   button{ font-family:'Montserrat', sans-serif; cursor:pointer; border:none; }
   :focus-visible{ outline:3px solid var(--brass); outline-offset:3px; }
   .wrap{ max-width:1100px; margin:0 auto; padding:0 32px; }
 
   .page-hero{ background:linear-gradient(120deg, var(--ink-deep) 0%, var(--ink-soft) 100%); color:var(--sand); padding:72px 0 64px; text-align:center; }
-  .page-hero h1{ font-size:clamp(1.9rem,3.6vw,2.6rem); margin:14px 0 10px; }
-  .page-hero p{ color:#C9D3CE; font-size:0.88rem; }
+  .page-hero h1{ font-size:clamp(2rem,4vw,2.8rem); margin:14px 0 12px; }
+  .page-hero p{ color:#C9D3CE; max-width:560px; margin:0 auto; }
 
-  main.wrap{ max-width:760px; padding:48px 32px 64px; }
-  .legal-notice{ background:var(--sand-card); border:1px solid var(--line); border-left:4px solid var(--brass); border-radius:10px; padding:18px 22px; margin-bottom:40px; font-size:0.88rem; color:var(--text-soft); }
-  main h2{ font-size:1.2rem; color:var(--ink); margin:36px 0 12px; }
-  main p{ font-size:0.94rem; color:var(--text-soft); margin-bottom:12px; }
-  main ul{ margin:0 0 12px 22px; }
-  main li{ font-size:0.94rem; color:var(--text-soft); margin-bottom:6px; }
+  .section{ padding:80px 0; }
+  .pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  @media (max-width:900px){ .pricing-grid{ grid-template-columns:1fr; } }
+  .price-card{ background:var(--sand-card); border:1px solid var(--line); border-radius:18px; padding:32px 28px; display:flex; flex-direction:column; }
+  .price-card.featured{ border:2px solid var(--brass); box-shadow:0 20px 40px -20px rgba(27,57,85,0.25); }
+  .price-tag{ font-family:'Montserrat',monospace; font-size:0.7rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--teal); margin-bottom:10px; }
+  .price-card h3{ font-size:1.3rem; color:var(--ink); margin-bottom:6px; }
+  .price-amount{ font-family:'Plus Jakarta Sans',sans-serif; font-size:1.8rem; font-weight:800; color:var(--ink); margin-bottom:16px; }
+  .price-amount span{ font-size:0.9rem; font-weight:500; color:var(--text-soft); }
+  .price-card ul{ list-style:none; margin-bottom:24px; flex:1; }
+  .price-card li{ padding:8px 0 8px 22px; position:relative; font-size:0.9rem; color:var(--text-soft); }
+  .price-card li::before{ content:"✓"; position:absolute; left:0; color:var(--teal); font-weight:700; }
+  .price-cta{ display:block; text-align:center; padding:12px; border-radius:100px; font-weight:600; font-size:0.9rem; background:var(--ink); color:var(--sand); }
+  .price-card.featured .price-cta{ background:var(--teal); color:#fff; }
+
+  .founding-note{ background:var(--sand-card); border:1px dashed var(--line); border-radius:16px; padding:32px 28px; text-align:center; margin-top:40px; }
+  .founding-note h3{ font-size:1.1rem; color:var(--ink); margin-bottom:10px; }
 
   /* ===== SHARED SITE HEADER + FOOTER ==================================
      Master components, identical on every page. Defined last in the
@@ -178,70 +188,60 @@
 
 <header class="page-hero">
   <div class="wrap">
-    <span class="eyebrow">Legal</span>
-    <h1>Privacy Policy</h1>
-    <p>Last updated: July 13, 2026</p>
+    <span class="eyebrow">Pricing</span>
+    <h1>Free to start. Fair as you grow.</h1>
+    <p>Minar360 is free for community members. Organizations join free as founding partners — formal pricing tiers are still being finalized.</p>
   </div>
 </header>
 
-<main class="wrap">
+<section class="section">
+  <div class="wrap">
+    <div class="pricing-grid">
+      <div class="price-card">
+        <span class="price-tag">Community</span>
+        <h3>For everyone</h3>
+        <div class="price-amount">Free</div>
+        <ul>
+          <li>Discover events, masajid, and businesses</li>
+          <li>Prayer &amp; iqamah times</li>
+          <li>Follow organizations you care about</li>
+          <li>One feed for everything you follow</li>
+        </ul>
+        <a href="get-app.html" class="price-cta">Get the app</a>
+      </div>
+      <div class="price-card featured">
+        <span class="price-tag">Founding Partner</span>
+        <h3>For organizations</h3>
+        <div class="price-amount">Free <span>while onboarding</span></div>
+        <ul>
+          <li>Full organization profile</li>
+          <li>Events, announcements &amp; donations</li>
+          <li>Prayer &amp; iqamah time publishing</li>
+          <li>Multi-staff access</li>
+          <li>Listed as a founding partner</li>
+          <li>Direct input on new features</li>
+        </ul>
+        <a href="organizations.html#signup" class="price-cta">Join as a founding partner</a>
+      </div>
+      <div class="price-card">
+        <span class="price-tag">What's next</span>
+        <h3>Beyond founding</h3>
+        <div class="price-amount">TBD</div>
+        <ul>
+          <li>Formal pricing tiers are still being finalized</li>
+          <li>Founding partners will be notified before anything changes</li>
+          <li>Early organizations get input on what pricing looks like</li>
+        </ul>
+        <a href="mailto:areeb.quasem@qubalink.com?subject=Minar360%20Pricing%20Question" class="price-cta">Ask a question</a>
+      </div>
+    </div>
 
-  <div class="legal-notice">
-    <strong>Note:</strong> This policy is written to plainly describe how Minar360 handles information. It is a working draft and has not yet been reviewed by an attorney — it should get a legal review before Minar360 formally launches, particularly once donations and organization accounts are live.
+    <div class="founding-note">
+      <h3>Why free right now?</h3>
+      <p>Minar360 is onboarding its first organizations before opening more broadly. Founding partners help shape what the platform becomes — and won't be surprised by pricing changes down the line.</p>
+    </div>
   </div>
-
-  <h2>1. Who we are</h2>
-  <p>Minar360 ("we," "us," "our") operates minar360.com and the Minar360 platform, connecting mosques, nonprofits, businesses, halal restaurants, and community members. This policy explains what information we collect, how we use it, and the choices you have.</p>
-
-  <h2>2. Information we collect</h2>
-  <p>Depending on how you use Minar360, we may collect:</p>
-  <ul>
-    <li><strong>Contact information</strong> you provide directly, such as your name and email address when you sign up for updates, join the founding partner list, or create an account.</li>
-    <li><strong>Organization information</strong> submitted by mosques, nonprofits, and businesses creating a profile — name, address, contact details, and content you choose to publish (events, prayer times, announcements).</li>
-    <li><strong>Location information</strong> you provide, such as a zip code or address, to search for nearby events, mosques, or halal businesses.</li>
-    <li><strong>Payment-related information</strong> when making or receiving a donation or ticket purchase. Full payment card details are handled directly by our payment processor and are not stored on Minar360's own servers.</li>
-    <li><strong>Usage information</strong> such as pages visited and general device/browser information, which helps us understand how the site is used and fix problems.</li>
-  </ul>
-
-  <h2>3. How we use information</h2>
-  <p>We use the information we collect to:</p>
-  <ul>
-    <li>Operate core features — event discovery, organization profiles, prayer time and athan notifications, donations, and search</li>
-    <li>Send updates you've signed up for, such as founding partner notifications or responses to inquiries</li>
-    <li>Maintain and improve the platform, including fixing bugs and understanding usage patterns</li>
-    <li>Communicate with organizations about their account or listing</li>
-  </ul>
-
-  <h2>4. Payment processing</h2>
-  <p>When you donate through an organization's profile, your payment goes directly to that organization through a third-party payment processor. <strong>Minar360 does not hold, take custody of, or have access to donated funds</strong> — we facilitate the connection between donor and organization, but the payment processor moves funds directly to the receiving organization. Those providers have their own privacy and security practices governing how they handle your payment details. We do not sell or independently store full card numbers.</p>
-
-  <h2>5. Cookies and similar technologies</h2>
-  <p>We may use basic cookies or similar local storage to keep the site functioning properly (for example, remembering your search filters) and to understand general site usage. We do not currently use cookies for third-party advertising.</p>
-
-  <h2>6. How we share information</h2>
-  <p><strong>We do not sell your personal information.</strong> We may share information in limited circumstances:</p>
-  <ul>
-    <li>With service providers who help us operate the platform (such as payment processors and hosting providers), only as needed to provide their service</li>
-    <li>With an organization you've chosen to interact with (for example, if you RSVP to their event or donate through their profile)</li>
-    <li>If required by law, or to protect the rights, safety, or property of Minar360, our users, or the public</li>
-  </ul>
-
-  <h2>7. Data security</h2>
-  <p>We take reasonable steps to protect information using industry-standard practices, including relying on established, secure providers for payment processing and hosting. No method of storing or transmitting data is completely secure, and we can't guarantee absolute security.</p>
-
-  <h2>8. Your choices</h2>
-  <p>You can opt out of email updates at any time using the unsubscribe link in any message we send, or by contacting us directly. Organizations can update or request removal of their profile information by contacting us. Community members can request access to or deletion of their personal information by reaching out through the contact details below.</p>
-
-  <h2>9. Children's privacy</h2>
-  <p>Minar360 is not directed at children under 13, and we do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal information, please contact us so we can remove it.</p>
-
-  <h2>10. Changes to this policy</h2>
-  <p>We may update this policy as Minar360 grows and adds new features. We'll update the "last updated" date above when changes are made, and significant changes will be communicated clearly.</p>
-
-  <h2>11. Contact us</h2>
-  <p>Questions about this policy or your information can be directed to us through the <a href="organizations.html#signup">contact options on this site</a>.</p>
-
-</main>
+</section>
 
 <footer>
   <div class="site-wrap">
@@ -303,17 +303,12 @@
         <a href="#">Cookie Preferences</a>
         <a href="#">Accessibility</a>
       </div>
-      <!-- Social icons are parked until real URLs are supplied. X/Twitter was
-           removed permanently at the team's request. To restore, delete the
-           comment markers around the block below and drop the real hrefs in.
       <div class="footer-social">
-  <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
-  <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14.5 8.5h2.2M14.5 21V8.9c0-1.9 1.1-2.9 2.8-2.9h1.4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 12.5h5.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-  <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2.6" y="5.6" width="18.8" height="12.8" rx="4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.4 9.6l5 2.4-5 2.4z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-  <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 10.6V17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="7.6" r="0.9" fill="currentColor" stroke="none"/><path d="M11.4 17v-3.6a2.2 2.2 0 0 1 4.4 0V17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="https://www.instagram.com/minar360app" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+  <a href="https://www.facebook.com/share/1FARH5r4HP/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14.5 8.5h2.2M14.5 21V8.9c0-1.9 1.1-2.9 2.8-2.9h1.4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 12.5h5.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="https://www.youtube.com/@Minar360-App" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2.6" y="5.6" width="18.8" height="12.8" rx="4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.4 9.6l5 2.4-5 2.4z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="https://www.linkedin.com/company/minar360app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 10.6V17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="7.6" r="0.9" fill="currentColor" stroke="none"/><path d="M11.4 17v-3.6a2.2 2.2 0 0 1 4.4 0V17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
-      -->
-      <div></div>
     </div>
   </div>
 </footer>
@@ -331,9 +326,6 @@
   document.addEventListener("click", () => {
     document.querySelectorAll(".nav-dropdown.open").forEach(o => o.classList.remove("open"));
   });
-</script>
-
-<script>
   const navHamburger = document.getElementById("navHamburger");
   const mobileMenu = document.getElementById("mobileMenu");
   if (navHamburger && mobileMenu) {
@@ -351,5 +343,6 @@
     });
   }
 </script>
+
 </body>
 </html>
