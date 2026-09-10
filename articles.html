@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQ — Minar360</title>
+<title>Articles — Minar360</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -29,10 +29,7 @@
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
-  }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;} }
   body{ font-family:'Montserrat', system-ui, sans-serif; color:var(--text-dark); background:var(--sand); line-height:1.55; }
   h1,h2,h3,.wordmark{ font-family:'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing:-0.02em; }
   .eyebrow{ font-family:'Montserrat', sans-serif; font-size:0.82rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-dark); }
@@ -40,44 +37,32 @@
   img{ display:block; max-width:100%; }
   button{ font-family:'Montserrat', sans-serif; cursor:pointer; border:none; }
   :focus-visible{ outline:3px solid var(--brass); outline-offset:3px; }
-  .wrap{ max-width:900px; margin:0 auto; padding:0 32px; }
-  @media (max-width:640px){ .wrap{ padding:0 20px; } }
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 32px; }
 
+  .page-hero{ background:linear-gradient(120deg, var(--ink-deep) 0%, var(--ink-soft) 100%); color:var(--sand); padding:72px 0 64px; text-align:center; }
+  .page-hero h1{ font-size:clamp(2rem,4vw,2.8rem); margin:14px 0 12px; }
+  .page-hero p{ color:#C9D3CE; max-width:540px; margin:0 auto; }
 
-  /* HERO */
-  .faq-hero{ background:linear-gradient(120deg, var(--ink-deep) 0%, var(--ink-soft) 100%); color:var(--sand); padding:72px 0 64px; text-align:center; }
-  .faq-hero h1{ font-size:clamp(2rem,4vw,2.8rem); margin:14px 0 12px; }
-  .faq-hero p{ color:#C9D3CE; max-width:520px; margin:0 auto 28px; }
-  .faq-search{ max-width:460px; margin:0 auto; display:flex; background:var(--sand-card); border-radius:12px; padding:5px; box-shadow:0 16px 36px -18px rgba(0,0,0,0.5); }
-  .faq-search input{ flex:1; border:none; background:transparent; padding:11px 14px; font-size:0.95rem; font-family:'Montserrat',sans-serif; color:var(--ink); }
-  .faq-search input:focus{ outline:none; }
-  .faq-search span{ display:flex; align-items:center; padding:0 10px; color:var(--text-soft); font-size:0.9rem; }
+  .filter-bar{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; padding:32px 0 24px; }
+  .filter-chip{ background:var(--sand-card); border:1px solid var(--line); padding:9px 18px; border-radius:100px; font-size:0.86rem; font-weight:500; color:var(--text-soft); transition:background 0.15s, color 0.15s; }
+  .filter-chip.active, .filter-chip:hover{ background:var(--ink); color:var(--sand); border-color:var(--ink); }
 
-  /* CATEGORY NAV */
-  .cat-nav{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; padding:32px 0 24px; }
-  .cat-nav a{ background:var(--sand-card); border:1px solid var(--line); padding:8px 16px; border-radius:100px; font-size:0.84rem; font-weight:500; color:var(--text-soft); transition:background 0.15s, color 0.15s; }
-  .cat-nav a:hover{ background:var(--ink); color:var(--sand); border-color:var(--ink); }
+  .article-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:24px 0 64px; }
+  @media (max-width:900px){ .article-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px){ .article-grid{ grid-template-columns:1fr; } }
+  .article-card{ background:var(--sand-card); border:1px solid var(--line); border-radius:16px; padding:24px 22px; transition:transform 0.18s, box-shadow 0.18s; display:flex; flex-direction:column; }
+  .article-card:hover{ transform:translateY(-4px); box-shadow:0 16px 32px -18px rgba(27,57,85,0.35); }
+  .article-card .cat{ font-family:'Montserrat',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--brass); margin-bottom:10px; }
+  .article-card h3{ font-size:1.05rem; margin-bottom:8px; color:var(--ink); line-height:1.3; }
+  .article-card p{ font-size:0.88rem; color:var(--text-soft); flex:1; }
+  .badge-dev{ align-self:flex-start; margin-top:14px; font-size:0.72rem; font-weight:600; color:var(--teal); background:rgba(14,92,86,0.1); padding:4px 10px; border-radius:100px; }
+  .article-card.hidden{ display:none; }
 
-  /* FAQ SECTIONS */
-  .faq-section{ padding:24px 0 64px; }
-  .faq-section h2{ font-size:1.3rem; margin-bottom:6px; color:var(--ink); }
-  .faq-section .count{ font-size:0.85rem; color:var(--text-soft); margin-bottom:18px; display:block; }
-  .faq-item{ border-bottom:1px solid var(--line); padding:18px 0; }
-  .faq-item summary{ cursor:pointer; font-weight:600; font-size:1rem; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:16px; }
-  .faq-item summary::-webkit-details-marker{ display:none; }
-  .faq-item summary::after{ content:"+"; font-size:1.3rem; color:var(--brass); font-weight:400; flex-shrink:0; }
-  .faq-item[open] summary::after{ content:"–"; }
-  .faq-item p{ margin-top:10px; color:var(--text-soft); font-size:0.93rem; max-width:680px; }
-  .faq-item.hidden{ display:none; }
-  .no-results{ display:none; text-align:center; color:var(--text-soft); padding:40px 0; }
-  .no-results.show{ display:block; }
-
-  /* CTA */
-  .faq-cta{ background:var(--ink); color:var(--sand); text-align:center; padding:56px 0; margin-top:56px; }
-  .faq-cta h2{ font-size:1.5rem; margin-bottom:12px; color:var(--sand); }
-  .faq-cta p{ color:#C9D3CE; margin-bottom:24px; }
-  .faq-cta a{ background:var(--teal); color:#fff; padding:13px 26px; border-radius:9px; font-weight:600; font-size:0.92rem; }
-
+  .notify-band{ background:var(--ink); color:var(--sand); border-radius:20px; padding:48px 40px; text-align:center; margin:56px 0; }
+  .notify-band h2{ font-size:1.5rem; margin-bottom:12px; color:var(--sand); }
+  .notify-band p{ color:#C9D3CE; max-width:480px; margin:0 auto 24px; font-size:0.96rem; }
+  .notify-form{ display:flex; justify-content:center; gap:8px; flex-wrap:wrap; }
+  .notify-form input{ padding:12px 16px; border-radius:10px; border:none; font-family:'Montserrat',sans-serif; font-size:0.92rem; min-width:260px; }
 
   /* ===== SHARED SITE HEADER + FOOTER ==================================
      Master components, identical on every page. Defined last in the
@@ -204,169 +189,84 @@
     <a href="https://minar360.com/login" target="_blank" rel="noopener noreferrer" class="mobile-cta">Login</a>
   </div>
 
-<header class="faq-hero">
+<header class="page-hero">
   <div class="wrap">
-    <span class="eyebrow">Support</span>
-    <h1>Frequently asked questions</h1>
-    <p>Everything you need to know about using Minar360 — as a community member, an organization, or a business.</p>
-    <div class="faq-search">
-      <span>🔍</span>
-      <input type="text" id="faqSearch" placeholder="Search questions, e.g. \"donations\" or \"prayer times\"" aria-label="Search FAQ">
-    </div>
+    <span class="eyebrow">Resources</span>
+    <h1>Articles &amp; guides</h1>
+    <p>Practical guides for the local Muslim community — mosques, organizations, and everyday questions about faith and community life.</p>
   </div>
 </header>
 
-<div class="cat-nav wrap">
-  <a href="#general">General</a>
-  <a href="#community">Community Members</a>
-  <a href="#organizations">Organizations &amp; Nonprofits</a>
-  <a href="#businesses">Businesses</a>
-  <a href="#prayer">Prayer Times &amp; Athan</a>
-  <a href="#donations">Donations &amp; Payments</a>
-  <a href="#privacy">Privacy &amp; Data</a>
-</div>
-
-<main class="wrap">
-
-  <p class="no-results" id="noResults">No questions matched your search. Try a different word, or <a href="#" style="color:var(--brass); text-decoration:underline;">contact us</a> directly.</p>
-
-  <section class="faq-section" id="general">
-    <h2>General</h2>
-    <details class="faq-item" open>
-      <summary>What is Minar360?</summary>
-      <p>Minar360 is a community platform connecting mosques, nonprofits, Muslim-owned businesses, halal restaurants, and community members in one place — so events, prayer times, announcements, and donations don't live in a dozen scattered apps and group chats.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Is Minar360 available in my city yet?</summary>
-      <p>We're onboarding founding organizations city by city rather than launching everywhere at once. Join the founding partner list on the homepage and we'll notify you as soon as your area opens up.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Is there a mobile app?</summary>
-      <p>The mobile app is currently in development. In the meantime, the website gives you a preview of how event discovery, prayer times, and organization profiles will work.</p>
-    </details>
-    <details class="faq-item">
-      <summary>How is Minar360 different from Luma, Eventbrite, or Zeffy?</summary>
-      <p>General event platforms handle a single ticket link well, but weren't built around a faith community. Minar360 combines event discovery with mosque directories, prayer times, and halal business listings — all in one feed, instead of scattered across separate tools.</p>
-    </details>
-  </section>
-
-  <section class="faq-section" id="community">
-    <h2>For Community Members</h2>
-    <details class="faq-item">
-      <summary>Is Minar360 free to use?</summary>
-      <p>Yes. Browsing events, mosque directories, prayer times, and business listings is completely free for community members.</p>
-    </details>
-    <details class="faq-item">
-      <summary>How do I find events near me?</summary>
-      <p>Use the search bar on the homepage to look up events, mosques, or halal spots by name or location. As more organizations join, your local feed will fill in automatically based on where you are.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Can I get prayer time notifications?</summary>
-      <p>Yes — the app will support prayer time and athan notifications. You can preview how the athan alert works in the demo widget on the homepage.</p>
-    </details>
-    <details class="faq-item">
-      <summary>How do I join a mosque or organization's group?</summary>
-      <p>Once an organization is onboarded, their profile includes a way to follow or join their group directly, so their events and announcements show up in your feed automatically.</p>
-    </details>
-  </section>
-
-  <section class="faq-section" id="organizations">
-    <h2>For Organizations &amp; Nonprofits</h2>
-    <details class="faq-item">
-      <summary>Is it free for mosques and nonprofits to join?</summary>
-      <p>Creating a profile and publishing events, prayer times, and announcements is free. Optional paid tools are available for organizations that want more advanced features.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Can we accept donations through Minar360?</summary>
-      <p>Yes, donation collection is one of the core organization tools. Donations go directly to your organization through a secure payment processor — Minar360 never holds or takes custody of the funds.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Can we sell event tickets?</summary>
-      <p>Yes. Organizations can create ticketed or free events, with RSVPs and attendance tracked in one place.</p>
-    </details>
-    <details class="faq-item">
-      <summary>How do we publish prayer times and announcements?</summary>
-      <p>Once your organization profile is set up, prayer times and announcements are published from your dashboard and appear automatically on your public profile and in your followers' feeds.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Can multiple staff members manage our organization's profile?</summary>
-      <p>Yes, organizations will be able to add multiple team members with their own logins to manage events, donations, and announcements together.</p>
-    </details>
-  </section>
-
-  <section class="faq-section" id="businesses">
-    <h2>For Businesses &amp; Restaurants</h2>
-    <details class="faq-item">
-      <summary>Can my business or restaurant get listed?</summary>
-      <p>Yes. Muslim-owned businesses and halal restaurants have their own profile type built for discovery, separate from event listings.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Do you verify that a business is Muslim-owned or halal?</summary>
-      <p>We're still finalizing our verification process as we onboard founding businesses. Details will be shared directly with businesses as they join.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Is there a fee for business listings?</summary>
-      <p>Founding businesses are being onboarded with special early terms. Reach out through the homepage to learn about current pricing.</p>
-    </details>
-  </section>
-
-  <section class="faq-section" id="prayer">
-    <h2>Prayer Times &amp; Athan</h2>
-    <details class="faq-item">
-      <summary>How accurate are the prayer times?</summary>
-      <p>The times shown in the current homepage demo are sample placeholders for preview purposes. In the live app, prayer times will be calculated based on your actual location.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Can I get an athan notification?</summary>
-      <p>Yes — you'll be able to enable athan alerts for each prayer time. You can try a preview of this in the demo widget on the homepage.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Which calculation method do you use?</summary>
-      <p>We plan to support multiple standard calculation methods (such as ISNA and the Muslim World League) so organizations and individuals can choose the convention their community follows.</p>
-    </details>
-  </section>
-
-  <section class="faq-section" id="donations">
-    <h2>Donations &amp; Payments</h2>
-    <details class="faq-item">
-      <summary>What payment processors do you support?</summary>
-      <p>Donations and payments are handled through established, secure payment providers. Funds go directly to the receiving organization — Minar360 does not hold or take custody of donated funds at any point.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Are there transaction fees?</summary>
-      <p>Standard payment processing fees apply, similar to any donation or ticketing platform. Specific rates will be shared clearly with organizations before they go live.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Is my donation tax-deductible?</summary>
-      <p>That depends entirely on the tax-exempt status of the organization you're donating to, not on Minar360 itself. Check with the receiving organization or a tax professional to confirm their status before assuming a donation is deductible.</p>
-    </details>
-  </section>
-
-  <section class="faq-section" id="privacy">
-    <h2>Privacy &amp; Data</h2>
-    <details class="faq-item">
-      <summary>Is my personal information sold or shared?</summary>
-      <p>No. Personal data is not sold to third parties.</p>
-    </details>
-    <details class="faq-item">
-      <summary>How is my donation and payment information protected?</summary>
-      <p>Payment details are handled directly by the payment processor, following industry-standard encryption and security practices, rather than being stored on Minar360's own servers.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Can I control what notifications I receive?</summary>
-      <p>Yes, notification preferences — including prayer alerts, event reminders, and organization updates — will be adjustable from your account settings.</p>
-    </details>
-  </section>
-
-</main>
-
-<section class="faq-cta">
-  <div class="wrap">
-    <h2>Still have questions?</h2>
-    <p>We're happy to walk through anything that's not covered here.</p>
-    <a href="organizations.html#signup">Get in touch</a>
+<div class="wrap">
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-chip active" data-filter="all">All</button>
+    <button class="filter-chip" data-filter="community">Community</button>
+    <button class="filter-chip" data-filter="organizations">Organizations</button>
+    <button class="filter-chip" data-filter="ramadan">Ramadan</button>
+    <button class="filter-chip" data-filter="giving">Giving &amp; Zakat</button>
   </div>
-</section>
+
+  <div class="article-grid" id="articleGrid">
+    <div class="article-card" data-cat="community">
+      <span class="cat">Community</span>
+      <h3>How to Find a Mosque Near You</h3>
+      <p>A practical guide to locating prayer spaces, checking prayer times, and getting involved in a new community.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+    <div class="article-card" data-cat="ramadan">
+      <span class="cat">Ramadan</span>
+      <h3>Planning a Community Iftar: A Step-by-Step Guide</h3>
+      <p>From venue logistics to volunteer coordination — how organizations can host a smooth, welcoming iftar.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+    <div class="article-card" data-cat="community">
+      <span class="cat">Community</span>
+      <h3>What Makes Food Halal? A Beginner's Guide</h3>
+      <p>A clear explanation of halal certification and how to evaluate restaurants and products.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+    <div class="article-card" data-cat="organizations">
+      <span class="cat">Organizations</span>
+      <h3>5 Ways Mosques Can Modernize Community Engagement</h3>
+      <p>Practical, low-cost ways masjid boards can improve communication without adding extra work.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+    <div class="article-card" data-cat="giving">
+      <span class="cat">Giving &amp; Zakat</span>
+      <h3>Understanding Zakat: A Practical Guide for Donors</h3>
+      <p>The basics of zakat eligibility, calculation, and how to give with confidence.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+    <div class="article-card" data-cat="giving">
+      <span class="cat">Giving &amp; Zakat</span>
+      <h3>The Difference Between Sadaqah and Zakat</h3>
+      <p>A plain-language breakdown of two commonly confused forms of giving.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+    <div class="article-card" data-cat="organizations">
+      <span class="cat">Organizations</span>
+      <h3>How to Start a Muslim Business Directory in Your City</h3>
+      <p>A guide for community organizers looking to connect local Muslim-owned businesses.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+    <div class="article-card" data-cat="ramadan">
+      <span class="cat">Ramadan</span>
+      <h3>Ramadan Event Planning Checklist for Organizations</h3>
+      <p>A month-by-month checklist to help mosques and nonprofits plan ahead.</p>
+      <span class="badge-dev">In development</span>
+    </div>
+  </div>
+
+  <div class="notify-band">
+    <span class="eyebrow" style="color:var(--brass-light);">Currently in development</span>
+    <h2>Get notified when new articles publish</h2>
+    <p>We're writing these guides now. Join the list and we'll let you know as each one goes live.</p>
+    <form class="notify-form">
+      <input type="email" placeholder="you@email.com" aria-label="Email address">
+      <button type="submit">Notify me</button>
+    </form>
+  </div>
+</div>
 
 <footer>
   <div class="site-wrap">
@@ -428,52 +328,27 @@
         <a href="#">Cookie Preferences</a>
         <a href="#">Accessibility</a>
       </div>
-      <!-- Social icons are parked until real URLs are supplied. X/Twitter was
-           removed permanently at the team's request. To restore, delete the
-           comment markers around the block below and drop the real hrefs in.
       <div class="footer-social">
-  <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
-  <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14.5 8.5h2.2M14.5 21V8.9c0-1.9 1.1-2.9 2.8-2.9h1.4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 12.5h5.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-  <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2.6" y="5.6" width="18.8" height="12.8" rx="4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.4 9.6l5 2.4-5 2.4z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-  <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 10.6V17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="7.6" r="0.9" fill="currentColor" stroke="none"/><path d="M11.4 17v-3.6a2.2 2.2 0 0 1 4.4 0V17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="https://www.instagram.com/minar360app" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+  <a href="https://www.facebook.com/share/1FARH5r4HP/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14.5 8.5h2.2M14.5 21V8.9c0-1.9 1.1-2.9 2.8-2.9h1.4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 12.5h5.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="https://www.youtube.com/@Minar360-App" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2.6" y="5.6" width="18.8" height="12.8" rx="4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.4 9.6l5 2.4-5 2.4z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="https://www.linkedin.com/company/minar360app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 10.6V17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="7.6" r="0.9" fill="currentColor" stroke="none"/><path d="M11.4 17v-3.6a2.2 2.2 0 0 1 4.4 0V17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
-      -->
-      <div></div>
     </div>
   </div>
 </footer>
 
 <script>
-  const searchInput = document.getElementById('faqSearch');
-  const items = Array.from(document.querySelectorAll('.faq-item'));
-  const sections = Array.from(document.querySelectorAll('.faq-section'));
-  const noResults = document.getElementById('noResults');
-
-  searchInput.addEventListener('input', () => {
-    const q = searchInput.value.trim().toLowerCase();
-    let anyVisible = false;
-
-    items.forEach(item => {
-      const text = item.textContent.toLowerCase();
-      const matches = q === '' || text.includes(q);
-      item.classList.toggle('hidden', !matches);
-      if (matches) {
-        anyVisible = true;
-        if (q !== '') item.open = true;
-      }
+  const chips = document.querySelectorAll('.filter-chip');
+  const cards = document.querySelectorAll('.article-card');
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = chip.dataset.filter;
+      cards.forEach(card => card.classList.toggle('hidden', filter !== 'all' && card.dataset.cat !== filter));
     });
-
-    sections.forEach(section => {
-      const visibleItems = section.querySelectorAll('.faq-item:not(.hidden)');
-      section.style.display = visibleItems.length ? '' : 'none';
-    });
-
-    noResults.classList.toggle('show', !anyVisible);
   });
-
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    document.documentElement.style.scrollBehavior = 'auto';
-  }
 </script>
 
 <script>
