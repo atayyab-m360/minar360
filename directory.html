@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Directory | Minar360</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B3955; --ink-deep:#071F38; --ink-soft:#24476A;
+    --teal:#00A6A6; --teal-light:#46C9C7; --pale-teal:#EFFAFA; --cool-gray:#F7F9FB;
+    --brass:#FFD447; --brass-light:#FFE076;
+    --sand:#FFFFFF; --sand-card:#FFFFFF; --line:#DFE7EC;
+    --text-dark:#1B3955; --text-soft:#5E7082; --gold-dark:#00A6A6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;} }
+  body{ font-family:'Montserrat', system-ui, sans-serif; color:var(--text-dark); background:var(--sand); line-height:1.6; }
+  h1,h2,h3,.wordmark{ font-family:'Plus Jakarta Sans', system-ui, sans-serif; letter-spacing:-0.02em; }
+  .eyebrow{ font-family:'Montserrat', sans-serif; font-size:0.82rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-dark); }
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; max-width:100%; }
+  button{ font-family:'Montserrat', sans-serif; cursor:pointer; border:none; }
+  :focus-visible{ outline:3px solid var(--brass); outline-offset:3px; }
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 32px; }
+  @media (max-width:640px){ .wrap{ padding:0 20px; } }
+  .page-hero{ background:linear-gradient(120deg, var(--ink-deep) 0%, var(--ink-soft) 100%); color:var(--sand); text-align:center; }
+  .page-hero h1{ font-size:clamp(2rem,4vw,2.8rem); margin:10px 0 12px; }
+  .page-hero p{ color:#C9D3CE; max-width:620px; margin:0 auto; }
+  main.wrap{ padding-top:48px; padding-bottom:64px; max-width:860px; }
+  main h2{ font-size:1.3rem; color:var(--ink); margin:32px 0 12px; }
+  main p{ font-size:0.96rem; color:var(--text-soft); margin-bottom:14px; }
+  .placeholder-note{ background:var(--pale-teal); border:1px solid var(--line); border-left:4px solid var(--teal); border-radius:10px; padding:18px 22px; margin-bottom:32px; font-size:0.92rem; color:var(--text-soft); }
+  .placeholder-note strong{ color:var(--ink); }
+  .empty-state{ background:var(--sand-card); border:1px dashed var(--line); border-radius:16px; padding:44px 32px; text-align:center; color:var(--text-soft); font-size:0.95rem; }
+  .dir-section{ margin-bottom:44px; scroll-margin-top:96px; }
+  .dir-section h2{ margin-top:0; font-size:1.45rem; }
+  .dir-section > p{ margin-bottom:18px; }
+  /* ===== SHARED SITE HEADER + FOOTER ==================================
+     Master components, identical on every page. Defined last in the
+     stylesheet so they override any page-level rule left above.
+     Change here, then mirror to the other pages. */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(27,57,85,0.92); backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:18px 32px; max-width:1180px; margin:0 auto; }
+  .wordmark{ color:var(--sand); font-size:1.25rem; font-weight:700; display:flex; align-items:center; gap:8px; }
+  /* No background or padding here. The logo is white now, so a white
+     rounded box behind it would make it invisible. */
+  .logo-mark{ height:34px; width:auto; display:block; background:none; border-radius:0; padding:0; box-sizing:border-box; }
+  .nav-links{ display:flex; gap:32px; margin-left:56px; align-items:center; }
+  .nav-links a{ color:#CFD8D3; font-size:0.92rem; font-weight:500; transition:color 0.15s; }
+  .nav-links a:hover{ color:var(--sand); }
+  .nav-links a.current{ color:var(--brass-light); }
+  .nav-dropdown{ position:relative; }
+  .nav-dropdown-trigger{ background:none; color:#CFD8D3; font-size:0.92rem; font-weight:500; display:flex; align-items:center; gap:4px; font-family:"Montserrat", sans-serif; transition:color 0.15s; }
+  .nav-dropdown-trigger:hover, .nav-dropdown-trigger.current, .nav-dropdown.open .nav-dropdown-trigger{ color:var(--brass-light); }
+  .nav-dropdown-trigger .caret{ font-size:0.7rem; transition:transform 0.15s; }
+  .nav-dropdown.open .nav-dropdown-trigger .caret{ transform:rotate(180deg); }
+  .nav-dropdown-menu{ position:absolute; top:calc(100% + 14px); left:50%; transform:translateX(-50%); background:var(--ink-soft); border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:8px; min-width:150px; box-shadow:0 20px 40px -16px rgba(0,0,0,0.55); opacity:0; visibility:hidden; transition:opacity 0.15s, visibility 0.15s; z-index:60; }
+  .nav-dropdown.open .nav-dropdown-menu{ opacity:1; visibility:visible; }
+  .nav-dropdown-menu a{ display:block; padding:9px 12px; border-radius:7px; font-size:0.88rem; color:#CFD8D3; }
+  .nav-dropdown-menu a:hover, .nav-dropdown-menu a.current{ background:rgba(255,255,255,0.08); color:var(--sand); }
+  .nav-actions{ display:flex; align-items:center; gap:12px; }
+  .nav-cta{ background:var(--teal); color:#fff; padding:12px 24px; border-radius:9px; font-size:0.9rem; font-weight:600; transition:background 0.15s; }
+  .nav-cta:hover{ background:var(--teal-light); }
+  .nav-cta-secondary{ background:transparent; border:1.5px solid rgba(255,255,255,0.4); color:var(--sand); padding:10.5px 22.5px; border-radius:9px; font-size:0.9rem; font-weight:600; transition:background 0.15s; white-space:nowrap; }
+  .nav-cta-secondary:hover{ background:rgba(255,255,255,0.1); }
+  @media (max-width:1000px){ .nav-cta-secondary{ display:none; } }
+  .nav-hamburger{ display:none; flex-direction:column; justify-content:center; gap:5px; background:none; padding:8px; width:36px; height:36px; }
+  .nav-hamburger span{ display:block; width:20px; height:2px; background:var(--sand); border-radius:2px; transition:transform 0.2s ease, opacity 0.2s ease; }
+  .nav-hamburger.active span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .nav-hamburger.active span:nth-child(2){ opacity:0; }
+  .nav-hamburger.active span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .mobile-menu{ display:none; flex-direction:column; background:var(--ink-soft); border-top:1px solid rgba(255,255,255,0.1); padding:8px 24px 20px; }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ color:#CFD8D3; font-size:0.98rem; font-weight:500; padding:14px 2px; border-bottom:1px solid rgba(255,255,255,0.08); }
+  .mobile-menu a.mobile-cta{ margin-top:14px; background:var(--teal); color:#fff; text-align:center; border-radius:9px; padding:13px; font-weight:600; border-bottom:none; }
+  @media (max-width:860px){
+    .nav-links{ display:none; }
+    .nav-hamburger{ display:flex; }
+    .nav-cta{ display:none; }
+  }
+  @media (min-width:861px){ .mobile-menu{ display:none !important; } }
+
+  footer{ background:var(--ink-deep); color:#B9C3BE; padding:56px 0 28px; }
+  /* The footer gets its own wrapper. Page .wrap widths vary (900 / 1100 /
+     1180), and reusing it would render the footer narrower on some pages. */
+  .site-wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  @media (max-width:640px){ .site-wrap{ padding:0 20px; } }
+  .footer-grid{ display:grid; grid-template-columns:repeat(3,0.85fr) 1.5fr; gap:32px; margin:0 0 36px; max-width:none; padding:0; }
+  @media (max-width:860px){ .footer-grid{ grid-template-columns:1fr 1fr; gap:28px; } }
+  @media (max-width:560px){ .footer-grid{ grid-template-columns:1fr; } }
+  .footer-grid h4{ color:var(--sand); font-size:0.86rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:16px; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; }
+  .footer-grid a{ display:block; font-size:0.88rem; margin-bottom:10px; color:#AEB9B3; transition:color 0.15s; text-decoration:none; }
+  .footer-grid a:hover{ color:var(--sand); }
+  .footer-col-icon{ width:26px; height:26px; color:var(--teal-light); margin-bottom:14px; }
+  .footer-col-icon svg{ width:100%; height:100%; }
+  .badge-link{ display:inline-block; line-height:0; margin-bottom:0; }
+  .badge-link img{ height:46px; width:auto; display:block; }
+  @media (max-width:500px){ .badge-link img{ height:40px; } }
+  /* Newsletter signup is hosted on Constant Contact, so this is a link, not
+     a form. A local form here would have nowhere to submit. */
+  .subscribe-cta{ display:inline-block; background:var(--teal); color:#fff; padding:11px 20px; border-radius:8px; font-weight:600; font-size:0.85rem; text-decoration:none; transition:background 0.15s; }
+  .subscribe-cta:hover{ background:var(--teal-light); }
+  .footer-badges{ display:flex; gap:10px; margin-top:18px; flex-wrap:wrap; }
+  .footer-badges img{ height:42px; width:auto; }
+  .footer-divider{ height:1px; background:rgba(255,255,255,0.12); margin-bottom:26px; }
+  .footer-bottom{ display:grid; grid-template-columns:auto 1fr auto; gap:28px; align-items:center; border-top:none; padding:0; max-width:none; margin:0; }
+  @media (max-width:980px){ .footer-bottom{ grid-template-columns:1fr; justify-items:center; text-align:center; gap:22px; } }
+  .footer-brand .wordmark{ font-size:1.1rem; }
+  .footer-tagline{ font-size:0.86rem; color:#AEB9B3; margin-top:10px; line-height:1.5; }
+  .footer-copy{ font-size:0.82rem; color:#8B9691; margin-top:12px; }
+  .footer-legal-links{ display:flex; flex-wrap:wrap; gap:8px 20px; justify-content:center; font-size:0.84rem; }
+  .footer-legal-links a{ text-decoration:none; color:#AEB9B3; transition:color 0.15s; }
+  .footer-legal-links a:hover{ color:var(--sand); }
+  .footer-social{ display:flex; gap:12px; }
+  .footer-social a{ width:38px; height:38px; border-radius:50%; border:1px solid rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center; color:#CFD8D3; transition:background 0.15s, color 0.15s; }
+  .footer-social a:hover{ background:rgba(255,255,255,0.10); color:var(--sand); }
+  .footer-social svg{ width:17px; height:17px; }
+  /* Sitewide section rhythm. Homepage baseline (40px) applied everywhere so
+     spacing matches across pages. Page rules with higher specificity, e.g.
+     .section.timeline-section, still win. */
+  .section{ padding:40px 0; }
+  .page-hero{ padding:56px 0 48px; }
+
+  /* ===== END SHARED HEADER + FOOTER ================================== */
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="wordmark"><img src="minar360-logo-white.png" alt="Minar360" class="logo-mark">minar360</a>
+    <div class="nav-links">
+      <a href="explore.html">Explore</a>
+      <a href="organizations.html">For Organizations</a>
+      <a href="tutorials.html">Tutorials</a>
+      <div class="nav-dropdown">
+        <button type="button" class="nav-dropdown-trigger">Resources <span class="caret">&#9662;</span></button>
+        <div class="nav-dropdown-menu">
+          <a href="faq.html">FAQ</a>
+          <a href="articles.html">Articles</a>
+          <a href="onboarding.html">Onboarding</a>
+          <a href="careers.html">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <a href="get-app.html" class="nav-cta-secondary">Download App</a>
+      <a href="https://minar360.com/login" target="_blank" rel="noopener noreferrer" class="nav-cta">Login</a>
+    </div>
+    <button type="button" class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="explore.html">Explore</a>
+    <a href="organizations.html">For Organizations</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="faq.html">FAQ</a>
+    <a href="articles.html">Articles</a>
+    <a href="onboarding.html">Onboarding</a>
+    <a href="careers.html">Careers</a>
+    <a href="https://minar360.com/login" target="_blank" rel="noopener noreferrer" class="mobile-cta">Login</a>
+  </div>
+
+<header class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Directory</span>
+    <h1>Minar360 Directory</h1>
+    <p>Events, masajid, and halal restaurants across the Minar360 network. Listings are being onboarded now.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="placeholder-note"><strong>Listings are being onboarded.</strong> The sections below are
+  built and ready. They will be populated from the directory data file as organizations join.</div>
+
+  <section class="dir-section" id="events">
+    <h2>Upcoming Events</h2>
+    <p>Community events published by masajid, nonprofits, and organizations on Minar360.</p>
+    <div class="empty-state">No events listed yet. Events will appear here as organizations publish them.</div>
+  </section>
+
+  <section class="dir-section" id="mosques">
+    <h2>Mosques</h2>
+    <p>Masajid and Islamic centers with a profile on Minar360, including prayer and iqamah times.</p>
+    <div class="empty-state">No mosques listed yet. Listings will appear here as masajid are onboarded.</div>
+  </section>
+
+  <section class="dir-section" id="halal-restaurants">
+    <h2>Halal Restaurants</h2>
+    <p>Halal restaurants and Muslim-owned food businesses listed on Minar360.</p>
+    <div class="empty-state">No restaurants listed yet. Listings will appear here as businesses are onboarded.</div>
+  </section>
+</main>
+
+<footer>
+  <div class="site-wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-col-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 8.5l-2 5-5 2 2-5z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Explore</h4>
+        <a href="#pillars">Five Pillars</a>
+        <a href="directory.html#events">Events</a>
+        <a href="directory.html#mosques">Mosque Directory</a>
+        <a href="directory.html#halal-restaurants">Halal Businesses</a>
+        <a href="articles.html">Articles</a>
+      </div>
+      <div>
+        <div class="footer-col-icon"><svg viewBox="0 0 24 24"><path d="M5 21V6l7-3v18" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 21h7V11l-7-2.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 21h18" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 9.5v0M8.5 13v0M15.5 13.5v0M15.5 17v0" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Organizations</h4>
+        <a href="organizations.html">Get Listed</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="resources.html">Resources</a>
+      </div>
+      <div>
+        <div class="footer-col-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 6.2a3.2 3.2 0 0 1 0 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 14.4c1.8.7 3 2.4 3 4.6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Company</h4>
+        <a href="articles.html">Articles</a>
+        <a href="faq.html">FAQ</a>
+        <a href="about.html">About</a>
+        <a href="mailto:areeb.quasem@qubalink.com">Contact</a>
+        <a href="careers.html">Careers</a>
+      </div>
+      <div>
+        <div class="footer-col-icon"><svg viewBox="0 0 24 24"><rect x="2.8" y="5.5" width="18.4" height="13" rx="2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.4 6.8L12 13l8.6-6.2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Stay Connected</h4>
+        <p style="font-size:0.86rem; color:#AEB9B3; margin-bottom:14px; max-width:280px;">Get the latest updates and community highlights straight to your inbox.</p>
+        <a href="https://lp.constantcontactpages.com/sl/YZTAPuf/MinarEmail" target="_blank" rel="noopener noreferrer" class="subscribe-cta">Subscribe to the newsletter</a>
+        <div class="footer-badges">
+          <a href="https://apps.apple.com/us/app/minar360/id6748239000" class="badge-link"><img src="appstore-badge.png" alt="Download on the App Store"></a>
+          <a href="https://play.google.com/store/apps/details?id=com.qubalinkzenythlabs.minar360&amp;hl=en_US" class="badge-link"><img src="googleplay-badge.png" alt="Get it on Google Play"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+      <div class="footer-brand">
+        <a href="#top" class="wordmark" style="display:inline-flex;"><img src="minar360-logo-white.png" alt="Minar360" class="logo-mark">minar360</a>
+        <p class="footer-tagline">One Ummah. One App.<br>One Purpose.</p>
+        <p class="footer-copy">&copy; 2026 Minar360. All rights reserved.</p>
+      </div>
+      <div class="footer-legal-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="community-guidelines.html">Community Guidelines</a>
+        <a href="cookie-preferences.html">Cookie Preferences</a>
+        <a href="accessibility.html">Accessibility</a>
+      </div>
+      <div class="footer-social">
+  <a href="https://www.instagram.com/minar360app" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+  <a href="https://www.facebook.com/share/1FARH5r4HP/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14.5 8.5h2.2M14.5 21V8.9c0-1.9 1.1-2.9 2.8-2.9h1.4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 12.5h5.5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="https://www.youtube.com/@Minar360-App" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="2.6" y="5.6" width="18.8" height="12.8" rx="4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.4 9.6l5 2.4-5 2.4z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <a href="https://www.linkedin.com/company/minar360app" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 10.6V17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="7.6" r="0.9" fill="currentColor" stroke="none"/><path d="M11.4 17v-3.6a2.2 2.2 0 0 1 4.4 0V17" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll(".nav-dropdown").forEach(dd => {
+    const trigger = dd.querySelector(".nav-dropdown-trigger");
+    trigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = dd.classList.contains("open");
+      document.querySelectorAll(".nav-dropdown.open").forEach(o => o.classList.remove("open"));
+      if (!isOpen) dd.classList.add("open");
+    });
+  });
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".nav-dropdown.open").forEach(o => o.classList.remove("open"));
+  });
+  const navHamburger = document.getElementById("navHamburger");
+  const mobileMenu = document.getElementById("mobileMenu");
+  if (navHamburger && mobileMenu) {
+    navHamburger.addEventListener("click", () => {
+      const isOpen = mobileMenu.classList.toggle("open");
+      navHamburger.classList.toggle("active", isOpen);
+      navHamburger.setAttribute("aria-expanded", isOpen);
+    });
+    mobileMenu.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        navHamburger.classList.remove("active");
+        navHamburger.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+</script>
+</body>
+</html>
