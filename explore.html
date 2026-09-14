@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Explore — Minar360</title>
+<title>Explore | Minar360</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -91,7 +91,7 @@
   .feed-mock .feed-text span{ font-size:0.8rem; color:var(--text-soft); }
   .feed-explainer ul{ list-style:none; margin-top:16px; }
   .feed-explainer li{ padding:7px 0 7px 22px; position:relative; font-size:0.94rem; color:var(--text-soft); }
-  .feed-explainer li::before{ content:"—"; position:absolute; left:0; color:var(--brass); }
+  .feed-explainer li::before{ content:"\2022"; position:absolute; left:0; color:var(--brass); }
 
   /* STEPS */
   .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
@@ -174,9 +174,10 @@
   .badge-link{ display:inline-block; line-height:0; margin-bottom:0; }
   .badge-link img{ height:46px; width:auto; display:block; }
   @media (max-width:500px){ .badge-link img{ height:40px; } }
-  .footer-newsletter{ display:flex; gap:6px; }
-  .footer-newsletter input{ flex:1; padding:10px 12px; border-radius:8px; border:none; font-family:'Montserrat',sans-serif; font-size:0.85rem; min-width:0; }
-  .footer-newsletter button{ background:var(--teal); color:#fff; padding:10px 16px; border-radius:8px; font-weight:600; font-size:0.85rem; white-space:nowrap; }
+  /* Newsletter signup is hosted on Constant Contact, so this is a link, not
+     a form. A local form here would have nowhere to submit. */
+  .subscribe-cta{ display:inline-block; background:var(--teal); color:#fff; padding:11px 20px; border-radius:8px; font-weight:600; font-size:0.85rem; text-decoration:none; transition:background 0.15s; }
+  .subscribe-cta:hover{ background:var(--teal-light); }
   .footer-badges{ display:flex; gap:10px; margin-top:18px; flex-wrap:wrap; }
   .footer-badges img{ height:42px; width:auto; }
   .footer-divider{ height:1px; background:rgba(255,255,255,0.12); margin-bottom:26px; }
@@ -192,6 +193,12 @@
   .footer-social a{ width:38px; height:38px; border-radius:50%; border:1px solid rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center; color:#CFD8D3; transition:background 0.15s, color 0.15s; }
   .footer-social a:hover{ background:rgba(255,255,255,0.10); color:var(--sand); }
   .footer-social svg{ width:17px; height:17px; }
+  /* Sitewide section rhythm. Homepage baseline (40px) applied everywhere so
+     spacing matches across pages. Page rules with higher specificity, e.g.
+     .section.timeline-section, still win. */
+  .section{ padding:40px 0; }
+  .page-hero{ padding:56px 0 48px; }
+
   /* ===== END SHARED HEADER + FOOTER ================================== */
 </style>
 </head>
@@ -238,11 +245,11 @@
   <div class="wrap">
     <span class="eyebrow">For the community</span>
     <h1>Everything happening near you, in one search.</h1>
-    <p>Events, mosques, halal spots, and organizations — search once instead of checking five different apps and group chats.</p>
-    <form class="explore-search" role="search" aria-label="Search Minar360">
-      <input type="text" placeholder="Search events, mosques, or halal spots near you" aria-label="Search">
-      <button type="submit">Search</button>
-    </form>
+    <p>Events, mosques, halal spots, and organizations. Search once instead of checking five different apps and group chats.</p>
+    <div class="explore-search" role="search" aria-label="Search Minar360">
+      <input type="text" id="exploreSearch" placeholder="Search events, mosques, or halal spots near you" aria-label="Search">
+      <button type="button" id="exploreSearchBtn">Search</button>
+    </div>
   </div>
 </header>
 
@@ -254,52 +261,52 @@
     <button class="filter-chip" data-filter="organizations">Organizations</button>
     <button class="filter-chip" data-filter="businesses">Businesses &amp; halal food</button>
   </div>
-  <p class="sample-note">Sample listings shown for preview — real organizations and businesses are onboarding now.</p>
+  <p class="sample-note">Sample listings shown for preview. Real organizations and businesses are onboarding now.</p>
 
   <div class="sample-grid" id="sampleGrid">
     <div class="sample-card" data-cat="events">
       <div class="thumb events">📅</div>
-      <div class="body"><span class="cat">Event</span><h3>Jumu'ah Khutbah Series</h3><p>Weekly Friday sermon and community lunch — sample listing.</p></div>
+      <div class="body"><span class="cat">Event</span><h3>Jumu'ah Khutbah Series</h3><p>Weekly Friday sermon and community lunch. Sample listing.</p></div>
     </div>
     <div class="sample-card" data-cat="events">
       <div class="thumb events">🌙</div>
-      <div class="body"><span class="cat">Event</span><h3>Community Iftar Night</h3><p>Shared iftar open to the whole neighborhood — sample listing.</p></div>
+      <div class="body"><span class="cat">Event</span><h3>Community Iftar Night</h3><p>Shared iftar open to the whole neighborhood. Sample listing.</p></div>
     </div>
     <div class="sample-card" data-cat="events">
       <div class="thumb events">📖</div>
-      <div class="body"><span class="cat">Event</span><h3>Youth Halaqa</h3><p>Weekly discussion circle for teens and young adults — sample listing.</p></div>
+      <div class="body"><span class="cat">Event</span><h3>Youth Halaqa</h3><p>Weekly discussion circle for teens and young adults. Sample listing.</p></div>
     </div>
     <div class="sample-card" data-cat="mosques">
       <div class="thumb mosques">🕌</div>
-      <div class="body"><span class="cat">Mosque</span><h3>Community Masjid</h3><p>Prayer times, khutbahs, and announcements — sample profile.</p></div>
+      <div class="body"><span class="cat">Mosque</span><h3>Community Masjid</h3><p>Prayer times, khutbahs, and announcements. Sample profile.</p></div>
     </div>
     <div class="sample-card" data-cat="mosques">
       <div class="thumb mosques">🕌</div>
-      <div class="body"><span class="cat">Mosque</span><h3>Neighborhood Islamic Center</h3><p>Daily prayers and weekend programs — sample profile.</p></div>
+      <div class="body"><span class="cat">Mosque</span><h3>Neighborhood Islamic Center</h3><p>Daily prayers and weekend programs. Sample profile.</p></div>
     </div>
     <div class="sample-card" data-cat="businesses">
       <div class="thumb businesses">🍽️</div>
-      <div class="body"><span class="cat">Halal food</span><h3>Local Halal Grill</h3><p>Family-owned halal restaurant — sample listing.</p></div>
+      <div class="body"><span class="cat">Halal food</span><h3>Local Halal Grill</h3><p>Family-owned halal restaurant. Sample listing.</p></div>
     </div>
     <div class="sample-card" data-cat="businesses">
       <div class="thumb businesses">🛍️</div>
-      <div class="body"><span class="cat">Business</span><h3>Downtown Islamic Bookstore</h3><p>Muslim-owned bookstore and gift shop — sample listing.</p></div>
+      <div class="body"><span class="cat">Business</span><h3>Downtown Islamic Bookstore</h3><p>Muslim-owned bookstore and gift shop. Sample listing.</p></div>
     </div>
     <div class="sample-card" data-cat="businesses">
       <div class="thumb businesses">✂️</div>
-      <div class="body"><span class="cat">Business</span><h3>Sunnah Barbershop</h3><p>Muslim-owned barbershop — sample listing.</p></div>
+      <div class="body"><span class="cat">Business</span><h3>Sunnah Barbershop</h3><p>Muslim-owned barbershop. Sample listing.</p></div>
     </div>
     <div class="sample-card" data-cat="mosques">
       <div class="thumb mosques">🕌</div>
-      <div class="body"><span class="cat">Mosque</span><h3>Riverside Masjid</h3><p>Jumu'ah and weekend Islamic school — sample profile.</p></div>
+      <div class="body"><span class="cat">Mosque</span><h3>Riverside Masjid</h3><p>Jumu'ah and weekend Islamic school. Sample profile.</p></div>
     </div>
     <div class="sample-card" data-cat="organizations">
       <div class="thumb mosques">🤝</div>
-      <div class="body"><span class="cat">Organization</span><h3>Community Relief Fund</h3><p>Local nonprofit supporting families in need — sample profile.</p></div>
+      <div class="body"><span class="cat">Organization</span><h3>Community Relief Fund</h3><p>Local nonprofit supporting families in need. Sample profile.</p></div>
     </div>
     <div class="sample-card" data-cat="organizations">
       <div class="thumb mosques">🤝</div>
-      <div class="body"><span class="cat">Organization</span><h3>Youth Education Society</h3><p>After-school programs and mentorship — sample profile.</p></div>
+      <div class="body"><span class="cat">Organization</span><h3>Youth Education Society</h3><p>After-school programs and mentorship. Sample profile.</p></div>
     </div>
   </div>
 </div>
@@ -309,12 +316,12 @@
     <div class="section-head">
       <span class="eyebrow">One feed, not five apps</span>
       <h2>Follow, and it shows up automatically</h2>
-      <p>Once you follow a mosque, organization, or business, their events, prayer times, and announcements land in one feed — instead of you having to remember to check each one separately.</p>
+      <p>Once you follow a mosque, organization, or business, their events, prayer times, and announcements land in one feed, instead of you having to remember to check each one separately.</p>
     </div>
     <div class="feed-explainer">
       <div class="feed-mock">
         <div class="feed-item"><div class="feed-icon">🕌</div><div class="feed-text"><strong>Community Masjid</strong><span>Posted new Jumu'ah khutbah topic</span></div></div>
-        <div class="feed-item"><div class="feed-icon">🤝</div><div class="feed-text"><strong>Local Relief Fund</strong><span>Ramadan food drive — 3 days left</span></div></div>
+        <div class="feed-item"><div class="feed-icon">🤝</div><div class="feed-text"><strong>Local Relief Fund</strong><span>Ramadan food drive, 3 days left</span></div></div>
         <div class="feed-item"><div class="feed-icon">🍽️</div><div class="feed-text"><strong>Local Halal Grill</strong><span>New weekend hours posted</span></div></div>
       </div>
       <ul>
@@ -359,10 +366,7 @@
       <span class="eyebrow" style="color:var(--brass-light);">Coming to your city</span>
       <h2>Be the first to know when Minar360 launches near you</h2>
       <p>We're onboarding organizations city by city. Join the list and we'll let you know as soon as your area is live.</p>
-      <form class="notify-form">
-        <input type="email" placeholder="you@email.com" aria-label="Email address">
-        <button type="submit">Notify me</button>
-      </form>
+      <div><a href="https://lp.constantcontactpages.com/sl/YZTAPuf/MinarEmail" target="_blank" rel="noopener noreferrer" class="subscribe-cta">Sign up for the Newsletter</a></div>
     </div>
   </div>
 </section>
@@ -374,9 +378,9 @@
         <div class="footer-col-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 8.5l-2 5-5 2 2-5z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h4>Explore</h4>
         <a href="#pillars">Five Pillars</a>
-        <a href="#">Events</a>
-        <a href="#">Mosque Directory</a>
-        <a href="#">Halal Businesses</a>
+        <a href="directory.html#events">Events</a>
+        <a href="directory.html#mosques">Mosque Directory</a>
+        <a href="directory.html#halal-restaurants">Halal Businesses</a>
         <a href="articles.html">Articles</a>
       </div>
       <div>
@@ -385,15 +389,14 @@
         <a href="organizations.html">Get Listed</a>
         <a href="#how-it-works">How It Works</a>
         <a href="tutorials.html">Tutorials</a>
-        <a href="#">Reviews</a>
-        <a href="#">Resources</a>
+        <a href="resources.html">Resources</a>
       </div>
       <div>
         <div class="footer-col-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 6.2a3.2 3.2 0 0 1 0 6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 14.4c1.8.7 3 2.4 3 4.6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h4>Company</h4>
         <a href="articles.html">Articles</a>
         <a href="faq.html">FAQ</a>
-        <a href="#">About</a>
+        <a href="about.html">About</a>
         <a href="mailto:areeb.quasem@qubalink.com">Contact</a>
         <a href="careers.html">Careers</a>
       </div>
@@ -401,10 +404,7 @@
         <div class="footer-col-icon"><svg viewBox="0 0 24 24"><rect x="2.8" y="5.5" width="18.4" height="13" rx="2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.4 6.8L12 13l8.6-6.2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h4>Stay Connected</h4>
         <p style="font-size:0.86rem; color:#AEB9B3; margin-bottom:14px; max-width:280px;">Get the latest updates and community highlights straight to your inbox.</p>
-        <form class="footer-newsletter">
-          <input type="email" placeholder="Enter your email" aria-label="Email address">
-          <button type="submit">Subscribe</button>
-        </form>
+        <a href="https://lp.constantcontactpages.com/sl/YZTAPuf/MinarEmail" target="_blank" rel="noopener noreferrer" class="subscribe-cta">Subscribe to the newsletter</a>
         <div class="footer-badges">
           <a href="https://apps.apple.com/us/app/minar360/id6748239000" class="badge-link"><img src="appstore-badge.png" alt="Download on the App Store"></a>
           <a href="https://play.google.com/store/apps/details?id=com.qubalinkzenythlabs.minar360&amp;hl=en_US" class="badge-link"><img src="googleplay-badge.png" alt="Get it on Google Play"></a>
@@ -422,10 +422,10 @@
       </div>
       <div class="footer-legal-links">
         <a href="privacy.html">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-        <a href="#">Community Guidelines</a>
-        <a href="#">Cookie Preferences</a>
-        <a href="#">Accessibility</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="community-guidelines.html">Community Guidelines</a>
+        <a href="cookie-preferences.html">Cookie Preferences</a>
+        <a href="accessibility.html">Accessibility</a>
       </div>
       <div class="footer-social">
   <a href="https://www.instagram.com/minar360app" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
@@ -438,6 +438,19 @@
 </footer>
 
 <script>
+  // Search filters the sample cards in place. It previously submitted nowhere
+  // and just reloaded the page.
+  const exploreSearch = document.getElementById('exploreSearch');
+  function runExploreSearch(){
+    const q = exploreSearch.value.trim().toLowerCase();
+    document.querySelectorAll('.sample-card').forEach(card => {
+      card.classList.toggle('hidden', q !== '' && !card.textContent.toLowerCase().includes(q));
+    });
+  }
+  exploreSearch.addEventListener('input', runExploreSearch);
+  document.getElementById('exploreSearchBtn').addEventListener('click', runExploreSearch);
+  exploreSearch.addEventListener('keydown', e => { if (e.key === 'Enter') runExploreSearch(); });
+
   const chips = document.querySelectorAll('.filter-chip');
   const cards = document.querySelectorAll('.sample-card');
   chips.forEach(chip => {
